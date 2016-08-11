@@ -24,5 +24,5 @@ Converted to TopoJSON from original shapefiles
 ## United States - State Level
 - Michigan
   - Counties
-    - [michigan-counties.json](https://github.com/deldersveld/topojson/blob/master/united-states/higher-quality-5m/5m-US-congressional-districts-2015.json) [(source)](http://gis.michigan.opendata.arcgis.com/datasets/67a8ff23b5f54f15b7133b8c30981441_0)
+    - [michigan-counties.json](https://github.com/deldersveld/topojson/blob/master/us-states/michigan-counties.json) [(source)](http://gis.michigan.opendata.arcgis.com/datasets/67a8ff23b5f54f15b7133b8c30981441_0)
 	
