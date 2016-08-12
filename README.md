@@ -151,6 +151,10 @@ Converted to TopoJSON from original shapefiles
 - **Tennessee**
   - Counties
     - [TN-47-tennessee-counties.json](https://github.com/deldersveld/topojson/blob/master/us-states/TN-47-tennessee-counties.json) [(source)](https://catalog.data.gov/dataset/2015-cartographic-boundary-file-state-county-for-united-states-1-20000000)
+  - State Senate Districts 2015
+    - [TN-47-tennessee-state-senate-districts-2015.json](https://github.com/deldersveld/topojson/blob/master/us-states/TN-47-tennessee-state-senate-districts-2015.json) [(source)](https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2015&layergroup=State+Legislative+Districts)
+  - State House Districts 2015
+    - [TN-47-tennessee-state-house-districts-2015.json](https://github.com/deldersveld/topojson/blob/master/us-states/TN-47-tennessee-state-house-districts-2015.json) [(source)](https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2015&layergroup=State+Legislative+Districts)
 - **Texas**
   - Counties
     - [TX-48-texas-counties.json](https://github.com/deldersveld/topojson/blob/master/us-states/TX-48-texas-counties.json) [(source)](https://catalog.data.gov/dataset/2015-cartographic-boundary-file-state-county-for-united-states-1-20000000)
