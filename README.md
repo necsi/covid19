@@ -2,6 +2,11 @@
 
 Converted to TopoJSON from original shapefiles
 
+## Netherlands
+
+- Gemeentegrenzen (2016) - Municipalities
+  - [nl-gemeentegrenzen-2016.json](https://github.com/deldersveld/topojson/blob/master/netherlands/nl-gemeentegrenzen-2016.json) [(source)](http://www.imergis.nl/shp/Gemeentegrenzen_2016_zonder_water.zip)
+
 ## United States - National
 
 #### Higher Quality
