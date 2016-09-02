@@ -1,6 +1,6 @@
 # TopoJSON Collection
 
-Converted to TopoJSON from original shapefiles
+Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the source.
 
 ## World
 
