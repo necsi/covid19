@@ -1,6 +1,6 @@
 # TopoJSON Collection
 
-Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the source.
+Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the source. All files are believed to have been converted from sources that are licensed for reuse or which are in the public domain. If you find a file and believe that its original source is not licensed for this type of use, please create an Issue in this repository.
 
 ## World
 
