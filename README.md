@@ -2,6 +2,11 @@
 
 Converted to TopoJSON from original shapefiles
 
+## World
+
+- World Countries (2014)
+  - [world-countries.json](https://github.com/deldersveld/topojson/blob/master/world-countries.json) [(source)](https://github.com/johan/world.geo.json/blob/master/countries.geo.json)
+
 ## Netherlands
 
 - Gemeentegrenzen (2016) - Municipalities
