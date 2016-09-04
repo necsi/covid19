@@ -14,21 +14,14 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 
 ## United States - National
 
-#### Higher Quality
-- US Congressional Districts (2015) - TIGER
-  - [5m-US-congressional-districts-2015.json](https://github.com/deldersveld/topojson/blob/master/united-states/higher-quality-5m/5m-US-congressional-districts-2015.json) [(source)](https://catalog.data.gov/dataset/tiger-line-shapefile-2015-nation-u-s-114th-congressional-district-national)
-- US Core Based Statistical Areas (2015) - TIGER
-  - [5m-US-core-based-statistical-areas-2015.json](https://github.com/deldersveld/topojson/blob/master/united-states/higher-quality-5m/5m-US-core-based-statistical-areas-2015.json) [(source)](https://catalog.data.gov/dataset/2015-cartographic-boundary-file-combined-statistical-area-for-united-states-1-50000004cbec)
-- US Counties (2015) - TIGER
-  - [5m-US-counties.json](https://github.com/deldersveld/topojson/blob/master/united-states/higher-quality-5m/5m-US-counties.json) [(source)](https://catalog.data.gov/dataset/2015-cartographic-boundary-file-state-county-for-united-states-1-5000000)
-
-#### Lower Quality
 - US Congressional Districts (2015) - TIGER
   - [20m-US-congressional-districts-2015.json](https://github.com/deldersveld/topojson/blob/master/united-states/lower-quality-20m/20m-US-congressional-districts-2015.json) [(source)](https://catalog.data.gov/dataset/tiger-line-shapefile-2015-nation-u-s-114th-congressional-district-national)
 - US Core Based Statistical Areas (2015)- TIGER
   - [20m-US-core-based-statistical-areas-2015.json](https://github.com/deldersveld/topojson/blob/master/united-states/lower-quality-20m/20m-US-core-based-statistical-areas-2015.json) [(source)](https://catalog.data.gov/dataset/2015-cartographic-boundary-file-combined-statistical-area-for-united-states-1-20000000812c2)
 - US Counties (2015) - TIGER
   - [20m-US-counties.json](https://github.com/deldersveld/topojson/blob/master/united-states/lower-quality-20m/20m-US-counties.json) [(source)](https://catalog.data.gov/dataset/2015-cartographic-boundary-file-state-county-for-united-states-1-20000000)
+- Cartogram of US States by estimated 2014 population
+- [us-cartogram-2014-est-population.json](https://github.com/deldersveld/topojson/blob/master/united-states/us-cartogram-2014-est-population.json)
 
   
 ## United States - State Level
