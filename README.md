@@ -21,7 +21,7 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - US Counties (2015) - TIGER
   - [20m-US-counties.json](https://github.com/deldersveld/topojson/blob/master/united-states/lower-quality-20m/20m-US-counties.json) [(source)](https://catalog.data.gov/dataset/2015-cartographic-boundary-file-state-county-for-united-states-1-20000000)
 - Cartogram of US States by estimated 2014 population
-- [us-cartogram-2014-est-population.json](https://github.com/deldersveld/topojson/blob/master/united-states/us-cartogram-2014-est-population.json)
+  - [us-cartogram-2014-est-population.json](https://github.com/deldersveld/topojson/blob/master/united-states/us-cartogram-2014-est-population.json)
 
   
 ## United States - State Level
