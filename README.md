@@ -6,6 +6,7 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 
 - World Countries (2014)
   - [world-countries.json](https://github.com/deldersveld/topojson/blob/master/world-countries.json) [(source)](https://github.com/johan/world.geo.json/blob/master/countries.geo.json)
+  - ![](https://raw.githubusercontent.com/deldersveld/topojson/master/images/world-countries.PNG)
 
 ## Netherlands
 
@@ -24,6 +25,7 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [us-albers.json](https://github.com/deldersveld/topojson/blob/master/united-states/us-albers.json)
 - US Counties - Alaska & Hawaii shifted
   - [us-albers-counties.json](https://github.com/deldersveld/topojson/blob/master/united-states/us-albers-counties.json)
+  - ![](https://raw.githubusercontent.com/deldersveld/topojson/master/images/us-albers-counties.PNG)
 - Cartogram of US States by estimated 2014 population
   - [us-cartogram-2014-est-population.json](https://github.com/deldersveld/topojson/blob/master/united-states/us-cartogram-2014-est-population.json)
 
