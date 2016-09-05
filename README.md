@@ -28,6 +28,7 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - ![](https://raw.githubusercontent.com/deldersveld/topojson/master/images/us-albers-counties.PNG)
 - Cartogram of US States by estimated 2014 population
   - [us-cartogram-2014-est-population.json](https://github.com/deldersveld/topojson/blob/master/united-states/us-cartogram-2014-est-population.json)
+  - ![](https://raw.githubusercontent.com/deldersveld/topojson/master/images/us-cartogram-2014-est-population.PNG)
 
   
 ## United States - State Level
