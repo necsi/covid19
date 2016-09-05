@@ -20,6 +20,10 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [20m-US-core-based-statistical-areas-2015.json](https://github.com/deldersveld/topojson/blob/master/united-states/lower-quality-20m/20m-US-core-based-statistical-areas-2015.json) [(source)](https://catalog.data.gov/dataset/2015-cartographic-boundary-file-combined-statistical-area-for-united-states-1-20000000812c2)
 - US Counties (2015) - TIGER
   - [20m-US-counties.json](https://github.com/deldersveld/topojson/blob/master/united-states/lower-quality-20m/20m-US-counties.json) [(source)](https://catalog.data.gov/dataset/2015-cartographic-boundary-file-state-county-for-united-states-1-20000000)
+- US - Alaska & Hawaii shifted
+  - [us-albers.json](https://github.com/deldersveld/topojson/blob/master/united-states/us-albers.json)
+- US Counties - Alaska & Hawaii shifted
+  - [us-albers-counties.json](https://github.com/deldersveld/topojson/blob/master/united-states/us-albers-counties.json)
 - Cartogram of US States by estimated 2014 population
   - [us-cartogram-2014-est-population.json](https://github.com/deldersveld/topojson/blob/master/united-states/us-cartogram-2014-est-population.json)
 
