@@ -7,20 +7,22 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - World Countries (2014)
   - [world-countries.json](https://github.com/deldersveld/topojson/blob/master/world-countries.json) [(source)](https://github.com/johan/world.geo.json/blob/master/countries.geo.json)
   - ![](https://raw.githubusercontent.com/deldersveld/topojson/master/images/world-countries.PNG)
+- World Continents
+  - [world-continents.json](https://github.com/deldersveld/topojson/blob/master/world-continents.json) [(source)](http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
 
 ## Continents
 - Africa with Country/Territory Outlines
-  - [africa.json](https://github.com/deldersveld/topojson/blob/master/continents/africa.json)
+  - [africa.json](https://github.com/deldersveld/topojson/blob/master/continents/africa.json) [(source)](http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
 - Asia with Country/Territory Outlines
-  - [asia.json](https://github.com/deldersveld/topojson/blob/master/continents/asia.json)
+  - [asia.json](https://github.com/deldersveld/topojson/blob/master/continents/asia.json) [(source)](http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
 - Europe with Country/Territory Outlines
-  - [europe.json](https://github.com/deldersveld/topojson/blob/master/continents/europe.json)
+  - [europe.json](https://github.com/deldersveld/topojson/blob/master/continents/europe.json) [(source)](http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
 - North America with Country/Territory Outlines
-  - [north-america.json](https://github.com/deldersveld/topojson/blob/master/continents/north-america.json)
+  - [north-america.json](https://github.com/deldersveld/topojson/blob/master/continents/north-america.json) [(source)](http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
 - Oceania with Country/Territory Outlines
-  - [oceania.json](https://github.com/deldersveld/topojson/blob/master/continents/oceania.json)
+  - [oceania.json](https://github.com/deldersveld/topojson/blob/master/continents/oceania.json)[(source)] (http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
 - South America with Country/Territory Outlines
-  - [south-america.json](https://github.com/deldersveld/topojson/blob/master/continents/south-america.json)
+  - [south-america.json](https://github.com/deldersveld/topojson/blob/master/continents/south-america.json) [(source)](http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
 
 ## Netherlands
 
