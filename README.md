@@ -8,6 +8,20 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [world-countries.json](https://github.com/deldersveld/topojson/blob/master/world-countries.json) [(source)](https://github.com/johan/world.geo.json/blob/master/countries.geo.json)
   - ![](https://raw.githubusercontent.com/deldersveld/topojson/master/images/world-countries.PNG)
 
+## Continents
+- Africa with Country/Territory Outlines
+  - [africa.json](https://github.com/deldersveld/topojson/blob/master/continents/africa.json)
+- Asia with Country/Territory Outlines
+  - [asia.json](https://github.com/deldersveld/topojson/blob/master/continents/asia.json)
+- Europe with Country/Territory Outlines
+  - [europe.json](https://github.com/deldersveld/topojson/blob/master/continents/europe.json)
+- North America with Country/Territory Outlines
+  - [north-america.json](https://github.com/deldersveld/topojson/blob/master/continents/north-america.json)
+- Oceania with Country/Territory Outlines
+  - [oceania.json](https://github.com/deldersveld/topojson/blob/master/continents/oceania.json)
+- South America with Country/Territory Outlines
+  - [south-america.json](https://github.com/deldersveld/topojson/blob/master/continents/south-america.json)
+
 ## Netherlands
 
 - Gemeentegrenzen (2016) - Municipalities
