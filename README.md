@@ -41,6 +41,12 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - Gemeentegrenzen (2016) - Municipalities
   - [nl-gemeentegrenzen-2016.json](https://github.com/deldersveld/topojson/blob/master/countries/netherlands/nl-gemeentegrenzen-2016.json) [(source)](http://www.imergis.nl/shp/Gemeentegrenzen_2016_zonder_water.zip)
 
+## Norway
+- Fylker - Counties
+  - [norway-counties.json](https://github.com/deldersveld/topojson/blob/master/countries/norway/norway-counties.json) [(source)](http://www.diva-gis.org/Data)
+- Kommunar - Municipalities
+  - [norway-municipalities.json](https://github.com/deldersveld/topojson/blob/master/countries/norway/norway-municipalities.json) [(source)](http://www.diva-gis.org/Data)
+  
 ## United States - National
 
 - US Congressional Districts (2015) - TIGER
