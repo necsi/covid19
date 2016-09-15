@@ -23,6 +23,13 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [oceania.json](https://github.com/deldersveld/topojson/blob/master/continents/oceania.json) [(source)] (http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
 - South America with Country/Territory Outlines
   - [south-america.json](https://github.com/deldersveld/topojson/blob/master/continents/south-america.json) [(source)](http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
+
+  
+## Denmark
+- Amter - Counties
+  - [denmark-counties.json](https://github.com/deldersveld/topojson/blob/master/countries/denmark/denmark-counties.json) [(source)](http://www.diva-gis.org/Data)
+- Kommuner - Municipalities
+  - [denmark-municipalities.json](https://github.com/deldersveld/topojson/blob/master/countries/denmark/denmark-municipalities.json) [(source)](http://www.diva-gis.org/Data)
   
 ## France
 
