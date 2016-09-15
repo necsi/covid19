@@ -20,16 +20,16 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - North America with Country/Territory Outlines
   - [north-america.json](https://github.com/deldersveld/topojson/blob/master/continents/north-america.json) [(source)](http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
 - Oceania with Country/Territory Outlines
-  - [oceania.json](https://github.com/deldersveld/topojson/blob/master/continents/oceania.json)[(source)] (http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
+  - [oceania.json](https://github.com/deldersveld/topojson/blob/master/continents/oceania.json) [(source)] (http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
 - South America with Country/Territory Outlines
   - [south-america.json](https://github.com/deldersveld/topojson/blob/master/continents/south-america.json) [(source)](http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
 
 ## Japan
 
 - Prefectures
-  - [jp-prefectures.json](https://github.com/deldersveld/topojson/blob/master/japan/jp-prefectures.json)[(source)](http://www.diva-gis.org/Data)
+  - [jp-prefectures.json](https://github.com/deldersveld/topojson/blob/master/japan/jp-prefectures.json) [(source)](http://www.diva-gis.org/Data)
 - Towns
-  - [jp-towns.json](https://github.com/deldersveld/topojson/blob/master/japan/jp-towns.json)[(source)](http://www.diva-gis.org/Data)
+  - [jp-towns.json](https://github.com/deldersveld/topojson/blob/master/japan/jp-towns.json) [(source)](http://www.diva-gis.org/Data)
 
 ## Netherlands
 
