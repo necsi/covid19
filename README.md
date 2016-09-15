@@ -27,7 +27,7 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 ## Japan
 
 - Prefectures
-  - [jp-prefecturs.json](https://github.com/deldersveld/topojson/blob/master/japan/jp-prefectures.json)[(source)](http://www.diva-gis.org/Data)
+  - [jp-prefectures.json](https://github.com/deldersveld/topojson/blob/master/japan/jp-prefectures.json)[(source)](http://www.diva-gis.org/Data)
 - Towns
   - [jp-towns.json](https://github.com/deldersveld/topojson/blob/master/japan/jp-towns.json)[(source)](http://www.diva-gis.org/Data)
 
