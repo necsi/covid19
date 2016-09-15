@@ -29,6 +29,12 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - Departments
   - [fr-departments.json](https://github.com/deldersveld/topojson/blob/master/countries/france/fr-departments.json) [(source)](http://www.diva-gis.org/Data)
 
+## India
+- States
+  - [india-states.json](https://github.com/deldersveld/topojson/blob/master/countries/india/india-states.json) [(source)](http://www.diva-gis.org/Data)
+- Districts
+  - [india-districts.json](https://github.com/deldersveld/topojson/blob/master/countries/india/india-districts.json) [(source)](http://www.diva-gis.org/Data)
+  
 ## Japan
 
 - Prefectures
