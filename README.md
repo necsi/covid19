@@ -30,8 +30,8 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [belgium-provinces.json](https://github.com/deldersveld/topojson/blob/master/countries/belgium/belgium-provinces.json) [(source)](http://www.diva-gis.org/Data)
 - Arrondissements
   - [belgium-arrondissements.json](https://github.com/deldersveld/topojson/blob/master/countries/belgium/belgium-arrondissements.json) [(source)](http://www.diva-gis.org/Data)
-  - Benelux
-  - [benelux-counties.json] (https://github.com/deldersveld/topojson/blob/master/countries/benelux/benelux-counties.json) [(source)](http://www.diva-gis.org/Data)
+- Benelux
+  - [benelux-countries.json] (https://github.com/deldersveld/topojson/blob/master/countries/benelux/benelux-countries.json) [(source)](http://www.diva-gis.org/Data)
   
 ## Denmark
 - Amter - Counties
@@ -71,7 +71,7 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - Gemeentegrenzen (2016) - Municipalities
   - [nl-gemeentegrenzen-2016.json](https://github.com/deldersveld/topojson/blob/master/countries/netherlands/nl-gemeentegrenzen-2016.json) [(source)](http://www.imergis.nl/shp/Gemeentegrenzen_2016_zonder_water.zip)
 - Benelux
-  - [benelux-counties.json] (https://github.com/deldersveld/topojson/blob/master/countries/benelux/benelux-counties.json) [(source)](http://www.diva-gis.org/Data)
+  - [benelux-countries.json] (https://github.com/deldersveld/topojson/blob/master/countries/benelux/benelux-countries.json) [(source)](http://www.diva-gis.org/Data)
   
 ## Norway
 - Fylker - Counties
