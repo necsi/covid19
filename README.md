@@ -44,7 +44,11 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [india-states.json](https://github.com/deldersveld/topojson/blob/master/countries/india/india-states.json) [(source)](http://www.diva-gis.org/Data)
 - Districts
   - [india-districts.json](https://github.com/deldersveld/topojson/blob/master/countries/india/india-districts.json) [(source)](http://www.diva-gis.org/Data)
-  
+
+## Ireland
+- Counties
+  - [ireland-counties.json](https://github.com/deldersveld/topojson/blob/master/countries/ireland/ireland-counties.json) [(source)](http://www.diva-gis.org/Data)
+
 ## Japan
 - Prefectures
   - [jp-prefectures.json](https://github.com/deldersveld/topojson/blob/master/countries/japan/jp-prefectures.json) [(source)](http://www.diva-gis.org/Data)
