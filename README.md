@@ -32,9 +32,12 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [denmark-municipalities.json](https://github.com/deldersveld/topojson/blob/master/countries/denmark/denmark-municipalities.json) [(source)](http://www.diva-gis.org/Data)
   
 ## France
-
 - Departments
   - [fr-departments.json](https://github.com/deldersveld/topojson/blob/master/countries/france/fr-departments.json) [(source)](http://www.diva-gis.org/Data)
+
+## Germany
+- Regions
+  - [germany-regions.json](https://github.com/deldersveld/topojson/blob/master/countries/germany/germany-regions.json) [(source)](http://www.diva-gis.org/Data)
 
 ## India
 - States
@@ -43,14 +46,12 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [india-districts.json](https://github.com/deldersveld/topojson/blob/master/countries/india/india-districts.json) [(source)](http://www.diva-gis.org/Data)
   
 ## Japan
-
 - Prefectures
   - [jp-prefectures.json](https://github.com/deldersveld/topojson/blob/master/countries/japan/jp-prefectures.json) [(source)](http://www.diva-gis.org/Data)
 - Towns
   - [jp-towns.json](https://github.com/deldersveld/topojson/blob/master/countries/japan/jp-towns.json) [(source)](http://www.diva-gis.org/Data)
 
 ## Netherlands
-
 - Gemeentegrenzen (2016) - Municipalities
   - [nl-gemeentegrenzen-2016.json](https://github.com/deldersveld/topojson/blob/master/countries/netherlands/nl-gemeentegrenzen-2016.json) [(source)](http://www.imergis.nl/shp/Gemeentegrenzen_2016_zonder_water.zip)
 
