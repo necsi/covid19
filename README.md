@@ -44,8 +44,10 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 ## Germany
 - Regions
   - [germany-regions.json](https://github.com/deldersveld/topojson/blob/master/countries/germany/germany-regions.json) [(source)](http://www.diva-gis.org/Data)
-- DACH
+- DACH - Countries
   - [dach.json](https://github.com/deldersveld/topojson/blob/master/countries/germany/dach.json) [(source)](http://www.diva-gis.org/Data))
+- DACH - German & Austrian States, Swiss Cantons
+  - [dach-states.json](https://github.com/deldersveld/topojson/blob/master/countries/germany/dach-states.json) [(source)](http://www.diva-gis.org/Data))
 
 ## India
 - States
