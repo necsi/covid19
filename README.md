@@ -24,6 +24,12 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - South America with Country/Territory Outlines
   - [south-america.json](https://github.com/deldersveld/topojson/blob/master/continents/south-america.json) [(source)](http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
 
+
+## Belgium
+- Provinces
+  - [belgium-provinces.json](https://github.com/deldersveld/topojson/blob/master/countries/belgium/belgium-provinces.json) [(source)](http://www.diva-gis.org/Data)
+- Arrondissements
+  - [belgium-arrondissements.json](https://github.com/deldersveld/topojson/blob/master/countries/belgium/belgium-arrondissements.json) [(source)](http://www.diva-gis.org/Data)
   
 ## Denmark
 - Amter - Counties
