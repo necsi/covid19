@@ -39,6 +39,12 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - Kommuner - Municipalities
   - [denmark-municipalities.json](https://github.com/deldersveld/topojson/blob/master/countries/denmark/denmark-municipalities.json) [(source)](http://www.diva-gis.org/Data)
   
+## Finland
+- Lääni - Provinces
+  - [finland-provinces.json](https://github.com/deldersveld/topojson/blob/master/countries/finland/finland-provinces.json) [(source)](http://www.diva-gis.org/Data)
+- Maakunta - Regions
+  - [finland-regions.json](https://github.com/deldersveld/topojson/blob/master/countries/finland/finland-regions.json) [(source)](http://www.diva-gis.org/Data)
+  
 ## France
 - Departments
   - [fr-departments.json](https://github.com/deldersveld/topojson/blob/master/countries/france/fr-departments.json) [(source)](http://www.diva-gis.org/Data)
