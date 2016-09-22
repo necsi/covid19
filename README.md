@@ -85,6 +85,16 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - Kommunar - Municipalities
   - [norway-municipalities.json](https://github.com/deldersveld/topojson/blob/master/countries/norway/norway-municipalities.json) [(source)](http://www.diva-gis.org/Data)
   
+## Spain
+- Comunidad
+  - [spain-comunidad.json](https://github.com/deldersveld/topojson/blob/master/countries/spain/spain-comunidad.json) [(source)](http://www.diva-gis.org/Data)
+- Comunidad with Canary Islands
+  - [spain-comunidad-with-canary-islands.json](https://github.com/deldersveld/topojson/blob/master/countries/spain/spain-comunidad-with-canary-islands.json) [(source)](http://www.diva-gis.org/Data)
+- Provinces
+  - [spain-province.json](https://github.com/deldersveld/topojson/blob/master/countries/spain/spain-province.json) [(source)](http://www.diva-gis.org/Data)
+- Provinces with Canary Islands
+  - [spain-province-with-canary-islands.json](https://github.com/deldersveld/topojson/blob/master/countries/spain/spain-province-with-canary-islands.json) [(source)](http://www.diva-gis.org/Data)
+  
 ## United States - National
 
 - US Congressional Districts (2015) - TIGER
