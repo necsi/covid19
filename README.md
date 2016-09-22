@@ -79,6 +79,12 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - Benelux
   - [benelux-countries.json] (https://github.com/deldersveld/topojson/blob/master/countries/belgium/benelux-countries.json) [(source)](http://www.diva-gis.org/Data)
   
+## New Zealand
+- Regional Councils
+  - [new-zealand-regional-councils.json](https://github.com/deldersveld/topojson/blob/master/countries/new-zealand/new-zealand-regional-councils.json) [(source)](http://www.diva-gis.org/Data)
+- Districts
+  - [new-zealand-districts.json](https://github.com/deldersveld/topojson/blob/master/countries/new-zealand/new-zealand-districts.json) [(source)](http://www.diva-gis.org/Data)
+  
 ## Norway
 - Fylker - Counties
   - [norway-counties.json](https://github.com/deldersveld/topojson/blob/master/countries/norway/norway-counties.json) [(source)](http://www.diva-gis.org/Data)
