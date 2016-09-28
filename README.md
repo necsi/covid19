@@ -90,6 +90,12 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [norway-counties.json](https://github.com/deldersveld/topojson/blob/master/countries/norway/norway-counties.json) [(source)](http://www.diva-gis.org/Data)
 - Kommunar - Municipalities
   - [norway-municipalities.json](https://github.com/deldersveld/topojson/blob/master/countries/norway/norway-municipalities.json) [(source)](http://www.diva-gis.org/Data)
+
+## Pakistan
+- Provinces
+  - [pakistan-provinces.json](https://github.com/deldersveld/topojson/blob/master/countries/pakistan/pakistan-provinces.json) [(source)](http://www.diva-gis.org/Data)
+- Divisions
+  - [pakistan-divisions.json](https://github.com/deldersveld/topojson/blob/master/countries/pakistan/pakistan-divisions.json) [(source)](http://www.diva-gis.org/Data)
   
 ## Spain
 - Comunidad
