@@ -78,7 +78,7 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [nl-gemeentegrenzen-2016.json](https://github.com/deldersveld/topojson/blob/master/countries/netherlands/nl-gemeentegrenzen-2016.json) [(source)](http://www.imergis.nl/shp/Gemeentegrenzen_2016_zonder_water.zip)
 - Benelux
   - [benelux-countries.json] (https://github.com/deldersveld/topojson/blob/master/countries/belgium/benelux-countries.json) [(source)](http://www.diva-gis.org/Data)
-  
+
 ## New Zealand
 - Regional Councils
   - [new-zealand-regional-councils.json](https://github.com/deldersveld/topojson/blob/master/countries/new-zealand/new-zealand-regional-councils.json) [(source)](http://www.diva-gis.org/Data)
@@ -106,6 +106,9 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [spain-province.json](https://github.com/deldersveld/topojson/blob/master/countries/spain/spain-province.json) [(source)](http://www.diva-gis.org/Data)
 - Provinces with Canary Islands
   - [spain-province-with-canary-islands.json](https://github.com/deldersveld/topojson/blob/master/countries/spain/spain-province-with-canary-islands.json) [(source)](http://www.diva-gis.org/Data)
+
+## Turkey
+  - [turkiye.json](https://github.com/deldersveld/topojson/blob/master/countries/turkey/turkiye.json) (provided by local contributor)  
   
 ## United States - National
 
