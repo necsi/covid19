@@ -99,6 +99,10 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - Divisions
   - [pakistan-divisions](https://github.com/deldersveld/topojson/blob/master/countries/pakistan/pakistan-divisions.json) [(source)](http://www.diva-gis.org/Data)
   
+## Portugal
+- Districts
+  - [portugal-districts](https://github.com/deldersveld/topojson/blob/master/countries/portugal/portugal-districts.json) [(source)](http://www.diva-gis.org/Data)
+  
 ## Spain
 - Comunidad
   - [spain-comunidad](https://github.com/deldersveld/topojson/blob/master/countries/spain/spain-comunidad.json) [(source)](http://www.diva-gis.org/Data)
@@ -108,6 +112,8 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [spain-province](https://github.com/deldersveld/topojson/blob/master/countries/spain/spain-province.json) [(source)](http://www.diva-gis.org/Data)
 - Provinces with Canary Islands
   - [spain-province-with-canary-islands](https://github.com/deldersveld/topojson/blob/master/countries/spain/spain-province-with-canary-islands.json) [(source)](http://www.diva-gis.org/Data)
+- Provinces - Canary Islands only
+  - [canary-islands-province](https://github.com/deldersveld/topojson/blob/master/countries/spain/canary-islands-province.json) [(source)](http://www.diva-gis.org/Data)
 
 ## Turkey
   - [turkiye](https://github.com/deldersveld/topojson/blob/master/countries/turkey/turkiye.json) (provided by local contributor)  
