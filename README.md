@@ -115,6 +115,12 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - Provinces - Canary Islands only
   - [canary-islands-province](https://github.com/deldersveld/topojson/blob/master/countries/spain/canary-islands-province.json) [(source)](http://www.diva-gis.org/Data)
 
+## Spain
+- Counties
+  - [sweden-counties](https://github.com/deldersveld/topojson/blob/master/countries/sweden/sweden-counties.json) [(source)](http://www.diva-gis.org/Data)
+- Municipalities
+  - [sweden-municipalities](https://github.com/deldersveld/topojson/blob/master/countries/sweden/sweden-municipalities.json) [(source)](http://www.diva-gis.org/Data)
+  
 ## Turkey
   - [turkiye](https://github.com/deldersveld/topojson/blob/master/countries/turkey/turkiye.json) (provided by local contributor)  
   
