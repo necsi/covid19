@@ -69,6 +69,12 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - Counties
   - [ireland-counties](https://github.com/deldersveld/topojson/blob/master/countries/ireland/ireland-counties.json) [(source)](http://www.diva-gis.org/Data)
 
+## Italy
+- Regions
+  - [italy-regions](https://github.com/deldersveld/topojson/blob/master/countries/italy/italy-regions.json) [(source)](http://www.diva-gis.org/Data)
+- Provinces
+  - [italy-provinces](https://github.com/deldersveld/topojson/blob/master/countries/italy/italy-provinces.json) [(source)](http://www.diva-gis.org/Data)
+  
 ## Japan
 - Prefectures
   - [jp-prefectures](https://github.com/deldersveld/topojson/blob/master/countries/japan/jp-prefectures.json) [(source)](http://www.diva-gis.org/Data)
