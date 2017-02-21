@@ -8,6 +8,7 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 
 - World Countries (2014)
   - [world-countries](https://github.com/deldersveld/topojson/blob/master/world-countries.json) [(source)](https://github.com/johan/world.geo.json/blob/master/countries.geo.json)
+  - [world-countries (without Antarctica polygon)](https://github.com/deldersveld/topojson/blob/master/world-countries-sans-antarctica.json) [(source)](https://github.com/johan/world.geo.json/blob/master/countries.geo.json)
   - ![](https://raw.githubusercontent.com/deldersveld/topojson/master/images/world-countries.PNG)
 - World Continents
   - [world-continents](https://github.com/deldersveld/topojson/blob/master/world-continents.json) [(source)](http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
