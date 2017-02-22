@@ -133,10 +133,14 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [sweden-counties](https://github.com/deldersveld/topojson/blob/master/countries/sweden/sweden-counties.json) [(source)](http://www.diva-gis.org/Data)
 - Municipalities
   - [sweden-municipalities](https://github.com/deldersveld/topojson/blob/master/countries/sweden/sweden-municipalities.json) [(source)](http://www.diva-gis.org/Data)
-  
+ 
 ## Turkey
   - [turkiye](https://github.com/deldersveld/topojson/blob/master/countries/turkey/turkiye.json) (provided by local contributor)  
-  
+
+## United Kingdom
+- Counties
+  - [uk-counties](https://github.com/deldersveld/topojson/blob/master/countries/united-kingdom/uk-counties.json) [(source)](http://www.diva-gis.org/Data)
+
 ## United States - National
 
 - US Congressional Districts (2015) - TIGER
