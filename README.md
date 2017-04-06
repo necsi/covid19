@@ -121,7 +121,11 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 ## Portugal
 - Districts
   - [portugal-districts](https://github.com/deldersveld/topojson/blob/master/countries/portugal/portugal-districts.json) [(source)](http://www.diva-gis.org/Data)
-  
+
+## South Africa
+- Provinces
+  - [south-africa-provinces](https://github.com/deldersveld/topojson/blob/master/countries/south-africa/south-africa-provinces.json) [(source)](http://www.diva-gis.org/Data)
+    
 ## Spain
 - Comunidad
   - [spain-comunidad](https://github.com/deldersveld/topojson/blob/master/countries/spain/spain-comunidad.json) [(source)](http://www.diva-gis.org/Data)
