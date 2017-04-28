@@ -128,7 +128,7 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   
 ## Poland
 - Provinces
-  - [poland-provinces](https://github.com/deldersveld/topojson/blob/master/countries/philippines/poland-provinces.json) [(source)](http://www.diva-gis.org/Data)
+  - [poland-provinces](https://github.com/deldersveld/topojson/blob/master/countries/poland/poland-provinces.json) [(source)](http://www.diva-gis.org/Data)
   
 ## Portugal
 - Districts
