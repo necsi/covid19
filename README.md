@@ -45,6 +45,10 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [belgium-arrondissements](https://github.com/deldersveld/topojson/blob/master/countries/belgium/belgium-arrondissements.json) [(source)](http://www.diva-gis.org/Data)
 - Benelux
   - [benelux-countries] (https://github.com/deldersveld/topojson/blob/master/countries/belgium/benelux-countries.json) [(source)](http://www.diva-gis.org/Data)
+
+## China
+- Provinces
+  - [china-provinces](https://github.com/deldersveld/topojson/blob/master/countries/china/china-provinces.json) [(source)](http://www.diva-gis.org/Data)
   
 ## Denmark
 - Amter - Counties
