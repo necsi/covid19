@@ -126,6 +126,10 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - Municipalities
   - [pakistan-divisions](https://github.com/deldersveld/topojson/blob/master/countries/philippines/philippines-municipalities.json) [(source)](http://www.diva-gis.org/Data)
   
+## Poland
+- Provinces
+  - [poland-provinces](https://github.com/deldersveld/topojson/blob/master/countries/philippines/poland-provinces.json) [(source)](http://www.diva-gis.org/Data)
+  
 ## Portugal
 - Districts
   - [portugal-districts](https://github.com/deldersveld/topojson/blob/master/countries/portugal/portugal-districts.json) [(source)](http://www.diva-gis.org/Data)
