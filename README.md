@@ -95,6 +95,12 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [jp-prefectures](https://github.com/deldersveld/topojson/blob/master/countries/japan/jp-prefectures.json) [(source)](http://www.diva-gis.org/Data)
 - Towns
   - [jp-towns](https://github.com/deldersveld/topojson/blob/master/countries/japan/jp-towns.json) [(source)](http://www.diva-gis.org/Data)
+  
+## Liberia
+- Counties
+  - [liberia-counties](https://github.com/deldersveld/topojson/blob/master/countries/liberia/liberia-counties.json) [(source)](http://www.diva-gis.org/Data)
+- Distritcs
+  - [liberia-districts](https://github.com/deldersveld/topojson/blob/master/countries/liberia/liberia-districts.json) [(source)](http://www.diva-gis.org/Data)
 
 ## Netherlands
 - Gemeentegrenzen (2016) - Municipalities
