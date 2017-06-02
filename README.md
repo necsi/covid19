@@ -105,6 +105,12 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [liberia-counties](https://github.com/deldersveld/topojson/blob/master/countries/liberia/liberia-counties.json) [(source)](http://www.diva-gis.org/Data)
 - Districts
   - [liberia-districts](https://github.com/deldersveld/topojson/blob/master/countries/liberia/liberia-districts.json) [(source)](http://www.diva-gis.org/Data)
+  
+## Nepal
+- Zones
+  - [liberia-counties](https://github.com/deldersveld/topojson/blob/master/countries/nepal/nepal-counties.json) [(source)](http://www.diva-gis.org/Data)
+- Districts
+  - [liberia-districts](https://github.com/deldersveld/topojson/blob/master/countries/nepal/nepal-districts.json) [(source)](http://www.diva-gis.org/Data)
 
 ## Netherlands
 - Gemeentegrenzen (2016) - Municipalities
