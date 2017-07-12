@@ -179,6 +179,10 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 ## Turkey
   - [turkiye](https://github.com/deldersveld/topojson/blob/master/countries/turkey/turkiye.json) (provided by local contributor)  
 
+## United Arab Emirates
+- Emirates
+  - [united-arab-emirates](https://github.com/deldersveld/topojson/blob/master/countries/united-arab-emirates/united-arab-emirates.json) [(source)](http://www.diva-gis.org/Data)
+
 ## United Kingdom
 - Counties
   - [uk-counties](https://github.com/deldersveld/topojson/blob/master/countries/united-kingdom/uk-counties.json) [(source)](http://www.diva-gis.org/Data)
