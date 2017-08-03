@@ -153,6 +153,10 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 ## Portugal
 - Districts
   - [portugal-districts](https://github.com/deldersveld/topojson/blob/master/countries/portugal/portugal-districts.json) [(source)](http://www.diva-gis.org/Data)
+  
+## Romania
+- Judete - Counties
+  - [romania-counties](https://github.com/deldersveld/topojson/blob/master/countries/romania/romania-counties.json) [(source)](http://www.diva-gis.org/Data)
 
 ## South Africa
 - Provinces
