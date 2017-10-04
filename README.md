@@ -49,11 +49,15 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 ## China
 - Provinces
   - [china-provinces](https://github.com/deldersveld/topojson/blob/master/countries/china/china-provinces.json) [(source)](http://www.diva-gis.org/Data)
-  
+ 
 ## Colombia
 - Departments
   - [colombia-departments](https://github.com/deldersveld/topojson/blob/master/countries/colombia/colombia-departments.json) [(source)](http://www.diva-gis.org/Data)
-  
+
+## Czech Republic
+- Regions
+  - [czech-republic-regions](https://github.com/deldersveld/topojson/blob/master/countries/czech-republic/czech-republic-regions.json) [(source)](http://www.diva-gis.org/Data)
+    
 ## Denmark
 - Amter - Counties
   - [denmark-counties](https://github.com/deldersveld/topojson/blob/master/countries/denmark/denmark-counties.json) [(source)](http://www.diva-gis.org/Data)
