@@ -23,7 +23,7 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - North America with Country/Territory Outlines
   - [north-america](https://github.com/deldersveld/topojson/blob/master/continents/north-america.json) [(source)](http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
 - Oceania with Country/Territory Outlines
-  - [oceania](https://github.com/deldersveld/topojson/blob/master/continents/oceania.json) [(source)] (http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
+  - [oceania](https://github.com/deldersveld/topojson/blob/master/continents/oceania.json) [(source)](http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
 - South America with Country/Territory Outlines
   - [south-america](https://github.com/deldersveld/topojson/blob/master/continents/south-america.json) [(source)](http://www.naturalearthdata.com/downloads/110m-cultural-vectors)
 
@@ -44,7 +44,7 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - Arrondissements
   - [belgium-arrondissements](https://github.com/deldersveld/topojson/blob/master/countries/belgium/belgium-arrondissements.json) [(source)](http://www.diva-gis.org/Data)
 - Benelux
-  - [benelux-countries] (https://github.com/deldersveld/topojson/blob/master/countries/belgium/benelux-countries.json) [(source)](http://www.diva-gis.org/Data)
+  - [benelux-countries](https://github.com/deldersveld/topojson/blob/master/countries/belgium/benelux-countries.json) [(source)](http://www.diva-gis.org/Data)
 
 ## China
 - Provinces
@@ -120,7 +120,7 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - Gemeentegrenzen (2016) - Municipalities
   - [nl-gemeentegrenzen-2016](https://github.com/deldersveld/topojson/blob/master/countries/netherlands/nl-gemeentegrenzen-2016.json) [(source)](http://www.imergis.nl/shp/Gemeentegrenzen_2016_zonder_water.zip)
 - Benelux
-  - [benelux-countries] (https://github.com/deldersveld/topojson/blob/master/countries/belgium/benelux-countries.json) [(source)](http://www.diva-gis.org/Data)
+  - [benelux-countries](https://github.com/deldersveld/topojson/blob/master/countries/belgium/benelux-countries.json) [(source)](http://www.diva-gis.org/Data)
 
 ## New Zealand
 - Regional Councils
