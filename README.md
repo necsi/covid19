@@ -32,6 +32,10 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - Provinces / Wilaya
   - [algeria-provinces](https://github.com/deldersveld/topojson/blob/master/countries/algeria/algeria-provinces.json) [(source)](http://www.diva-gis.org/Data)
 
+## Argentina
+- Provinces
+  - [argentina-provinces](https://github.com/deldersveld/topojson/blob/master/countries/argentina/argentina-provinces.json) [(source)](http://www.diva-gis.org/Data)
+
 ## Azerbaijan
 - Regions
   - [azerbaijan-regions](https://github.com/deldersveld/topojson/blob/master/countries/azerbaijan/azerbaijan-regions.json) [(source)](http://www.diva-gis.org/Data)
