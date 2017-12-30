@@ -143,6 +143,8 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [pakistan-provinces](https://github.com/deldersveld/topojson/blob/master/countries/pakistan/pakistan-provinces.json) [(source)](http://www.diva-gis.org/Data)
 - Divisions
   - [pakistan-divisions](https://github.com/deldersveld/topojson/blob/master/countries/pakistan/pakistan-divisions.json) [(source)](http://www.diva-gis.org/Data)
+- Districts
+  - [pakistan-districts](https://github.com/deldersveld/topojson/blob/master/countries/pakistan/pakistan-districts.json) [(source)](http://www.diva-gis.org/Data)
   
 ## Peru
 - Departments
