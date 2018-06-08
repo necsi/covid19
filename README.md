@@ -377,3 +377,8 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
 - **Wyoming**
   - Counties
     - [WY-56-wyoming-counties](https://github.com/deldersveld/topojson/blob/master/countries/us-states/WY-56-wyoming-counties.json) [(source)](https://catalog.data.gov/dataset/2015-cartographic-boundary-file-state-county-for-united-states-1-20000000)
+
+
+## Venezuela
+- Estados - States
+  - [venezuela-estados](https://github.com/deldersveld/topojson/blob/master/countries/venezuela/venezuela-estados.json) [(source)](http://www.diva-gis.org/Data)
