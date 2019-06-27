@@ -131,6 +131,12 @@ Converted to TopoJSON from original shapefiles, GeoJSON, etc. as noted in the so
   - [new-zealand-regional-councils](https://github.com/deldersveld/topojson/blob/master/countries/new-zealand/new-zealand-regional-councils.json) [(source)](http://www.diva-gis.org/Data)
 - Districts
   - [new-zealand-districts](https://github.com/deldersveld/topojson/blob/master/countries/new-zealand/new-zealand-districts.json) [(source)](http://www.diva-gis.org/Data)
+
+## Nigeria
+- States
+  - [nigeria-states](https://github.com/deldersveld/topojson/blob/master/countries/nigeria/nigeria-states.json) [(source)](http://www.diva-gis.org/Data)
+- Regions
+  - [nigeria-regions](https://github.com/deldersveld/topojson/blob/master/countries/nigeria/nigeria-regions.json) [(source)](http://www.diva-gis.org/Data)
   
 ## Norway
 - Fylker - Counties
