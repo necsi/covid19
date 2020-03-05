@@ -9,6 +9,8 @@ The Visualization Dashboard (endcoronavirus.org) is created by the New England C
 # End Coronavirus
 
 # https://www.endcoronavirus.org/
+
+### Early Outbreak Response Guidelines https://www.endcoronavirus.org/guidelines
  
 ### Daily updates on Coronavirus outbreaks: https://necsi.edu/2019-ncov-outbreak-updates
 
