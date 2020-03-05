@@ -1,0 +1,45 @@
+{
+  "Ardabil": {"infected": 2,"dead":0,"name":"Ardabil"},
+  "West_Azerbaijan": {"infected": 4,"dead":0,"name":"West_Azerbaijan"},
+  "East_Azerbaijan": {"infected": 34,"dead":0,"name":"East_Azerbaijan"},
+
+  "Tehran": {"infected": 468,"dead":0,"name":"Tehran"},
+  "Qom": {"infected": 139,"dead":0,"name":"Qom"},
+
+  "Zanjan": {"infected": 0,"dead":0,"name":"Zanjan"},
+  "Hamadan": {"infected": 5,"dead":0,"name":"Hamadan"},
+  "Kermanshah": {"infected": 5,"dead":0,"name":"Kermanshah"},
+  "Kordistan": {"infected": 16,"dead":0,"name":"Kordistan"},
+  "Qazvin": {"infected": 8,"dead":0,"name":"Qazvin"},
+  "Semnan": {"infected": 13,"dead":0,"name":"Semnan"},
+  "Markazi": {"infected": 67,"dead":0,"name":"Markazi"},
+
+
+
+  "Mazandaran": {"infected": 43,"dead":0,"name":"Mazandaran"},
+  "Gilan": {"infected": 110,"dead":0,"name":"Gilan"},
+  "Golestan": {"infected": 24,"dead":0,"name":"Golestan"},
+
+  "Ilam": {"infected": 2,"dead":0,"name":"Ilam"},
+  "Lorestan": {"infected": 12,"dead":0,"name":"Lorestan"},
+  "ChaharMahal-Bakhtiari": {"infected": 0,"dead":0,"name":"ChaharMahal-Bakhtiari"},
+  "Kohgiluye_Boyer-Ahmad": {"infected": 2,"dead":0,"name":"Kohgiluye_Boyer-Ahmad"},
+
+  "Yazd": {"infected": 5,"dead":0,"name":"Yazd"},
+  "Esfahan": {"infected": 45,"dead":0,"name":"Esfahan"},
+  "Kerman": {"infected": 2,"dead":0,"name":"Kerman"},
+
+
+  "North-Khorasan": {"infected": 0,"dead":0,"name":"North-Khorasan"},
+  "Razavi-Khorasan": {"infected": 20,"dead":0,"name":"Razavi-Khorasan"},
+  "South-Khorasan":{"infected": 20,"dead":0,"name":"Razavi-Khorasan"},
+  "Alborz": {"infected": 2,"dead":0,"name":"Alborz"},
+
+
+  "Fars": {"infected": 19,"dead":0,"name":"Fars"},
+  "Bushehr": {"infected": 0,"dead":0,"name":"Bushehr"},
+  "Hormozgan": {"infected": 4,"dead":0,"name":"Hormozgan"},
+  "Sistan-Baluchestan": {"infected": 4,"dead":0,"name":"Sistan-Baluchestan"},
+  "Khuzestan": {"infected": 19,"dead":0,"name":"Khuzestan"}
+
+}
