@@ -164,8 +164,6 @@ d3.json("./map_data/iran_new_topo.json", function(error, iran) {
     .attr('font-size','9pt')
             .style('fill', 'black')
 
-});
-});
 
 function click(d) {
   
@@ -176,6 +174,11 @@ function mousemove(d){
   $('#infected').text(data[d.properties.Name]['infected']);
   //$('#dead').text(data[d.id]["dead"]);
 }
+
+});
+});
+
+
   </script>
 
 </body>
