@@ -22,8 +22,6 @@ def download_csv_to_dataframe(url):
         return df
 
 # All download URLs for the "Detailed data" Google Sheet
-
-
 download_urls = {'South Korea': 'https://docs.google.com/spreadsheets/d/1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/export?format=csv&gid=428126019',
                  'Lebanon': 'https://docs.google.com/spreadsheets/d/1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/export?format=csv&gid=572185248',
                  'Italy': 'https://docs.google.com/spreadsheets/d/1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/export?format=csv&gid=1872189130',
