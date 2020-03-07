@@ -2,7 +2,7 @@ using Genie.Router
 ENV["GKSwstype"]="nul"
 using Analysis,JuliaDB,StatsPlots,GLM
 
-t = loadtable("public/data/covid_19_data.csv")
+t = Analysis.load_csse_data("public/data")
 
 route("/") do
     print("changed")

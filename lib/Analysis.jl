@@ -28,4 +28,22 @@ function last_n_days(n,cases)
     filter_date(today() - Day(n), today(),cases)
 end
 
+function load_csse_data(path)
+    fullpath = path * "/csse_covid_19_data/csse_covid_19_daily_reports/"
+    function parse_date(dt)
+        try
+            Date(dt)
+        catch
+            Date(2020,01,01)
+        end
+    end
+    function process_day_file(file)
+        raw = loadtable(fullpath * file)
+        date = Date(file[1:end-4],"m-d-y")
+        insertcols(select(raw, (:Confirmed,:Deaths,:Recovered,Symbol("Country/Region"),Symbol("Province/State"))), 1, :ObservationDate => repeat([date],length(raw)))
+    end
+    report_data = [process_day_file(file) for file in filter(f -> f[end-2:end] == "csv",readdir(fullpath))]
+    dropmissing(reduce(merge, report_data))
+end
+
 end
