@@ -7,16 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B7DA8662414B9E400F0B210 /* PhoneContactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7DA8652414B9E400F0B210 /* PhoneContactListViewModel.swift */; };
+		0B7DA8692414B9F200F0B210 /* PhoneContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7DA8682414B9F200F0B210 /* PhoneContactService.swift */; };
+		0B7DA86D2414BF3000F0B210 /* PhoneContactCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7DA86C2414BF3000F0B210 /* PhoneContactCellViewModel.swift */; };
+		0B7DA86F2414C14200F0B210 /* PhoneContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7DA86E2414C14200F0B210 /* PhoneContactViewController.swift */; };
+		0B7DA8712414E08500F0B210 /* PhoneContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7DA8702414E08500F0B210 /* PhoneContactTableViewCell.swift */; };
+		0B7DA8732414E5C800F0B210 /* PhoneContactBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7DA8722414E5C800F0B210 /* PhoneContactBuilder.swift */; };
+		0B7DA8752414EA4500F0B210 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7DA8742414EA4500F0B210 /* SceneDelegate.swift */; };
 		0BA0C53D2414902F00DD8809 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0C53C2414902F00DD8809 /* AppDelegate.swift */; };
-		0BA0C53F2414902F00DD8809 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0C53E2414902F00DD8809 /* SceneDelegate.swift */; };
 		0BA0C5442414902F00DD8809 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BA0C5422414902F00DD8809 /* Main.storyboard */; };
 		0BA0C5492414902F00DD8809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BA0C5482414902F00DD8809 /* Assets.xcassets */; };
 		0BA0C54C2414902F00DD8809 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BA0C54A2414902F00DD8809 /* LaunchScreen.storyboard */; };
 		0BA0C5572414902F00DD8809 /* OutreachAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0C5562414902F00DD8809 /* OutreachAppTests.swift */; };
 		0BA0C5622414902F00DD8809 /* OutreachAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0C5612414902F00DD8809 /* OutreachAppUITests.swift */; };
-		0BA0C57B2414918000DD8809 /* SocialPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0C5782414918000DD8809 /* SocialPostViewModel.swift */; };
-		0BA0C57C2414918000DD8809 /* SocialPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0C5792414918000DD8809 /* SocialPostViewController.swift */; };
-		0BA0C57D2414918000DD8809 /* SocialPostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0C57A2414918000DD8809 /* SocialPostService.swift */; };
 		0BA0C5802414919B00DD8809 /* ContactPersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0C57F2414919B00DD8809 /* ContactPersistenceStore.swift */; };
 		0BA0C583241491A400DD8809 /* Contacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0C581241491A400DD8809 /* Contacts.xcdatamodeld */; };
 /* End PBXBuildFile section */
@@ -39,9 +42,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B7DA8652414B9E400F0B210 /* PhoneContactListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactListViewModel.swift; sourceTree = "<group>"; };
+		0B7DA8682414B9F200F0B210 /* PhoneContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactService.swift; sourceTree = "<group>"; };
+		0B7DA86C2414BF3000F0B210 /* PhoneContactCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactCellViewModel.swift; sourceTree = "<group>"; };
+		0B7DA86E2414C14200F0B210 /* PhoneContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactViewController.swift; sourceTree = "<group>"; };
+		0B7DA8702414E08500F0B210 /* PhoneContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactTableViewCell.swift; sourceTree = "<group>"; };
+		0B7DA8722414E5C800F0B210 /* PhoneContactBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactBuilder.swift; sourceTree = "<group>"; };
+		0B7DA8742414EA4500F0B210 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0BA0C5392414902F00DD8809 /* OutreachApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutreachApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BA0C53C2414902F00DD8809 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0BA0C53E2414902F00DD8809 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0BA0C5432414902F00DD8809 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0BA0C5482414902F00DD8809 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BA0C54B2414902F00DD8809 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,9 +61,6 @@
 		0BA0C55D2414902F00DD8809 /* OutreachAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OutreachAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BA0C5612414902F00DD8809 /* OutreachAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutreachAppUITests.swift; sourceTree = "<group>"; };
 		0BA0C5632414902F00DD8809 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0BA0C5782414918000DD8809 /* SocialPostViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialPostViewModel.swift; sourceTree = "<group>"; };
-		0BA0C5792414918000DD8809 /* SocialPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialPostViewController.swift; sourceTree = "<group>"; };
-		0BA0C57A2414918000DD8809 /* SocialPostService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialPostService.swift; sourceTree = "<group>"; };
 		0BA0C57F2414919B00DD8809 /* ContactPersistenceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactPersistenceStore.swift; sourceTree = "<group>"; };
 		0BA0C582241491A400DD8809 /* NECSIContacts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NECSIContacts.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +90,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B7DA8622414B9AE00F0B210 /* PhoneContact */ = {
+			isa = PBXGroup;
+			children = (
+				0B7DA8722414E5C800F0B210 /* PhoneContactBuilder.swift */,
+				0B7DA86C2414BF3000F0B210 /* PhoneContactCellViewModel.swift */,
+				0B7DA8652414B9E400F0B210 /* PhoneContactListViewModel.swift */,
+				0B7DA86E2414C14200F0B210 /* PhoneContactViewController.swift */,
+				0B7DA8702414E08500F0B210 /* PhoneContactTableViewCell.swift */,
+			);
+			path = PhoneContact;
+			sourceTree = "<group>";
+		};
+		0B7DA8672414B9EA00F0B210 /* PhoneContact */ = {
+			isa = PBXGroup;
+			children = (
+				0B7DA8682414B9F200F0B210 /* PhoneContactService.swift */,
+			);
+			path = PhoneContact;
+			sourceTree = "<group>";
+		};
 		0BA0C5302414902F00DD8809 = {
 			isa = PBXGroup;
 			children = (
@@ -138,7 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				0BA0C53C2414902F00DD8809 /* AppDelegate.swift */,
-				0BA0C53E2414902F00DD8809 /* SceneDelegate.swift */,
+				0B7DA8742414EA4500F0B210 /* SceneDelegate.swift */,
 				0BA0C5702414904900DD8809 /* Resources */,
 			);
 			path = App;
@@ -158,7 +184,7 @@
 		0BA0C5712414906000DD8809 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				0BA0C5772414917100DD8809 /* Example */,
+				0B7DA8622414B9AE00F0B210 /* PhoneContact */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -166,7 +192,7 @@
 		0BA0C5722414906C00DD8809 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				0BA0C5842414920E00DD8809 /* Example */,
+				0B7DA8672414B9EA00F0B210 /* PhoneContact */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -202,15 +228,6 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		0BA0C5772414917100DD8809 /* Example */ = {
-			isa = PBXGroup;
-			children = (
-				0BA0C5792414918000DD8809 /* SocialPostViewController.swift */,
-				0BA0C5782414918000DD8809 /* SocialPostViewModel.swift */,
-			);
-			path = Example;
-			sourceTree = "<group>";
-		};
 		0BA0C57E2414919000DD8809 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,14 +235,6 @@
 				0BA0C581241491A400DD8809 /* Contacts.xcdatamodeld */,
 			);
 			path = Contact;
-			sourceTree = "<group>";
-		};
-		0BA0C5842414920E00DD8809 /* Example */ = {
-			isa = PBXGroup;
-			children = (
-				0BA0C57A2414918000DD8809 /* SocialPostService.swift */,
-			);
-			path = Example;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,13 +368,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B7DA86F2414C14200F0B210 /* PhoneContactViewController.swift in Sources */,
+				0B7DA8732414E5C800F0B210 /* PhoneContactBuilder.swift in Sources */,
 				0BA0C53D2414902F00DD8809 /* AppDelegate.swift in Sources */,
-				0BA0C57C2414918000DD8809 /* SocialPostViewController.swift in Sources */,
+				0B7DA8712414E08500F0B210 /* PhoneContactTableViewCell.swift in Sources */,
+				0B7DA8692414B9F200F0B210 /* PhoneContactService.swift in Sources */,
 				0BA0C583241491A400DD8809 /* Contacts.xcdatamodeld in Sources */,
 				0BA0C5802414919B00DD8809 /* ContactPersistenceStore.swift in Sources */,
-				0BA0C53F2414902F00DD8809 /* SceneDelegate.swift in Sources */,
-				0BA0C57B2414918000DD8809 /* SocialPostViewModel.swift in Sources */,
-				0BA0C57D2414918000DD8809 /* SocialPostService.swift in Sources */,
+				0B7DA8752414EA4500F0B210 /* SceneDelegate.swift in Sources */,
+				0B7DA8662414B9E400F0B210 /* PhoneContactListViewModel.swift in Sources */,
+				0B7DA86D2414BF3000F0B210 /* PhoneContactCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
