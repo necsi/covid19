@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B7DA8642414B9D600F0B210 /* PhoneContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7DA8632414B9D600F0B210 /* PhoneContactViewController.swift */; };
+		0B7DA8662414B9E400F0B210 /* PhoneContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7DA8652414B9E400F0B210 /* PhoneContactViewModel.swift */; };
+		0B7DA8692414B9F200F0B210 /* PhoneContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7DA8682414B9F200F0B210 /* PhoneContactService.swift */; };
 		0BA0C53D2414902F00DD8809 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0C53C2414902F00DD8809 /* AppDelegate.swift */; };
 		0BA0C53F2414902F00DD8809 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0C53E2414902F00DD8809 /* SceneDelegate.swift */; };
 		0BA0C5442414902F00DD8809 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BA0C5422414902F00DD8809 /* Main.storyboard */; };
@@ -39,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B7DA8632414B9D600F0B210 /* PhoneContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactViewController.swift; sourceTree = "<group>"; };
+		0B7DA8652414B9E400F0B210 /* PhoneContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactViewModel.swift; sourceTree = "<group>"; };
+		0B7DA8682414B9F200F0B210 /* PhoneContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactService.swift; sourceTree = "<group>"; };
 		0BA0C5392414902F00DD8809 /* OutreachApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutreachApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BA0C53C2414902F00DD8809 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BA0C53E2414902F00DD8809 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +90,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B7DA8622414B9AE00F0B210 /* PhoneContact */ = {
+			isa = PBXGroup;
+			children = (
+				0B7DA8632414B9D600F0B210 /* PhoneContactViewController.swift */,
+				0B7DA8652414B9E400F0B210 /* PhoneContactViewModel.swift */,
+			);
+			path = PhoneContact;
+			sourceTree = "<group>";
+		};
+		0B7DA8672414B9EA00F0B210 /* PhoneContact */ = {
+			isa = PBXGroup;
+			children = (
+				0B7DA8682414B9F200F0B210 /* PhoneContactService.swift */,
+			);
+			path = PhoneContact;
+			sourceTree = "<group>";
+		};
 		0BA0C5302414902F00DD8809 = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +181,7 @@
 		0BA0C5712414906000DD8809 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				0B7DA8622414B9AE00F0B210 /* PhoneContact */,
 				0BA0C5772414917100DD8809 /* Example */,
 			);
 			path = Module;
@@ -166,6 +190,7 @@
 		0BA0C5722414906C00DD8809 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				0B7DA8672414B9EA00F0B210 /* PhoneContact */,
 				0BA0C5842414920E00DD8809 /* Example */,
 			);
 			path = Service;
@@ -359,11 +384,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B7DA8642414B9D600F0B210 /* PhoneContactViewController.swift in Sources */,
 				0BA0C53D2414902F00DD8809 /* AppDelegate.swift in Sources */,
 				0BA0C57C2414918000DD8809 /* SocialPostViewController.swift in Sources */,
+				0B7DA8692414B9F200F0B210 /* PhoneContactService.swift in Sources */,
 				0BA0C583241491A400DD8809 /* Contacts.xcdatamodeld in Sources */,
 				0BA0C5802414919B00DD8809 /* ContactPersistenceStore.swift in Sources */,
 				0BA0C53F2414902F00DD8809 /* SceneDelegate.swift in Sources */,
+				0B7DA8662414B9E400F0B210 /* PhoneContactViewModel.swift in Sources */,
 				0BA0C57B2414918000DD8809 /* SocialPostViewModel.swift in Sources */,
 				0BA0C57D2414918000DD8809 /* SocialPostService.swift in Sources */,
 			);
