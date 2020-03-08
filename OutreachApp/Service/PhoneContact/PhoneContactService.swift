@@ -2,7 +2,7 @@
 //  PhoneContactService.swift
 //  OutreachApp
 //
-//  Created by Demicheli, Stefano (Agoda) on 8/3/2563 BE.
+//  Created by Demicheli, Stefano on 8/3/2563 BE.
 //  Copyright © 2563 NECSI. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Contacts
 
 protocol PhoneContactService {
 
-    func fetchContacts() -> [Contact]
+    func fetchContacts(completion: @escaping (Result<[Contact], Error>) -> Void)
 }
 
 final class PhoneContactServiceImpl: PhoneContactService {
@@ -31,14 +31,12 @@ final class PhoneContactServiceImpl: PhoneContactService {
         CNContactThumbnailImageDataKey
     ]
 
-    func fetchContacts() -> [Contact] {
-        var contacts = [Contact]()
-
-        store.requestAccess(for: .contacts) { [weak self] (granted, err) in
+    func fetchContacts(completion: @escaping (Result<[Contact], Error>) -> Void) {
+        store.requestAccess(for: .contacts) { [weak self] (granted, error) in
             guard let self = self else { return }
 
-            if let err = err {
-                print("Failed to request access:", err)
+            if let error = error {
+                completion(Result.failure(error))
                 return
             }
 
@@ -46,16 +44,18 @@ final class PhoneContactServiceImpl: PhoneContactService {
                 let request = CNContactFetchRequest(keysToFetch: self.contactKeys as [CNKeyDescriptor])
                 do {
                     try self.store.enumerateContacts(with: request, usingBlock: { (contact, stopPointerIfYouWantToStopEnumerating) in
+                        completion(Result.success([]))
                     })
-                } catch let err {
-                    print("Failed to enumerate contacts:", err)
+                } catch let error {
+                    completion(Result.failure(error))
                 }
-
             } else {
-                print("Access denied..")
+                completion(Result.failure(PhoneContactError.accessDenied))
             }
         }
-
-        return contacts
     }
+}
+
+fileprivate enum PhoneContactError: Error {
+    case accessDenied
 }
