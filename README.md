@@ -9,9 +9,13 @@ Welcome to the Outreach iOS app!
 3. Create a new branch.
 5. Submit a pull request including your proposed changes to the project.
 
+## Contributing
+
+Our current focus now is to ship a first MVP. We're looking for people who can contribute to building out core features, even if it's one small part of the app. If you haven't joined the NECSI Slack workspace please reach out to guillaume@gcs-ventures.com and we'll try to onboard you to the project as quick as possible.
+
 ## Architecture
 
-There are a variety of architecture that exist for building mobile applications. As Apple itself uses MVC that is usually what app devs start out with. However, there are known shortfalls of MVC that become more apparent as the applications grows in size and complexity. In order to alleviate these shortcomings we’ll be using MVVM with is very similar to MVC but splits the presentation layer into View-View Controller-View Model. In MVVM the different layers have the following responsibilities:
+There are a variety of architectures that exist for building mobile applications. As Apple itself uses MVC that is usually what app devs start out with. However, there are known shortfalls of MVC that become more apparent as the applications grows in size and complexity. In order to alleviate these shortcomings we’ll be using MVVM with is very similar to MVC but splits the presentation layer into View-View Controller-View Model. In MVVM the different layers have the following responsibilities:
 
 ### View
 A view is simply responsible for rendering content. It usually has UI components such as labels, images, etc. In simple cases the view is integrated in the view controller.
@@ -30,3 +34,5 @@ A repository simply fetches and saves/posts data from/to a given source, such as
 
 ### Builder
 A builder sets up a module consisting of all the modules above and returns a view controller that can be presented by the app.
+
+![MVVM](https://cdn.auth0.com/blog/mvvm-vs-viper/mvvm-pattern.png)
