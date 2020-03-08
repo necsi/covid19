@@ -1,5 +1,14 @@
 # outreachapp-ios
 
+Welcome to the Outreach iOS app!
+
+## Getting started
+
+1. Install Xcode.
+2. Clone this repository.
+3. Create a new branch.
+5. Submit a pull request including your proposed changes to the project.
+
 ## Architecture
 
 There are a variety of architecture that exist for building mobile applications. As Apple itself uses MVC that is usually what app devs start out with. However, there are known shortfalls of MVC that become more apparent as the applications grows in size and complexity. In order to alleviate these shortcomings we’ll be using MVVM with is very similar to MVC but splits the presentation layer into View-View Controller-View Model. In MVVM the different layers have the following responsibilities:
