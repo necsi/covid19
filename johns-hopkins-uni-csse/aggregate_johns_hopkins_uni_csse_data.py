@@ -82,11 +82,13 @@ df.columns = ['Province/State', 'Country/Region', 'Confirmed', 'Deaths', 'Recove
 df['Province/State'].fillna(df['Province/State2'], inplace=True)
 del df['Province/State2']
 
-# Add empty City column
+# Add empty City, Region, and Source columns
 df['City'] = np.repeat(np.nan, df.shape[0])
+df['Region'] = np.repeat(np.nan, df.shape[0])
+df['Source'] = np.repeat('https://github.com/CSSEGISandData/COVID-19', df.shape[0])
 
 # Reorder columns
-df = df[['Country/Region', 'Province/State', 'City', 'Latitude', 'Longitude', 'Confirmed', 'Deaths', 'Recovered', 'Last Update']]
+df = df[['Country/Region', 'Region', 'Province/State', 'City', 'Latitude', 'Longitude', 'Confirmed', 'Deaths', 'Recovered', 'Last Update', 'Source']]
 
 # Save to csv (optional)
 df.to_csv('johns-hopkins-uni-csse/jhu-csse-data.csv', index=False)
