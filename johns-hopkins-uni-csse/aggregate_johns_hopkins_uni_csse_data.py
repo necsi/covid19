@@ -77,5 +77,16 @@ for date_time in df["Last Update"].values:
 df = df.drop(['Last Update'], axis=1)
 df["Last Update"] = cleaned_last_updated
 
+# Merge the Province/State columns
+df.columns = ['Province/State', 'Country/Region', 'Confirmed', 'Deaths', 'Recovered', 'Province/State2', 'Latitude', 'Longitude', 'Last Update']
+df['Province/State'].fillna(df['Province/State2'], inplace=True)
+del df['Province/State2']
+
+# Add empty City column
+df['City'] = np.repeat(np.nan, df.shape[0])
+
+# Reorder columns
+df = df[['Country/Region', 'Province/State', 'City', 'Latitude', 'Longitude', 'Confirmed', 'Deaths', 'Recovered', 'Last Update']]
+
 # Save to csv (optional)
 df.to_csv('johns-hopkins-uni-csse/jhu-csse-data.csv', index=False)
