@@ -8,21 +8,12 @@
 
 import CoreData
 
-protocol ContactPersistenceStore {
+final class ContactPersistenceStore {
 
-//    var container: NSPersistentContainer { get }
-//    var mainContext: NSManagedObjectContext { get }
-    func save(context: NSManagedObjectContext) throws
-    func fetch<Resource: NSManagedObject>(with identifier: Int, context: NSManagedObjectContext) -> Resource?
-    func fetch<Resource: NSManagedObject>(recent fetchLimit: Int, in context: NSManagedObjectContext) -> [Resource]
-}
-
-final class ContactPersistenceStoreImpl: ContactPersistenceStore {
-
-//    static let shared = ContactPersistenceStoreImpl()
+    static let shared = ContactPersistenceStore()
 
     private lazy var container: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "NECSIContacts")
+        let container = NSPersistentContainer(name: "Contacts")
         container.loadPersistentStores  { (_, error) in
             if let error = error {
                 fatalError("Failed to load persistent store: \(error)")
@@ -33,10 +24,9 @@ final class ContactPersistenceStoreImpl: ContactPersistenceStore {
         return container
     }()
 
-    private var mainContext: NSManagedObjectContext {
+    var mainContext: NSManagedObjectContext {
         return container.viewContext
     }
-
 
     func save(context: NSManagedObjectContext) throws {
         var error: Error?
