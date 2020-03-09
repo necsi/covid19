@@ -87,10 +87,16 @@
 <script>
     //http://localhost:63342/GitHub/topojson/countries/algeria/algeria-provinces.json
     //http://localhost:63342/GitHub/topojson/countries/algeria/
+    let mapCanvas;
+    function initiate(width=400, height=400){
+        mapCanvas = d3.select("#map_container")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+    }
+
     let makePlots=function (strCountry="algeria.json",width=400, height=400){
-                var svg = d3.select("#map_container").append("svg")
-                    .attr("width", width)
-                    .attr("height", height);
+
                 d3.json(strCountry).then(country => {
                     let feat_data=topojson.feature(country, country.objects[Object.keys(country.objects)[0]])
                     var center = d3.geoCentroid(country)
@@ -99,8 +105,9 @@
                     var path = d3.geoPath()
                         .projection(projection);
                     global_var=country;
-
-                    svg.append("path")
+                    mapCanvas.select("path").remove()
+                    mapCanvas
+                        .insert("path")
                         .datum(feat_data)
                         .attr("d", path)
                         .attr('fill','white')
@@ -116,11 +123,11 @@
 
             let selecteCountry='./../countries/'+d3.select(this).property('value')+'/';
             console.log(selecteCountry)
-            makePlots(strCountry=selecteCountry);
+            makePlots(strCountry="./../countries/"+selecteCountry+"/topo.json");
         });
 
-
-    makePlots(strCountry="algeria.json");
+    initiate()
+    makePlots(strCountry="./../countries/algeria/topo.json");
 
 </script>
 </body>
