@@ -7,6 +7,7 @@
 //
 
 import Contacts
+import CoreData
 
 protocol PhoneContactService {
 
@@ -41,11 +42,13 @@ final class PhoneContactServiceImpl: PhoneContactService {
             }
 
             if granted {
+                var contacts = [Contact]()
                 let request = CNContactFetchRequest(keysToFetch: self.contactKeys as [CNKeyDescriptor])
                 do {
-                    try self.store.enumerateContacts(with: request, usingBlock: { (contact, stopPointerIfYouWantToStopEnumerating) in
-                        completion(Result.success([]))
-                    })
+                    try self.store.enumerateContacts(with: request) { (cnContact, _) in
+                        contacts.append(Contact(cnContact: cnContact))
+                    }
+                    completion(Result.success(contacts))
                 } catch let error {
                     completion(Result.failure(error))
                 }

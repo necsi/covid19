@@ -40,7 +40,7 @@ final class PhoneContactViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // TODO: Create sections based on first letter of last name
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,13 +71,16 @@ extension PhoneContactViewController: UISearchResultsUpdating {
 private extension PhoneContactViewController {
 
     func setupViews() {
-        title = viewModel.title
-        view.backgroundColor = .white
         setupTableView()
         setupSearchViewController()
     }
 
     func setupTableView() {
+        title = viewModel.title
+        view.backgroundColor = .white
+        navigationController?.navigationBar.prefersLargeTitles = true
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.register(PhoneContactTableViewCell.self,
                            forCellReuseIdentifier: PhoneContactTableViewCell.reuseId)
     }
