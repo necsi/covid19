@@ -8,6 +8,7 @@
 
 import CoreData
 
+// TODO: Refactor, add protocol and remove shared
 final class ContactPersistenceStore {
 
     static let shared = ContactPersistenceStore()

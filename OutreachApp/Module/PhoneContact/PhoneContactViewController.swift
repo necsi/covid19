@@ -54,9 +54,28 @@ final class PhoneContactViewController: UITableViewController {
         )
         let cellViewModel = viewModel.cellViewModel(at: indexPath)
         if let cell = cell as? PhoneContactTableViewCell {
-            cell.configure(viewModel: cellViewModel)
+            cell.configure(with: cellViewModel)
         }
+
+        if !viewModel.cellViewModel(at: indexPath).isSelected {
+            cell.accessoryType = .none
+        } else {
+            cell.accessoryType = .checkmark
+        }
+
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            if cell.accessoryType == .none {
+                cell.accessoryType = .checkmark
+                viewModel.cellViewModel(at: indexPath).isSelected = true
+            } else {
+                cell.accessoryType = .none
+                viewModel.cellViewModel(at: indexPath).isSelected = false
+            }
+        }
     }
 }
 

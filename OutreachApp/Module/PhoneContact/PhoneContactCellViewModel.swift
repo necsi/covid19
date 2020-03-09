@@ -6,7 +6,7 @@
 //  Copyright © 2563 NECSI. All rights reserved.
 //
 
-struct PhoneContactCellViewModel {
+final class PhoneContactCellViewModel {
 
     let firstName: String
     let lastName: String
@@ -14,4 +14,10 @@ struct PhoneContactCellViewModel {
         return firstName + " " + lastName
     }
     let notes: [String] = []
+    var isSelected = false
+
+    init(firstName: String, lastName: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+    }
 }
