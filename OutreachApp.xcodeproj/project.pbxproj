@@ -22,6 +22,7 @@
 		0BA0C5622414902F00DD8809 /* OutreachAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0C5612414902F00DD8809 /* OutreachAppUITests.swift */; };
 		0BA0C5802414919B00DD8809 /* ContactPersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0C57F2414919B00DD8809 /* ContactPersistenceStore.swift */; };
 		0BA0C583241491A400DD8809 /* Contacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0C581241491A400DD8809 /* Contacts.xcdatamodeld */; };
+		0BA2B812241657290067F14C /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA2B811241657290067F14C /* CalendarService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		0BA0C5632414902F00DD8809 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0BA0C57F2414919B00DD8809 /* ContactPersistenceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactPersistenceStore.swift; sourceTree = "<group>"; };
 		0BA0C582241491A400DD8809 /* NECSIContacts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NECSIContacts.xcdatamodel; sourceTree = "<group>"; };
+		0BA2B811241657290067F14C /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 		0BA0C5722414906C00DD8809 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				0BA2B810241651EF0067F14C /* Calendar */,
 				0B7DA8672414B9EA00F0B210 /* PhoneContact */,
 			);
 			path = Service;
@@ -235,6 +238,14 @@
 				0BA0C581241491A400DD8809 /* Contacts.xcdatamodeld */,
 			);
 			path = Contact;
+			sourceTree = "<group>";
+		};
+		0BA2B810241651EF0067F14C /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				0BA2B811241657290067F14C /* CalendarService.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,6 +382,7 @@
 				0B7DA86F2414C14200F0B210 /* PhoneContactViewController.swift in Sources */,
 				0B7DA8732414E5C800F0B210 /* PhoneContactBuilder.swift in Sources */,
 				0BA0C53D2414902F00DD8809 /* AppDelegate.swift in Sources */,
+				0BA2B812241657290067F14C /* CalendarService.swift in Sources */,
 				0B7DA8712414E08500F0B210 /* PhoneContactTableViewCell.swift in Sources */,
 				0B7DA8692414B9F200F0B210 /* PhoneContactService.swift in Sources */,
 				0BA0C583241491A400DD8809 /* Contacts.xcdatamodeld in Sources */,
