@@ -21,11 +21,18 @@ function filter_country(c,cases)
 end
 
 function filter_state(postal,fullname,cases)
-    filter(Symbol("Province/State") => ps -> length(ps) >= 2 && (ps[end-1:end] == postal || ps == fullname), cases)
+    filter(Symbol("Province/State") => ps -> length(ps) >= 2 && (occursin(postal,ps) || ps == fullname), cases)
 end
 
 function last_n_days(n,cases)
     filter_date(today() - Day(n), today(),cases)
+end
+
+function process_day_file(path,day)
+    fullpath = path * "/csse_covid_19_data/csse_covid_19_daily_reports/" * day * ".csv"
+    raw = loadtable(fullpath)
+    date = Date(day,"m-d-y")
+    insertcols(select(raw, (:Confirmed,:Deaths,:Recovered,Symbol("Country/Region"),Symbol("Province/State"))), 1, :ObservationDate => repeat([date],length(raw)))
 end
 
 function load_csse_data(path)
@@ -37,13 +44,13 @@ function load_csse_data(path)
             Date(2020,01,01)
         end
     end
-    function process_day_file(file)
-        raw = loadtable(fullpath * file)
-        date = Date(file[1:end-4],"m-d-y")
-        insertcols(select(raw, (:Confirmed,:Deaths,:Recovered,Symbol("Country/Region"),Symbol("Province/State"))), 1, :ObservationDate => repeat([date],length(raw)))
-    end
-    report_data = [process_day_file(file) for file in filter(f -> f[end-2:end] == "csv",readdir(fullpath))]
+    report_data = [process_day_file(fullpath * file) for file in filter(f -> f[end-2:end] == "csv",readdir(fullpath))]
     dropmissing(reduce(merge, report_data))
+end
+
+function add_new_day(path,day,t)
+    new_data = process_day_file(path)
+    merge(new_data,t)
 end
 
 end
