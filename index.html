@@ -144,7 +144,9 @@
         {
 
             let selecteCountry='./content/countries/'+d3.select(this).property('value')+'/';
-            makePlots(strCountry="./content/countries/"+selecteCountry+"/topo.json");
+            console.log(selecteCountry+"/topo.json")
+            makePlots(strCountry=selecteCountry+"/topo.json");
+
         });
 
 
