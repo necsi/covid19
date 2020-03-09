@@ -18,11 +18,11 @@
 <body style="height: 100%; margin: 0">
 
 
-<table>
+<table border="4">
 <tr>
     <td width="50%">
 
-        <select id="countries"><option value="algeria">algeria</option>
+        <select id="select_countries"><option value="algeria">algeria</option>
             <option value="argentina">argentina</option>
             <option value="azerbaijan">azerbaijan</option>
             <option value="belgium">belgium</option>
@@ -34,7 +34,7 @@
             <option value="france">france</option>
             <option value="germany">germany</option>
             <option value="india">india</option>
-            <option value="iran">iran</option>
+            <option value="iran" default>iran</option>
             <option value="ireland">ireland</option>
             <option value="italy">italy</option>
             <option value="japan">japan</option>
@@ -61,7 +61,6 @@
             <option value="venezuela">venezuela</option>
         </select>
     </td>
-
 </tr>
 
     <tr>
@@ -72,11 +71,10 @@
 
         </td>
         <td width="50%">
-
+            &nbsp;
+            <!-- -->
         </td>
     </tr>
-
-
 </table>
 
 
@@ -87,39 +85,63 @@
 <!-- this will include every plugin and utility required by Foundation -->
 
 <script>
+    //http://localhost:63342/GitHub/topojson/countries/algeria/algeria-provinces.json
+    //http://localhost:63342/GitHub/topojson/countries/algeria/
+    let mapCanvas;
+    function initiate(width=400, height=400){
+        mapCanvas = d3.select("#map_container")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+    }
 
-    let global_var
-    var width = 600,
-        height = 400;
-    var svg = d3.select("#map_container").append("svg")
-        .attr("width", width)
-        .attr("height", height);
-    d3.json("china-provinces.json").then(country => {
-        var center = d3.geoCentroid(country)
-        var projection = d3.geoMercator()
-            .scale(100)
-            .translate([width/2, height/2])
-        var path = d3.geoPath()
-            .projection(projection);
+    let makePlots=function (strCountry="algeria.json",width=400, height=400){
 
-
-        svg.append("path")
-            .datum(topojson.feature(country, country.objects.CHN_adm1))
-            .attr("d", path)
-            .attr('fill','purple')
-            .attrS
-
-    });
-
-
-    d3.select(self.frameElement).style("height", height + "px");
-
-
-
-
+                d3.json(strCountry).then(country => {
+                    let feat_data=topojson.feature(country, country.objects[Object.keys(country.objects)[0]]);
+                    let center = d3.geoCentroid(country);
+                    let projection = d3.geoMercator()
+                        .fitExtent([[0 , 0 ], [400,400]  ],feat_data);
+                    let path = d3.geoPath()
+                        .projection(projection);
+                    global_var=country;
+                    mapCanvas.select("path").remove();
+                    mapCanvas
+                        .insert("path")
+                        .datum(feat_data)
+                        .attr("d", path)
+                        .attr('fill','white')
+                        .style("stroke", "black")
+                        .style("stroke-width", "1")
 
 
+                    //////////// read excel sheet online
+                    d3.csv("https://docs.google.com/spreadsheets/d/" +
+                        "1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/export?format=csv" +
+                        "&id=1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0&gid=363880533",function(d){
+                        console.log(d)
+                    });
 
+                });
+                d3.select(self.frameElement).style("height", height + "px");
+            };
+
+
+
+
+
+    ////////////dropdown menu change
+    d3.select("#select_countries")
+        .on('change',function()
+        {
+
+            let selecteCountry='./../countries/'+d3.select(this).property('value')+'/';
+            console.log(selecteCountry);
+            makePlots(strCountry="./../countries/"+selecteCountry+"/topo.json");
+        });
+
+    initiate();
+    makePlots(strCountry="./../countries/algeria/topo.json");
 
 </script>
 </body>

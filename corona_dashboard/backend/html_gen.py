@@ -1,4 +1,4 @@
-import glob 
+"""import glob 
 import os 
 os.chdir('/Users/mac/Documents/GitHub/topojson/')
 list_of_countries=sorted(glob.glob('/Users/mac/Documents/GitHub/topojson/countries/*/'))
@@ -14,10 +14,10 @@ for fl in list_of_countries:
     s="/"
     s=s.join(files_spl[:-1])
     s=s+"/topo.json"
-    os.rename(files[0],s)
+    os.rename(files[0],s)"""
 
 
-
+from gsheets import Sheets
 
 
 

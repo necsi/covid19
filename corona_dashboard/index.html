@@ -98,14 +98,14 @@
     let makePlots=function (strCountry="algeria.json",width=400, height=400){
 
                 d3.json(strCountry).then(country => {
-                    let feat_data=topojson.feature(country, country.objects[Object.keys(country.objects)[0]])
-                    var center = d3.geoCentroid(country)
-                    var projection = d3.geoMercator()
-                        .fitExtent([[0 , 0 ], [400,400]  ],feat_data)
-                    var path = d3.geoPath()
+                    let feat_data=topojson.feature(country, country.objects[Object.keys(country.objects)[0]]);
+                    let center = d3.geoCentroid(country);
+                    let projection = d3.geoMercator()
+                        .fitExtent([[0 , 0 ], [400,400]  ],feat_data);
+                    let path = d3.geoPath()
                         .projection(projection);
                     global_var=country;
-                    mapCanvas.select("path").remove()
+                    mapCanvas.select("path").remove();
                     mapCanvas
                         .insert("path")
                         .datum(feat_data)
@@ -113,20 +113,34 @@
                         .attr('fill','white')
                         .style("stroke", "black")
                         .style("stroke-width", "1")
+
+
+                    //////////// read excel sheet online
+                    d3.csv("https://docs.google.com/spreadsheets/d/" +
+                        "1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/export?format=csv" +
+                        "&id=1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0&gid=363880533",function(d){
+                        console.log(d)
+                    });
+
                 });
                 d3.select(self.frameElement).style("height", height + "px");
             };
+
+
+
+
+
     ////////////dropdown menu change
     d3.select("#select_countries")
         .on('change',function()
         {
 
             let selecteCountry='./../countries/'+d3.select(this).property('value')+'/';
-            console.log(selecteCountry)
+            console.log(selecteCountry);
             makePlots(strCountry="./../countries/"+selecteCountry+"/topo.json");
         });
 
-    initiate()
+    initiate();
     makePlots(strCountry="./../countries/algeria/topo.json");
 
 </script>
