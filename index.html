@@ -5,9 +5,9 @@
     <title>Coronavirus information Dashboard</title>
    <link rel="stylesheet" href="js/foundation.min.css">
 
-    <script src="chrts/echarts.min.js"></script>
-    <script src="chrts/echarts-gl.min.js"></script>
-    <script src="chrts/bmap.min.js"></script>
+    <script src="content/chrts/echarts.min.js"></script>
+    <script src="content/chrts/echarts-gl.min.js"></script>
+    <script src="content/chrts/bmap.min.js"></script>
 
 
     <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -87,7 +87,8 @@
 <script>
     //http://localhost:63342/GitHub/topojson/countries/algeria/algeria-provinces.json
     //http://localhost:63342/GitHub/topojson/countries/algeria/
-    let global_var=[]
+
+    let global_var=[];
     let mapCanvas;
     function initiate(width=400, height=400){
         mapCanvas = d3.select("#map_container")
@@ -122,7 +123,7 @@
                         global_var.push(sheet_data);
                     }).then(function(){
 
-                            console.log(global_var[])
+                           // console.log(global_var[])
                     }
 
                     )
@@ -142,12 +143,12 @@
         .on('change',function()
         {
 
-            let selecteCountry='./../countries/'+d3.select(this).property('value')+'/';
-            makePlots(strCountry="./../countries/"+selecteCountry+"/topo.json");
+            let selecteCountry='./content/countries/'+d3.select(this).property('value')+'/';
+            makePlots(strCountry="./content/countries/"+selecteCountry+"/topo.json");
         });
 
     initiate();
-    makePlots(strCountry="./../countries/iran/topo.json");
+    makePlots(strCountry="./content/countries/iran/topo.json");
 
 </script>
 </body>
