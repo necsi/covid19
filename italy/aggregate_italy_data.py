@@ -5,6 +5,7 @@ from contextlib import closing
 import numpy as np
 import pandas as pd
 import json
+from datetime import datetime, timedelta
 
 
 def download_csv_to_dataframe(url):
@@ -55,13 +56,23 @@ def create_json_for_mapping_software(df):
     :param df: pandas.DataFrame
     :return: None
     """
+    # Convert Last Updated to datetime object
+    df['Last Updated'] = df['Last Updated'].apply(lambda x: datetime.strptime(x, '%Y-%m-%d %H:%M:%S'))
+    
     # Group by province
     confirmed_by_region = df.groupby(['Region']).sum()[['Confirmed']].apply(lambda g: g.values.tolist()).to_dict()['Confirmed']
 
+    # Get daily confirmed case deltas
+    yesterday = datetime.now() - timedelta(days=1)
+    day_before_yesterday = datetime.now() - timedelta(days=2)
+    yesterday_confirmed_count_by_region = df[df['Last Updated'] >= yesterday].sort_values(by=['Last Updated']).groupby(['Region']).sum()[['Confirmed']].apply(lambda g: g.values.tolist()).to_dict()['Confirmed']
+    day_before_yesterday_confirmed_count_by_region = df[(df['Last Updated'] >= day_before_yesterday) & (df['Last Updated'] <= yesterday)].sort_values(by=['Last Updated']).groupby(['Region']).sum()[['Confirmed']].apply(lambda g: g.values.tolist()).to_dict()['Confirmed']
+    
     # Create required dictionary structure
     format_for_map = {}
-    for key, value in confirmed_by_region.items():
-        format_for_map[key] = {'scalerank': value, 'one_day': 0}
+    for key, value in yesterday_confirmed_count_by_region.items():
+        delta = value - day_before_yesterday_confirmed_count_by_region[key]
+        format_for_map[key] = {'scalerank': confirmed_by_region[key], 'one_day': delta}
 
     # Save dictionary as json file
     with open('italy/italy-confirmed-by-region.json', 'w') as json_file:
