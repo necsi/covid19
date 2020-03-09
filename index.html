@@ -22,43 +22,43 @@
 <tr>
     <td width="50%">
 
-        <select id="select_countries"><option value="algeria">algeria</option>
-            <option value="argentina">argentina</option>
-            <option value="azerbaijan">azerbaijan</option>
-            <option value="belgium">belgium</option>
-            <option value="china">china</option>
-            <option value="colombia">colombia</option>
-            <option value="czech-republic">czech-republic</option>
-            <option value="denmark">denmark</option>
-            <option value="finland">finland</option>
-            <option value="france">france</option>
-            <option value="germany">germany</option>
-            <option value="india">india</option>
-            <option value="iran" selected>iran</option>
-            <option value="ireland">ireland</option>
-            <option value="italy">italy</option>
-            <option value="japan">japan</option>
-            <option value="liberia">liberia</option>
-            <option value="nepal">nepal</option>
-            <option value="netherlands">netherlands</option>
-            <option value="new-zealand">new-zealand</option>
-            <option value="nigeria">nigeria</option>
-            <option value="norway">norway</option>
-            <option value="pakistan">pakistan</option>
-            <option value="peru">peru</option>
-            <option value="philippines">philippines</option>
-            <option value="poland">poland</option>
-            <option value="portugal">portugal</option>
-            <option value="romania">romania</option>
-            <option value="south-africa">south-africa</option>
-            <option value="spain">spain</option>
-            <option value="sweden">sweden</option>
-            <option value="turkey">turkey</option>
-            <option value="united-arab-emirates">united-arab-emirates</option>
-            <option value="united-kingdom">united-kingdom</option>
-            <option value="united-states">united-states</option>
-            <option value="us-states">us-states</option>
-            <option value="venezuela">venezuela</option>
+        <select id="select_countries">
+            <option value="algeria">Algeria</option>
+            <option value="argentina">Argentina</option>
+            <option value="azerbaijan">Azerbaijan</option>
+            <option value="belgium">Belgium</option>
+            <option value="china">China</option>
+            <option value="colombia">Colombia</option>
+            <option value="czech-republic">Czech Republic</option>
+            <option value="denmark">Denmark</option>
+            <option value="finland">Finland</option>
+            <option value="france">France</option>
+            <option value="germany">Germany</option>
+            <option value="india">India</option>
+            <option value="iran" selected>Iran</option>
+            <option value="ireland">Ireland</option>
+            <option value="italy">Italy</option>
+            <option value="japan">Japan</option>
+            <option value="liberia">Liberia</option>
+            <option value="nepal">Nepal</option>
+            <option value="netherlands">Netherlands</option>
+            <option value="new-zealand">New Zealand</option>
+            <option value="nigeria">Nigeria</option>
+            <option value="norway">Norway</option>
+            <option value="pakistan">Pakistan</option>
+            <option value="peru">Peru</option>
+            <option value="philippines">Philippines</option>
+            <option value="poland">Poland</option>
+            <option value="portugal">Portugal</option>
+            <option value="romania">Romania</option>
+            <option value="south-africa">South Africa</option>
+            <option value="spain">Spain</option>
+            <option value="sweden">Sweden</option>
+            <option value="turkey">Turkey</option>
+            <option value="united-arab-emirates">United Arab Emirates</option>
+            <option value="united-kingdom">United Kingdom</option>
+            <option value="us-states">United states</option>
+            <option value="venezuela">Venezuela</option>
         </select>
     </td>
 </tr>
@@ -111,15 +111,19 @@
                         .insert("path")
                         .datum(feat_data)
                         .attr("d", path)
-                        .attr('fill','white')
+                        .attr('fill',function(d)
+                            {
+                                if(data[d.properties.Name].infected===0){return "#f4f4f4"}
+                                else{return colorScale(data[d.properties.Name].infected);}
+                            })
                         .style("stroke", "black")
                         .style("stroke-width", "1")
 
+                        .attr('fill',)
+
 
                     //////////// read excel sheet online
-                    /*d3.csv("https://docs.google.com/spreadsheets/d/" +
-                        "1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/export?format=csv" +
-                        "&id=1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0&gid=363880533").then(function(sheet_data){
+                    /*d3.csv("https://docs.google.com/spreadsheets/d/1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/export?format=csv&id=1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0&gid=363880533").then(function(sheet_data){
                         global_var.push(sheet_data);
                     }).then(function(){
 
