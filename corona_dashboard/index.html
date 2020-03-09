@@ -22,7 +22,7 @@
 <tr>
     <td width="50%">
 
-        <select id="countries"><option value="algeria">algeria</option>
+        <select id="select_countries"><option value="algeria">algeria</option>
             <option value="argentina">argentina</option>
             <option value="azerbaijan">azerbaijan</option>
             <option value="belgium">belgium</option>
@@ -85,11 +85,9 @@
 <!-- this will include every plugin and utility required by Foundation -->
 
 <script>
-
-
-
-    Plot_map(strCountry="algeria.json")
-    function Plot_map(width=400, height=400){
+    //http://localhost:63342/GitHub/topojson/countries/algeria/algeria-provinces.json
+    //http://localhost:63342/GitHub/topojson/countries/algeria/
+    let makePlots=function (strCountry="algeria.json",width=400, height=400){
                 var svg = d3.select("#map_container").append("svg")
                     .attr("width", width)
                     .attr("height", height);
@@ -100,8 +98,8 @@
                         .fitExtent([[0 , 0 ], [400,400]  ],feat_data)
                     var path = d3.geoPath()
                         .projection(projection);
+                    global_var=country;
 
-                    global_var=country
                     svg.append("path")
                         .datum(feat_data)
                         .attr("d", path)
@@ -110,7 +108,20 @@
                         .style("stroke-width", "1")
                 });
                 d3.select(self.frameElement).style("height", height + "px");
-            }
+            };
+    ////////////dropdown menu change
+    d3.select("#select_countries")
+        .on('change',function()
+        {
+
+            let selecteCountry='./../countries/'+d3.select(this).property('value')+'/';
+            console.log(selecteCountry)
+            makePlots(strCountry=selecteCountry);
+        });
+
+
+    makePlots(strCountry="algeria.json");
+
 </script>
 </body>
 </html>
