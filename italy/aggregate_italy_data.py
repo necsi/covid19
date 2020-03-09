@@ -56,7 +56,7 @@ def create_json_for_mapping_software(df):
     :return: None
     """
     # Group by province
-    confirmed_by_region = df.groupby(['Province/State']).sum()[['Confirmed']].apply(lambda g: g.values.tolist()).to_dict()['Confirmed']
+    confirmed_by_region = df.groupby(['Region']).sum()[['Confirmed']].apply(lambda g: g.values.tolist()).to_dict()['Confirmed']
 
     # Create required dictionary structure
     format_for_map = {}
