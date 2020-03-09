@@ -29,9 +29,13 @@ final class PhoneContactListViewModel {
 
     func fetchPhoneContacts(completion: @escaping () -> Void) {
         phoneContactService.fetchContacts { [weak self] result in
-            guard let self = self, let contacts = try? result.get() else { return }
+            guard let self = self, let contacts = try? result.get() else {
+                assertionFailure("Failed to load contacts.")
+                return
+            }
             let viewModels = contacts.compactMap(self.mapToViewModel)
             self.phoneContacts.append(contentsOf: viewModels)
+            completion()
         }
     }
 
