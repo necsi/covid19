@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  OutreachApp
 //
-//  Created by Demicheli, Stefano (Agoda) on 8/3/2563 BE.
+//  Created by Demicheli, Stefano on 8/3/2563 BE.
 //  Copyright © 2563 NECSU. All rights reserved.
 //
 
