@@ -34,7 +34,7 @@
             <option value="france">france</option>
             <option value="germany">germany</option>
             <option value="india">india</option>
-            <option value="iran" default>iran</option>
+            <option value="iran" selected>iran</option>
             <option value="ireland">ireland</option>
             <option value="italy">italy</option>
             <option value="japan">japan</option>
@@ -87,6 +87,7 @@
 <script>
     //http://localhost:63342/GitHub/topojson/countries/algeria/algeria-provinces.json
     //http://localhost:63342/GitHub/topojson/countries/algeria/
+    let global_var=[]
     let mapCanvas;
     function initiate(width=400, height=400){
         mapCanvas = d3.select("#map_container")
@@ -95,7 +96,7 @@
             .attr("height", height);
     }
 
-    let makePlots=function (strCountry="algeria.json",width=400, height=400){
+    let makePlots=function (strCountry="",width=400, height=400){
 
                 d3.json(strCountry).then(country => {
                     let feat_data=topojson.feature(country, country.objects[Object.keys(country.objects)[0]]);
@@ -104,7 +105,6 @@
                         .fitExtent([[0 , 0 ], [400,400]  ],feat_data);
                     let path = d3.geoPath()
                         .projection(projection);
-                    global_var=country;
                     mapCanvas.select("path").remove();
                     mapCanvas
                         .insert("path")
@@ -118,9 +118,16 @@
                     //////////// read excel sheet online
                     d3.csv("https://docs.google.com/spreadsheets/d/" +
                         "1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/export?format=csv" +
-                        "&id=1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0&gid=363880533",function(d){
-                        console.log(d)
-                    });
+                        "&id=1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0&gid=363880533").then(function(sheet_data){
+                        global_var.push(sheet_data);
+                    }).then(function(){
+
+                            console.log(global_var[])
+                    }
+
+                    )
+
+
 
                 });
                 d3.select(self.frameElement).style("height", height + "px");
@@ -136,12 +143,11 @@
         {
 
             let selecteCountry='./../countries/'+d3.select(this).property('value')+'/';
-            console.log(selecteCountry);
             makePlots(strCountry="./../countries/"+selecteCountry+"/topo.json");
         });
 
     initiate();
-    makePlots(strCountry="./../countries/algeria/topo.json");
+    makePlots(strCountry="./../countries/iran/topo.json");
 
 </script>
 </body>
