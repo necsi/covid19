@@ -140,34 +140,28 @@
                     .fitExtent([[0 , 0 ], [400,400]  ],feat_data);
                 let path = d3.geoPath()
                     .projection(projection);
-                global_var=stat;
+                global_var=country;
 
-                
+
+
 
                 let color = d3.scaleLinear()
-                    .domain([1, 2000])
+                    .domain([1, 1600])
                     .range(['#d7d0d0', '#e03730'])
                     .interpolate(d3.interpolateHcl); //interpolateHsl interpolateHcl interpolateRgb
 
 
-                mapCanvas.selectAll("path").remove();
-
+                mapCanvas.select("path").remove();
                 mapCanvas.append("g")
                     .attr("class", "counties")
                     .selectAll("path")
                     .data(topojson.feature(map_data, map_data.objects[Object.keys(map_data.objects)[0]]).features)
                     .enter().append("path")
                     .attr("fill", function(d) {
-                        if(stat.length>0)
-                        {
+                        if(stat.length>0) {
                             console.log(color(parseInt(stat[stat.length - 1][d.properties.Name])))
                             return color(parseInt(stat[stat.length - 1][d.properties.Name]))
                         }
-                        else
-                            {
-                                return 'white'
-                            }
-
                     })
                     .style("stroke-width", "1")
                     .attr("d", path)
@@ -205,7 +199,7 @@
         {
 
             let selecteCountry='./content/countries/'+d3.select(this).property('value')+'/';
-            console.log(selecteCountry+"/topo.json");
+            console.log(selecteCountry+"/topo.json")
             makePlots(strCountry=selecteCountry+"/topo.json");
 
         });
