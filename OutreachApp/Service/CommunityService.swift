@@ -10,5 +10,12 @@ import CoreData
 
 protocol CommunityService {
 
-    func fetchCommunities(completion: @escaping (Result<[], Error>) -> Void)
+    func fetchCommunities(completion: @escaping (Result<[Community], Error>) -> Void)
+}
+
+final class CommunityServiceImpl: CommunityService {
+
+    func fetchCommunities(completion: @escaping (Result<[Community], Error>) -> Void) {
+        completion(Result.success([Community(name: "My family")]))
+    }
 }
