@@ -2,7 +2,7 @@
 //  Contact.swift
 //  OutreachApp
 //
-//  Created by Demicheli, Stefano (Agoda) on 9/3/2563 BE.
+//  Created by Demicheli, Stefano on 9/3/2563 BE.
 //  Copyright © 2563 NECSI. All rights reserved.
 //
 
@@ -11,10 +11,12 @@ import Contacts
 
 extension Contact {
 
-    convenience init(firstName: String,
+    convenience init(identifier: UUID = UUID(),
+                     firstName: String,
                      lastName: String,
                      context: NSManagedObjectContext = ContactPersistenceStore.shared.mainContext) {
         self.init(context: context)
+        self.identifier = identifier
         self.firstName = firstName
         self.lastName = lastName
     }
