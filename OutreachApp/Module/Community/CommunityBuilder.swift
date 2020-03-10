@@ -6,4 +6,13 @@
 //  Copyright © 2563 NECSI. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+struct CommunityBuilder {
+
+    static func build() -> UIViewController {
+        let service = CommunityServiceImpl()
+        let viewModel = CommunityListViewModel(communityService: service)
+        return CommunityViewController(style: .plain,viewModel: viewModel)
+    }
+}
