@@ -31,7 +31,12 @@ final class PhoneContactViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        viewModel.fetchPhoneContacts { [weak self] in
+        viewModel.fetchPhoneContacts { [weak self] error in
+            if let error = error {
+                // TODO: Handle error
+                print(error)
+                return
+            }
             self?.tableView.reloadData()
         }
     }
