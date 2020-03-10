@@ -24,6 +24,10 @@
 		0BA0C583241491A400DD8809 /* Contacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0C581241491A400DD8809 /* Contacts.xcdatamodeld */; };
 		0BA2B812241657290067F14C /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA2B811241657290067F14C /* CalendarService.swift */; };
 		0BA2B814241672430067F14C /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA2B813241672430067F14C /* Contact.swift */; };
+		0BA2B81B241725B60067F14C /* CommunityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA2B81A241725B60067F14C /* CommunityListViewModel.swift */; };
+		0BA2B81D241725CD0067F14C /* CommunityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA2B81C241725CD0067F14C /* CommunityTableViewCell.swift */; };
+		0BA2B81F241725EA0067F14C /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA2B81E241725EA0067F14C /* CommunityViewController.swift */; };
+		0BA2B821241725FF0067F14C /* CommunityBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA2B820241725FF0067F14C /* CommunityBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +71,10 @@
 		0BA0C582241491A400DD8809 /* NECSIContacts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NECSIContacts.xcdatamodel; sourceTree = "<group>"; };
 		0BA2B811241657290067F14C /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		0BA2B813241672430067F14C /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		0BA2B81A241725B60067F14C /* CommunityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityListViewModel.swift; sourceTree = "<group>"; };
+		0BA2B81C241725CD0067F14C /* CommunityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTableViewCell.swift; sourceTree = "<group>"; };
+		0BA2B81E241725EA0067F14C /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
+		0BA2B820241725FF0067F14C /* CommunityBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +108,8 @@
 				0B7DA8722414E5C800F0B210 /* PhoneContactBuilder.swift */,
 				0B7DA86C2414BF3000F0B210 /* PhoneContactCellViewModel.swift */,
 				0B7DA8652414B9E400F0B210 /* PhoneContactListViewModel.swift */,
-				0B7DA86E2414C14200F0B210 /* PhoneContactViewController.swift */,
 				0B7DA8702414E08500F0B210 /* PhoneContactTableViewCell.swift */,
+				0B7DA86E2414C14200F0B210 /* PhoneContactViewController.swift */,
 			);
 			path = PhoneContact;
 			sourceTree = "<group>";
@@ -188,6 +196,7 @@
 		0BA0C5712414906000DD8809 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				0BA2B815241685480067F14C /* Community */,
 				0B7DA8622414B9AE00F0B210 /* PhoneContact */,
 			);
 			path = Module;
@@ -249,6 +258,17 @@
 				0BA2B811241657290067F14C /* CalendarService.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		0BA2B815241685480067F14C /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				0BA2B820241725FF0067F14C /* CommunityBuilder.swift */,
+				0BA2B81A241725B60067F14C /* CommunityListViewModel.swift */,
+				0BA2B81C241725CD0067F14C /* CommunityTableViewCell.swift */,
+				0BA2B81E241725EA0067F14C /* CommunityViewController.swift */,
+			);
+			path = Community;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,15 +405,19 @@
 				0BA2B814241672430067F14C /* Contact.swift in Sources */,
 				0B7DA86F2414C14200F0B210 /* PhoneContactViewController.swift in Sources */,
 				0B7DA8732414E5C800F0B210 /* PhoneContactBuilder.swift in Sources */,
+				0BA2B81D241725CD0067F14C /* CommunityTableViewCell.swift in Sources */,
 				0BA0C53D2414902F00DD8809 /* AppDelegate.swift in Sources */,
 				0BA2B812241657290067F14C /* CalendarService.swift in Sources */,
 				0B7DA8712414E08500F0B210 /* PhoneContactTableViewCell.swift in Sources */,
 				0B7DA8692414B9F200F0B210 /* PhoneContactService.swift in Sources */,
+				0BA2B81F241725EA0067F14C /* CommunityViewController.swift in Sources */,
 				0BA0C583241491A400DD8809 /* Contacts.xcdatamodeld in Sources */,
 				0BA0C5802414919B00DD8809 /* ContactPersistenceStore.swift in Sources */,
 				0B7DA8752414EA4500F0B210 /* SceneDelegate.swift in Sources */,
 				0B7DA8662414B9E400F0B210 /* PhoneContactListViewModel.swift in Sources */,
+				0BA2B821241725FF0067F14C /* CommunityBuilder.swift in Sources */,
 				0B7DA86D2414BF3000F0B210 /* PhoneContactCellViewModel.swift in Sources */,
+				0BA2B81B241725B60067F14C /* CommunityListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
