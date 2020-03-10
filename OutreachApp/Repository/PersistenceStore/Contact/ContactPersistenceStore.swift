@@ -45,9 +45,9 @@ final class ContactPersistenceStore {
     }
 
     func fetch<Resource: NSManagedObject>(with identifier: Int,
-                                          context: NSManagedObjectContext) -> Resource? {
-        var resource: Resource? = nil
-
+                                          context: NSManagedObjectContext? = nil) -> Resource? {
+        let context = context ?? mainContext
+        var resource: Resource?
         let fetchRequest: NSFetchRequest<Resource> = Resource.fetchRequest() as! NSFetchRequest<Resource>
         let predicate = NSPredicate(format: "identifier == %d", identifier)
         fetchRequest.predicate = predicate
@@ -64,9 +64,9 @@ final class ContactPersistenceStore {
     }
 
     func fetch<Resource: NSManagedObject>(recent fetchLimit: Int,
-                                          in context: NSManagedObjectContext) -> [Resource] {
+                                          in context: NSManagedObjectContext? = nil) -> [Resource] {
+        let context = context ?? mainContext
         var resource = [Resource]()
-
         let entityName = String(describing: Resource.self)
         let fetchRequest = NSFetchRequest<Resource>(entityName: entityName)
 
