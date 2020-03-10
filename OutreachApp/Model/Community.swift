@@ -6,4 +6,17 @@
 //  Copyright © 2563 NECSI. All rights reserved.
 //
 
-import Foundation
+
+import CoreData
+import Contacts
+
+extension Community {
+
+    convenience init(identifier: UUID = UUID(),
+                     name: String,
+                     context: NSManagedObjectContext = ContactPersistenceStore.shared.mainContext) {
+        self.init(context: context)
+        self.identifier = identifier
+        self.name = name
+    }
+}
