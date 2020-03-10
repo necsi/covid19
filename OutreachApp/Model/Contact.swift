@@ -11,10 +11,12 @@ import Contacts
 
 extension Contact {
 
-    convenience init(firstName: String,
+    convenience init(identifier: UUID = UUID(),
+                     firstName: String,
                      lastName: String,
                      context: NSManagedObjectContext = ContactPersistenceStore.shared.mainContext) {
         self.init(context: context)
+        self.identifier = identifier
         self.firstName = firstName
         self.lastName = lastName
     }
