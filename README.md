@@ -31,6 +31,7 @@ Some data stored here is being manually updated. Although we prefer data to be g
 
 * `traveldataviz`: created by Pouya Zangeneh, manually updated
 * `2019-nCov Stat China`: created by Chen, manually updated with source data from [http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml](http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml)
+* `2019-nCov Stat International`: created by Chen, manually updated with source data from [https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports)
 
 ### How to contribute
 
