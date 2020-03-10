@@ -15,7 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControllerDe
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let rootViewController = PhoneContactBuilder.build()
+        // Test your modules here:
+        let rootViewController = CommunityBuilder.build()
         let navigationController = UINavigationController(rootViewController: rootViewController)
         navigationController.view.backgroundColor = .white
         window?.rootViewController = navigationController

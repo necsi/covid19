@@ -69,6 +69,17 @@ final class CommunityViewController: UITableViewController {
     }
 }
 
+// MARK: - Actions
+
+extension CommunityViewController {
+
+    @objc func didPressAddCommunityButton() {
+        print("add community")
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+
 extension CommunityViewController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
@@ -88,6 +99,11 @@ private extension CommunityViewController {
         title = viewModel.title
         view.backgroundColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(didPressAddCommunityButton)
+        )
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CommunityTableViewCell.self,
