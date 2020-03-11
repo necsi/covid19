@@ -93,6 +93,7 @@
 
 <script>
     let data=[];
+    let global_test
     let mapCanvas;
     function initiate(width=400, height=400)
     {
@@ -176,7 +177,9 @@
             let sums=cumulative(country[1]);
             plot('chart_2_1',sums[0],sums[1],sums[2])
 
-            let dayCases=daily_cases(country[1]);
+            //let dayCases=daily_cases(country[1]);
+            let dayCases = daily_cases_by_province(country[1]);
+
             plot('chart_2_2',dayCases[0],dayCases[1],dayCases[2])
 
 
@@ -232,20 +235,45 @@
         let my_provinces = Object.keys(global_data[0]);
         let item = '';
         let legends = [];
-        data=get_key_data(global_data,'Sum')
-        data.splice(0, 1)
-        let res=[]
-        for(let i=0;i<data.length;i++){
-            if(i==0){
-                res.push(data[i])
+        data=get_key_data(global_data,'Sum');
+        global_test=global_data;
+        data.splice(0, 1);
+        let res=[];
+        for(let i=1;i<data.length;i++){
+            res.push(data[i]-data[i-1])
             }
-            else{res.push(data[i]-res[i-1])
-            }}
-
+        //X=X.splice(0,1)
+        console.log(res)
         lines.push({name: 'daily', data: res, type: 'line'});
 
+        return [X,lines,legends]
+    }
+
+
+    function daily_cases_by_province(global_data)
+    {
+        let X = get_key_Datetime(global_data,'Time');
+        let lines = [];
+        let my_provinces = Object.keys(global_data[0]);
+        let item = '';
+        let legends = [];
+        for (let i = 0; i < my_provinces.length; i++) {
+            item = my_provinces[i];
+            if (item !== 'Time' && item !== 'Sum' && item !== 'Total death' && item.trim() !== '') {
+                legends.push(item);
+                lines.push({name: item, data: cumsum_to_daily(get_key_data(global_data,item)), type: 'line'})}}
         return [X,lines,legends]}
 
+
+    function cumsum_to_daily(cumsum=[])
+    {
+        res=[];
+        for(let i=1;i<cumsum.length;i++)
+        {
+            res.push(cumsum[i]-cumsum[i-1])
+        }
+        return res;
+    }
 
 
 
@@ -271,9 +299,9 @@
         let app = {};
         let option = null;
         option = {
-           // legend: {
-           //     data: legends
-           // },
+            legend: {
+                data: legends
+            },
             tooltip: {
                 trigger: 'axis'
             },
