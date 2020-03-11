@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coronavirus information Dashboard</title>
+   <link rel="stylesheet" href="js/foundation.min.css">
+
+    <script src="content/chrts/echarts.min.js"></script>
+    <script src="content/chrts/echarts-gl.min.js"></script>
+    <script src="content/chrts/bmap.min.js"></script>
+
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+
+    <!-- Compressed CSS -->
+
+</head>
+<body style="height: 100%; margin: 0">
+
+
+<table border="4">
+<tr>
+    <td width="50%">
+
+        <select id="select_countries">
+            <option value="algeria">Algeria</option>
+            <option value="argentina">Argentina</option>
+            <option value="azerbaijan">Azerbaijan</option>
+            <option value="belgium">Belgium</option>
+            <option value="china">China</option>
+            <option value="colombia">Colombia</option>
+            <option value="czech-republic">Czech Republic</option>
+            <option value="denmark">Denmark</option>
+            <option value="finland">Finland</option>
+            <option value="france">France</option>
+            <option value="germany">Germany</option>
+            <option value="india">India</option>
+            <option value="iran" selected>Iran</option>
+            <option value="ireland">Ireland</option>
+            <option value="italy">Italy</option>
+            <option value="japan">Japan</option>
+            <option value="liberia">Liberia</option>
+            <option value="nepal">Nepal</option>
+            <option value="netherlands">Netherlands</option>
+            <option value="new-zealand">New Zealand</option>
+            <option value="nigeria">Nigeria</option>
+            <option value="norway">Norway</option>
+            <option value="pakistan">Pakistan</option>
+            <option value="peru">Peru</option>
+            <option value="philippines">Philippines</option>
+            <option value="poland">Poland</option>
+            <option value="portugal">Portugal</option>
+            <option value="romania">Romania</option>
+            <option value="south-africa">South Africa</option>
+            <option value="spain">Spain</option>
+            <option value="sweden">Sweden</option>
+            <option value="turkey">Turkey</option>
+            <option value="united-arab-emirates">United Arab Emirates</option>
+            <option value="united-kingdom">United Kingdom</option>
+            <option value="us-states">United states</option>
+            <option value="venezuela">Venezuela</option>
+        </select>
+    </td>
+</tr>
+
+    <tr>
+        <td width="50%" height="100%">
+
+            <div id="map_container" style="height : 400px; width: 400px">
+            </div>
+
+        </td>
+        <td width="50%">
+            &nbsp;
+            <!-- -->
+        </td>
+    </tr>
+</table>
+
+
+
+
+<!-- jQuery must be imported before Foundation -->
+<script src="js/jquery.js"></script>
+<!-- this will include every plugin and utility required by Foundation -->
+
+<script>
+    //http://localhost:63342/GitHub/topojson/countries/algeria/algeria-provinces.json
+    //http://localhost:63342/GitHub/topojson/countries/algeria/
+
+    let global_var;
+    let mapCanvas;
+    function initiate(width=400, height=400)
+    {
+        mapCanvas = d3.select("#map_container")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+    }
+
+   /* var color = d3.scaleQuantize()
+        .domain([0,2000])
+        .range([
+            "#fffaef","#ffed7f",
+            "#ffdb6f", "#ffcd59",
+            "#ff977a", "#ff7f5c",
+            "#ff673d", "#ff4f1f",
+            "#e03100", "#c22a00",
+            "#a32300", "#851d00"
+
+        ]);
+*/
+
+
+
+
+    /*var color = d3.scaleQuantize()
+        .domain([0,2000])
+        .range(["white",'red']);
+        */
+
+
+    let makePlots=function (strCountry="",width=400, height=400)
+    {
+
+        Promise.all([
+            d3.json(strCountry),
+            d3.csv("content/stats/iran.csv")])
+            .then(ready);
+
+
+
+            function ready(country) {
+                let map_data=country[0]
+                let stat=country[1]
+                let feat_data=topojson.feature(map_data, map_data.objects[Object.keys(map_data.objects)[0]]);
+                let center = d3.geoCentroid(country);
+                let projection = d3.geoMercator()
+                    .fitExtent([[0 , 0 ], [400,400]  ],feat_data);
+                let path = d3.geoPath()
+                    .projection(projection);
+                global_var=stat;
+
+                
+
+                let color = d3.scaleLinear()
+                    .domain([1, 2000])
+                    .range(['#d7d0d0', '#e03730'])
+                    .interpolate(d3.interpolateHcl);
+
+
+                mapCanvas.selectAll("path").remove();
+
+                mapCanvas.append("g")
+                    .attr("class", "counties")
+                    .selectAll("path")
+                    .data(topojson.feature(map_data, map_data.objects[Object.keys(map_data.objects)[0]]).features)
+                    .enter().append("path")
+                    .attr("fill", function(d) {
+                        if(stat.length>0)
+                        {
+                            console.log(color(parseInt(stat[stat.length - 1][d.properties.Name])))
+                            return color(parseInt(stat[stat.length - 1][d.properties.Name]))
+                        }
+                        else
+                            {
+                                return 'white'
+                            }
+
+                    })
+                    .style("stroke-width", "1")
+                    .attr("d", path)
+                    .on("mousemove", function (d) {
+                        console.log(d.properties.Name)
+                    });
+                    //.append("title")
+                   // .text(function(d) { return d.rate + "%"; });
+
+                mapCanvas
+                    .insert("path")
+                    .datum(feat_data)
+                    .attr("d", path)
+                    .attr('fill','none')
+                    .style("stroke", "black")
+                    .style("stroke-width", ".5")
+
+
+
+
+
+            }
+                d3.select(self.frameElement).style("height", height + "px");
+
+
+            };
+
+
+
+
+
+    ////////////dropdown menu change
+    d3.select("#select_countries")
+        .on('change',function()
+        {
+
+            let selecteCountry='./content/countries/'+d3.select(this).property('value')+'/';
+            console.log(selecteCountry+"/topo.json");
+            makePlots(strCountry=selecteCountry+"/topo.json");
+
+        });
+
+
+
+    initiate();
+    makePlots(strCountry="./content/countries/iran/topo.json");
+
+</script>
+</body>
+</html>
