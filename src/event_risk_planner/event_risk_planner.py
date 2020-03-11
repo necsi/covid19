@@ -65,3 +65,4 @@ def plot_figure(probs):
             'This calculation at https://github.com/gelisa/covid.git', fontsize=14)
     plt.xlim(10, 10**5);
     plt.ylim(1, 10**6);
+    plt.savefig('event_risk_planner.png')
