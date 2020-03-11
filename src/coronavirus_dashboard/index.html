@@ -92,6 +92,7 @@
 </table>
 
 <script>
+    let data=[];
     let mapCanvas;
     function initiate(width=400, height=400)
     {
@@ -115,14 +116,11 @@
     let makePlots=function (strCountry="",width=400, height=400)
     {
         Promise.all([
-            d3.json(strCountry),
-            d3.csv("content/stats/iran.csv")])
+             d3.json(strCountry)
+            ,d3.csv("content/stats/iran.csv")
+           // ,d3.json('sample.json')
+        ])
             .then(ready)
-
-
-        function update_plot_data(data){
-            console.log(data)
-        }
 
 
         function ready(country) {
@@ -168,13 +166,18 @@
                 .attr("d", path)
                 .attr('fill','none')
                 .style("stroke", "black")
-                .style("stroke-width", ".5")
+                .style("stroke-width", ".5");
 
 
             //////////////////////load charts
 
-            update_plot_data(stat)
+            let prov_data=update_all_provinces(country[1]);
+            plot('chart_1_2',prov_data[0],prov_data[1],prov_data[2]);
+            let sums=cumulative(country[1]);
+            plot('chart_2_1',sums[0],sums[1],sums[2])
 
+            let dayCases=daily_cases(country[1]);
+            plot('chart_2_2',dayCases[0],dayCases[1],dayCases[2])
 
 
         }
@@ -198,56 +201,95 @@
     ///////////// charts using eCharts
 
 
-    //let dom_right = document.getElementById("#chart_1_2");
-    //let myChart = echarts.init(dom_right);
+    function get_key_data(global_data,key) {
+        let temp = [];
+        global_data.forEach(function (d) {temp.push(parseInt(d[key]))});return temp}
 
-    //data=[];
-    function update_plot_data_(cb){
-        //data=[]
-        console.log(cb)
-        /*global_data.forEach(function(d)
-        {if(d.id===cb)
-        {
-            let mid_data_dates=d.data.dates;
-            let mid_data_values=d.data.values;
-            for(let i=0;i<mid_data_dates.length;i++)
-            {
-                data.push([mid_data_dates[i],mid_data_values[i]])
+
+    function get_key_Datetime(global_data,key='Time') {
+        let temp = [];
+        global_data.forEach(function (d) {temp.push(d[key])});return temp}
+
+    function update_all_provinces(global_data)
+    {
+        let X = get_key_Datetime(global_data,'Time');
+        let lines = [];
+        let my_provinces = Object.keys(global_data[0]);
+        let item = '';
+        let legends = [];
+        for (let i = 0; i < my_provinces.length; i++) {
+            item = my_provinces[i];
+            if (item !== 'Time' && item !== 'Sum' && item !== 'Total death' && item.trim() !== '') {
+                legends.push(item);
+                lines.push({name: item, data: get_key_data(global_data,item), type: 'line'})}}
+        return [X,lines,legends]}
+
+
+    function daily_cases(global_data)
+    {
+        let X = get_key_Datetime(global_data,'Time');
+        let lines = [];
+        let my_provinces = Object.keys(global_data[0]);
+        let item = '';
+        let legends = [];
+        data=get_key_data(global_data,'Sum')
+        data.splice(0, 1)
+        let res=[]
+        for(let i=0;i<data.length;i++){
+            if(i==0){
+                res.push(data[i])
             }
-        }});
-        option_right = {
+            else{res.push(data[i]-res[i-1])
+            }}
+
+        lines.push({name: 'daily', data: res, type: 'line'});
+
+        return [X,lines,legends]}
+
+
+
+
+    function cumulative(global_data) {
+        let X = get_key_Datetime(global_data,'Time');
+        let cumsum = get_key_data(global_data,'Sum');
+        let total_dead=get_key_data(global_data,'Total death');
+        let legends=['Sum','Total death'];
+        let lines=[];
+        let item = '';
+        for (let i = 0; i < legends.length; i++) {
+            item = legends[i];
+            lines.push({name: item, data: get_key_data(global_data, item), type: 'line'})
+        }
+        return [X,lines,legends]
+    }
+        
+        
+    function plot(div,X,lines,legends)
+    {
+        let dom = document.getElementById(div);
+        let myChart = echarts.init(dom);
+        let app = {};
+        let option = null;
+        option = {
+           // legend: {
+           //     data: legends
+           // },
+            tooltip: {
+                trigger: 'axis'
+            },
             xAxis: {
-                splitLine: {
-                    show: true
-                }
-                ,
-                data: data.map(function (item) {return item[0];})
+                type: 'category',
+                data: X
             },
+
             yAxis: {
-                splitLine: {
-                    show: true
-                }
+                type: 'value'
             },
-            dataZoom: [
-                {startValue: '2015-01-01'},
-                {type: 'inside'}
-            ],
-            series: [
-                {
-                    name: 'BOM2',
-                    symbolSize: function(){return 10},
-                    type: 'scatter',
-                    data: data
-                },
-                {
-                    name: 'BOM2',
-                    symbolSize: function(){return 10},
-                    type: 'scatter',
-                    data: data
-                }
-            ]
+            series: lines
         };
-        myChart.setOption(option_right);*/
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
     }
 
 
