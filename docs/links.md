@@ -14,4 +14,4 @@ This is a list of links to various resources.
 
 ## Visualizations
 
-- [Doubling Time Tracking](covid19.owenlynch.org/?country=US&days=7)
+- [Doubling Time Tracking](https://covid19.owenlynch.org/?country=US&days=7)
