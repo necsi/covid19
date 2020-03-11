@@ -1,0 +1,9 @@
+[deps]
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+GLM = "38e38edf-8417-5370-95a0-9cbb8c7f171a"
+Genie = "c43c736e-a2d1-11e8-161f-af95117fbd1e"
+JuliaDB = "a93385a2-3734-596a-9a66-3cfbb77141e6"
+LoggingExtras = "e6f89c97-d47a-5376-807f-9c37f3926c36"
+PackageCompiler = "9b87118b-4619-50d2-8e1e-99f35a4d4d9d"
+Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
+StatsPlots = "f3b207a7-027a-5e70-b257-86293d7955fd"
