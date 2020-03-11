@@ -11,3 +11,7 @@ This is a list of links to various resources.
 
 - [Spreadsheet Data](https://docs.google.com/spreadsheets/d/1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/edit#gid=428126019)
 - [Coronavirus Tech Handbook](https://coronavirustechhandbook.com/)
+
+## Visualizations
+
+- [Doubling Time Tracking](covid19.owenlynch.org/?country=US&days=7)
