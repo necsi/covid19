@@ -1,0 +1,1313 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     63368,       1305]
+NotebookOptionsPosition[     59683,       1255]
+NotebookOutlinePosition[     60066,       1271]
+CellTagsIndexPosition[     60023,       1268]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"regions", "=", 
+    RowBox[{"Join", "[", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Western Pacific Region\>\"", ",", "\"\<European Region\>\"", ",", 
+       " ", "\"\<South-East Asia Region\>\"", ",", 
+       "\"\<Eastern Mediterranean Region\>\"", ",", 
+       "\"\<Region of the Americas\>\"", ",", "\"\<African Region\>\"", ",", 
+       "\"\<Subtotal for\>\""}], "}"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"aa", "=", "19"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"bb", "=", "30"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"i", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"WorldFull", "=", 
+    RowBox[{"{", "}"}]}], ";", 
+   RowBox[{"While", "[", 
+    RowBox[{
+     RowBox[{"i", "<=", "9"}], ",", 
+     RowBox[{
+      RowBox[{"WHOdata", "=", 
+       RowBox[{"StringDrop", "[", 
+        RowBox[{
+         RowBox[{"Import", "[", 
+          RowBox[{
+           RowBox[{"StringJoin", "[", 
+            RowBox[{
+            "\"\<https://www.who.int/docs/default-source/coronaviruse/\
+situation-reports/\>\"", ",", 
+             RowBox[{"DateString", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"2020", ",", "02", ",", "aa"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{
+                "\"\<Year\>\"", ",", "\"\<Month\>\"", " ", ",", 
+                 "\"\<Day\>\""}], "}"}]}], "]"}], ",", "\"\<-sitrep-\>\"", 
+             ",", 
+             RowBox[{"ToString", "[", "bb", "]"}], ",", 
+             "\"\<-covid-19.pdf\>\""}], "]"}], ",", "\"\<Plaintext\>\""}], 
+          "]"}], ",", "1000"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"WHOdatamod", "=", 
+       RowBox[{"StringDrop", "[", 
+        RowBox[{
+         RowBox[{"StringDrop", "[", 
+          RowBox[{"WHOdata", ",", 
+           RowBox[{"Flatten", "[", 
+            RowBox[{"StringPosition", "[", 
+             RowBox[{"WHOdata", ",", "\"\<Republic of)\>\""}], "]"}], "]"}]}],
+           "]"}], ",", 
+         RowBox[{"Flatten", "[", 
+          RowBox[{"StringPosition", "[", 
+           RowBox[{"WHOdata", ",", "\"\<(Islamic\>\""}], "]"}], "]"}]}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"textpositions", "=", 
+       RowBox[{"StringPosition", "[", 
+        RowBox[{"WHOdatamod", ",", "regions"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ii", "=", "1"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"regiondata", "=", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"While", "[", 
+       RowBox[{
+        RowBox[{"ii", "<", 
+         RowBox[{"Length", "[", "regions", "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"regionraw", "=", 
+          RowBox[{"StringTake", "[", 
+           RowBox[{
+            RowBox[{"StringDrop", "[", 
+             RowBox[{"WHOdatamod", ",", " ", 
+              RowBox[{"textpositions", "[", 
+               RowBox[{"[", 
+                RowBox[{"ii", ",", "2"}], "]"}], "]"}]}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"textpositions", "[", 
+              RowBox[{"[", 
+               RowBox[{
+                RowBox[{"ii", "+", "1"}], ",", "1"}], "]"}], "]"}], "-", " ", 
+             RowBox[{"textpositions", "[", 
+              RowBox[{"[", 
+               RowBox[{"ii", ",", "2"}], "]"}], "]"}], "-", "1"}]}], "]"}]}], 
+         ";", "\[IndentingNewLine]", 
+         RowBox[{"countrylist", "=", 
+          RowBox[{"TextCases", "[", 
+           RowBox[{"regionraw", ",", " ", "\"\<Country\>\""}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"countrydata", "=", 
+          RowBox[{"Partition", "[", 
+           RowBox[{
+            RowBox[{"StringCases", "[", 
+             RowBox[{"regionraw", ",", " ", "NumberString"}], "]"}], ",", " ",
+             "12"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"countrylistdata", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"Flatten", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"countrylist", "[", 
+                RowBox[{"[", "iii", "]"}], "]"}], ",", 
+               RowBox[{"countrydata", "[", 
+                RowBox[{"[", 
+                 RowBox[{"iii", ",", "1"}], "]"}], "]"}], ",", 
+               RowBox[{"countrydata", "[", 
+                RowBox[{"[", 
+                 RowBox[{"iii", ",", "2"}], "]"}], "]"}], ",", 
+               RowBox[{"countrydata", "[", 
+                RowBox[{"[", 
+                 RowBox[{"iii", ",", "11"}], "]"}], "]"}], ",", 
+               RowBox[{"countrydata", "[", 
+                RowBox[{"[", 
+                 RowBox[{"iii", ",", "12"}], "]"}], "]"}], ",", 
+               "\"\<NA\>\""}], "}"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"iii", ",", "1", ",", 
+              RowBox[{"Length", "[", "countrylist", "]"}]}], "}"}]}], "]"}]}],
+          ";", "\[IndentingNewLine]", 
+         RowBox[{"regionformatted", "=", 
+          RowBox[{"Partition", "[", 
+           RowBox[{
+            RowBox[{"ToExpression", "[", 
+             RowBox[{"Append", "[", 
+              RowBox[{
+               RowBox[{"Riffle", "[", 
+                RowBox[{
+                 RowBox[{"Flatten", "[", "countrylistdata", "]"}], ",", 
+                 RowBox[{"DateString", "[", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"2020", ",", "02", ",", "aa"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    "\"\<Year\>\"", ",", "\"\<Month\>\"", " ", ",", 
+                    "\"\<Day\>\""}], "}"}]}], "]"}], ",", "7"}], "]"}], ",", 
+               RowBox[{"DateString", "[", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"2020", ",", "02", ",", "aa"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                  "\"\<Year\>\"", ",", "\"\<Month\>\"", " ", ",", 
+                   "\"\<Day\>\""}], "}"}]}], "]"}]}], "]"}], "]"}], ",", 
+            "7"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"AppendTo", "[", 
+          RowBox[{"regiondata", ",", "regionformatted"}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ii", "++"}], ";"}]}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"WorldFull", ",", "regiondata"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"i", "++"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"aa", "++"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"bb", "++"}], ";"}]}], "]"}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"aa", "=", "28"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"bb", "=", "39"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"i", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"While", "[", 
+   RowBox[{
+    RowBox[{"i", "<", 
+     RowBox[{
+      RowBox[{"DateValue", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"DateList", "[", "]"}], "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ";;", "3"}], "]"}], "]"}], "-", 
+         RowBox[{"{", 
+          RowBox[{"2020", ",", "02", ",", "28"}], "}"}]}], ",", 
+        "\"\<Day\>\""}], "]"}], "-", "1"}]}], ",", 
+    RowBox[{
+     RowBox[{"WHOdata", "=", 
+      RowBox[{"StringDrop", "[", 
+       RowBox[{
+        RowBox[{"Import", "[", 
+         RowBox[{
+          RowBox[{"StringJoin", "[", 
+           RowBox[{
+           "\"\<https://www.who.int/docs/default-source/coronaviruse/\
+situation-reports/\>\"", ",", 
+            RowBox[{"DateString", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"2020", ",", "02", ",", "aa"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+               "\"\<Year\>\"", ",", "\"\<Month\>\"", " ", ",", 
+                "\"\<Day\>\""}], "}"}]}], "]"}], ",", "\"\<-sitrep-\>\"", ",", 
+            RowBox[{"ToString", "[", "bb", "]"}], ",", 
+            "\"\<-covid-19.pdf\>\""}], "]"}], ",", "\"\<Plaintext\>\""}], 
+         "]"}], ",", "1000"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"WHOdatamod", "=", 
+      RowBox[{"StringDrop", "[", 
+       RowBox[{
+        RowBox[{"StringDrop", "[", 
+         RowBox[{"WHOdata", ",", 
+          RowBox[{"Flatten", "[", 
+           RowBox[{"StringPosition", "[", 
+            RowBox[{"WHOdata", ",", "\"\<Republic of)\>\""}], "]"}], "]"}]}], 
+         "]"}], ",", 
+        RowBox[{"Flatten", "[", 
+         RowBox[{"StringPosition", "[", 
+          RowBox[{"WHOdata", ",", "\"\<(Islamic\>\""}], "]"}], "]"}]}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"textpositions", "=", 
+      RowBox[{"StringPosition", "[", 
+       RowBox[{"WHOdatamod", ",", "regions"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ii", "=", "1"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"regiondata", "=", 
+      RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{"ii", "<", 
+        RowBox[{"Length", "[", "regions", "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"regionraw", "=", 
+         RowBox[{"StringTake", "[", 
+          RowBox[{
+           RowBox[{"StringDrop", "[", 
+            RowBox[{"WHOdatamod", ",", " ", 
+             RowBox[{"textpositions", "[", 
+              RowBox[{"[", 
+               RowBox[{"ii", ",", "2"}], "]"}], "]"}]}], "]"}], ",", 
+           RowBox[{
+            RowBox[{"textpositions", "[", 
+             RowBox[{"[", 
+              RowBox[{
+               RowBox[{"ii", "+", "1"}], ",", "1"}], "]"}], "]"}], "-", " ", 
+            RowBox[{"textpositions", "[", 
+             RowBox[{"[", 
+              RowBox[{"ii", ",", "2"}], "]"}], "]"}], "-", "1"}]}], "]"}]}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"countrylist", "=", 
+         RowBox[{"TextCases", "[", 
+          RowBox[{"regionraw", ",", " ", "\"\<Country\>\""}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"countrydata", "=", 
+         RowBox[{"Partition", "[", 
+          RowBox[{
+           RowBox[{"StringCases", "[", 
+            RowBox[{"regionraw", ",", " ", "NumberString"}], "]"}], ",", " ", 
+           "5"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"countrylistdata", "=", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Flatten", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"countrylist", "[", 
+               RowBox[{"[", "iii", "]"}], "]"}], ",", 
+              RowBox[{"countrydata", "[", 
+               RowBox[{"[", 
+                RowBox[{"iii", ",", ";;"}], "]"}], "]"}]}], "}"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"iii", ",", "1", ",", 
+             RowBox[{"Length", "[", "countrylist", "]"}]}], "}"}]}], "]"}]}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"regionformatted", "=", 
+         RowBox[{"Partition", "[", 
+          RowBox[{
+           RowBox[{"ToExpression", "[", 
+            RowBox[{"Append", "[", 
+             RowBox[{
+              RowBox[{"Riffle", "[", 
+               RowBox[{
+                RowBox[{"Flatten", "[", "countrylistdata", "]"}], ",", 
+                RowBox[{"DateString", "[", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"2020", ",", "02", ",", "aa"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                   "\"\<Year\>\"", ",", "\"\<Month\>\"", " ", ",", 
+                    "\"\<Day\>\""}], "}"}]}], "]"}], ",", "7"}], "]"}], ",", 
+              RowBox[{"DateString", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"2020", ",", "02", ",", "aa"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                 "\"\<Year\>\"", ",", "\"\<Month\>\"", " ", ",", 
+                  "\"\<Day\>\""}], "}"}]}], "]"}]}], "]"}], "]"}], ",", "7"}],
+           "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"regiondata", ",", "regionformatted"}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"ii", "++"}], ";"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"WorldFull", ",", "regiondata"}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"i", "++"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"aa", "++"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"bb", "++"}], ";"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"WorldFullMod", "=", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"ReplacePart", "[", 
+      RowBox[{
+       RowBox[{"ReplacePart", "[", 
+        RowBox[{
+         RowBox[{"Flatten", "[", "WorldFull", "]"}], ",", 
+         RowBox[{
+          RowBox[{"Position", "[", 
+           RowBox[{
+            RowBox[{"Flatten", "[", "WorldFull", "]"}], ",", 
+            RowBox[{"States", " ", "United"}]}], "]"}], "\[Rule]", 
+          "America"}]}], " ", "]"}], ",", 
+       RowBox[{
+        RowBox[{"Position", "[", 
+         RowBox[{
+          RowBox[{"Flatten", "[", "WorldFull", "]"}], ",", 
+          RowBox[{"America", " ", "of", " ", "States", " ", "United"}]}], 
+         "]"}], "\[Rule]", "America"}]}], " ", "]"}], ",", "7"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"worldwithheader", "=", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{"Join", "[", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<Country\>\"", ",", "\"\<Total Confirmed Cases\>\"", ",", 
+         "\"\<Total Confirmed New Cases\>\"", ",", "\"\<Total Deaths\>\"", 
+         ",", "\"\<Total New Deaths\>\"", ",", " ", 
+         "\"\<Days since last reported case\>\"", ",", "\"\<Date\>\"", ",", 
+         "WorldFullMod"}], "}"}], "]"}], "]"}], ",", "7"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{"StringJoin", "[", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], " ", ",", 
+      "\"\<WHO_WORLD_Data_\>\"", ",", 
+      RowBox[{"DateString", "[", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Year\>\"", ",", "\"\<Month\>\"", ",", "\"\<Day\>\""}], 
+        "}"}], "]"}], ",", "\"\<.txt\>\""}], "]"}], ",", "worldwithheader", 
+    ",", "\"\<Table\>\""}], "]"}], ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{
+  3.792409578734164*^9, {3.7924108822987237`*^9, 3.7924109026278863`*^9}, 
+   3.792411064676155*^9, {3.7924111299388876`*^9, 3.7924111308569403`*^9}, 
+   3.7924112218671455`*^9, {3.7924113138904095`*^9, 3.792411314231429*^9}, {
+   3.7924113509685297`*^9, 3.7924115222933292`*^9}, {3.7924115756343803`*^9, 
+   3.792411576246415*^9}, {3.7924116756310997`*^9, 3.7924117120821843`*^9}, 
+   3.7924151472996674`*^9, {3.792416248419648*^9, 3.7924162646605773`*^9}, 
+   3.792416297612462*^9, {3.792416696297265*^9, 3.7924167250809116`*^9}, {
+   3.792416767256324*^9, 3.792416784376303*^9}, {3.7924168225924892`*^9, 
+   3.7924168862251287`*^9}, {3.792416923244246*^9, 3.792416924432314*^9}, {
+   3.7924169977795095`*^9, 3.7924170169036026`*^9}, {3.7924171738705807`*^9, 
+   3.7924172895972*^9}, {3.792417326412306*^9, 3.792417339877076*^9}, {
+   3.7924174006335506`*^9, 3.7924174040127444`*^9}, 3.7924175111298714`*^9, {
+   3.7924175675801*^9, 3.7924175803088284`*^9}, 3.7924176899560995`*^9, 
+   3.7924179544182253`*^9, {3.7924182554154415`*^9, 3.792418272886441*^9}, {
+   3.7924183238353553`*^9, 3.7924183241343727`*^9}, {3.792418360011424*^9, 
+   3.7924183614375057`*^9}, 3.7924184190548015`*^9, 3.7924184524817133`*^9, {
+   3.792418518497489*^9, 3.7924185316852436`*^9}, {3.7924185760937834`*^9, 
+   3.79241857620479*^9}, {3.792418707190282*^9, 3.7924187308536353`*^9}, {
+   3.792418783653655*^9, 3.7924187868918405`*^9}, {3.792418827133142*^9, 
+   3.7924188474053016`*^9}, {3.792418906396676*^9, 3.792418961331818*^9}, {
+   3.792419054099124*^9, 3.7924190548891687`*^9}, {3.7924191003547697`*^9, 
+   3.7924191442002773`*^9}, {3.792419320513362*^9, 3.792419337287321*^9}, 
+   3.792419377585626*^9, {3.7924196708403997`*^9, 3.792419700205079*^9}, {
+   3.792419767270915*^9, 3.792419789358178*^9}, {3.792419969427478*^9, 
+   3.7924199720746293`*^9}, {3.792420470146117*^9, 3.792420473127288*^9}, 
+   3.792420555224983*^9, 3.792420612096236*^9, 3.792420650415428*^9, {
+   3.79242430940571*^9, 3.792424346764847*^9}, 3.792424437079013*^9, {
+   3.7924245865805635`*^9, 3.792424605147626*^9}, {3.79242465312637*^9, 
+   3.7924246628339252`*^9}, {3.7924247101996346`*^9, 3.792424763377676*^9}, 
+   3.792424807554203*^9, {3.7924248480605197`*^9, 3.7924248530408044`*^9}, {
+   3.792424929210161*^9, 3.792424973457692*^9}, {3.7924250824599266`*^9, 
+   3.7924251062102847`*^9}, 3.7924251484397*^9, 3.7924251897200613`*^9, {
+   3.7924252831694064`*^9, 3.7924253218066163`*^9}, 3.792425354414481*^9, {
+   3.792492932083703*^9, 3.7924930226718845`*^9}, {3.792493080871213*^9, 
+   3.792493100527337*^9}, 3.7924951047399716`*^9, 3.7924954537129316`*^9, {
+   3.792495564104246*^9, 3.79249556872651*^9}, {3.7924958105263405`*^9, 
+   3.7924958136365185`*^9}, {3.7924962846894608`*^9, 3.792496285144487*^9}, {
+   3.792496434992058*^9, 3.792496435280074*^9}, {3.792496687335491*^9, 
+   3.79249670742064*^9}, {3.7924967556703997`*^9, 3.792496755868411*^9}, {
+   3.7924968643666162`*^9, 3.792496900165664*^9}, {3.792497024788792*^9, 
+   3.7924970288270235`*^9}, {3.792497124267482*^9, 3.792497124650504*^9}, {
+   3.792499197973091*^9, 3.7924992552053647`*^9}, 3.7924994487324343`*^9, {
+   3.7925065729299145`*^9, 3.7925065756160684`*^9}, 3.792506670736509*^9, {
+   3.792507070132353*^9, 3.7925070759536858`*^9}, {3.7925071419954634`*^9, 
+   3.7925071490918694`*^9}, {3.7925073779779606`*^9, 
+   3.7925074074766483`*^9}, {3.792508148694043*^9, 3.7925081577165594`*^9}, {
+   3.7925088254687524`*^9, 3.792508841712682*^9}, {3.792508929731716*^9, 
+   3.792508933895954*^9}, 3.792508971847125*^9, {3.792509134660437*^9, 
+   3.7925091750787487`*^9}, {3.792511326830822*^9, 3.792511328765933*^9}, {
+   3.7925114419414062`*^9, 3.7925114427894545`*^9}, {3.7925118384550858`*^9, 
+   3.7925118571861567`*^9}, {3.79251191529148*^9, 3.792511952841628*^9}, 
+   3.7925120071377335`*^9},
+ CellLabel->
+  "In[519]:=",ExpressionUUID->"24a6dfd4-be02-4118-a445-5f30b9742028"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"6\\\"}]\\) of \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"11829\\\", \\\",\\\", \\\"11850\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"13032\\\", \\\",\\\", \
+\\\"13053\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"13681\
+\\\", \\\",\\\", \\\"13702\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"14022\\\", \\\",\\\", \\\"14036\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"15446\\\", \\\",\\\", \\\"15473\\\"}], \\\"}\\\
+\"}]}], \\\"}\\\"}]\\) does not exist.\"",2,523,597,15760506302474692350,
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120129710674`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"a22fca26-e3a9-4bc1-8d5b-b44447d1471a"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringTake","mseqs",
+   "\"Sequence specification (+n, -n, {+n}, {-n}, {m, n}, or {m, n, s}) or a \
+list of sequence specifications expected at position \\!\\(\\*RowBox[{\\\"2\\\
+\"}]\\) in \\!\\(\\*RowBox[{\\\"StringTake\\\", \\\"[\\\", RowBox[{RowBox[{\\\
+\"\[LeftSkeleton]\\\", \\\"11521\\\", \\\"\[RightSkeleton]\\\"}], \\\",\\\", \
+RowBox[{RowBox[{\\\"-\\\", \\\"15474\\\"}], \\\"+\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"11829\\\", \
+\\\",\\\", \\\"11850\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"13032\\\", \\\",\\\", \\\"13053\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"13681\\\", \\\",\\\", \\\"13702\\\"}], \\\"}\\\
+\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"14022\\\", \\\",\\\", \
+\\\"14036\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"15446\
+\\\", \\\",\\\", \\\"15473\\\"}], \\\"}\\\"}]}], \\\"}\\\"}], \\\"\
+\[LeftDoubleBracket]\\\", RowBox[{\\\"6\\\", \\\",\\\", \\\"1\\\"}], \\\"\
+\[RightDoubleBracket]\\\"}]}]}], \\\"]\\\"}]\\).\"",2,523,598,
+   15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.792512012982068*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"0abfa2b7-ac6b-47b8-8158-38c20c62e150"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringForm","sfr",
+   "\"Item \\!\\(\\*RowBox[{\\\"1\\\"}]\\) requested in \\\"\\!\\(\\*RowBox[{\
+\\\"\\\\\\\"String, File, ContentObject or non-empty list of these textual \
+objects expected for the text at position ``.\\\\\\\"\\\"}]\\)\\\" out of \
+range; \\!\\(\\*RowBox[{\\\"0\\\"}]\\) items available.\"",2,523,600,
+   15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120129920683`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"2a33c99f-0a2a-4950-a51f-f535644632ef"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "TextCases","nlpstrfile",
+   "\"String, File, ContentObject or non-empty list of these textual objects \
+expected for the text at position ``.\"",2,523,599,15760506302474692350,
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120129990687`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"330495d9-f1c6-4f5d-a5fb-c54d253b93a2"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringCases","strse",
+   "\"String or list of strings expected at position \\!\\(\\*RowBox[{\\\"1\\\
+\"}]\\) in \\!\\(\\*RowBox[{\\\"StringCases\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"StringTake\\\", \\\"[\\\", RowBox[{RowBox[{\\\"\
+\[LeftSkeleton]\\\", \\\"11521\\\", \\\"\[RightSkeleton]\\\"}], \\\",\\\", \
+RowBox[{RowBox[{\\\"-\\\", \\\"15474\\\"}], \\\"+\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"11829\\\", \
+\\\",\\\", \\\"11850\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"13032\\\", \\\",\\\", \\\"13053\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"13681\\\", \\\",\\\", \\\"13702\\\"}], \\\"}\\\
+\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"14022\\\", \\\",\\\", \
+\\\"14036\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"15446\
+\\\", \\\",\\\", \\\"15473\\\"}], \\\"}\\\"}]}], \\\"}\\\"}], \\\"\
+\[LeftDoubleBracket]\\\", RowBox[{\\\"6\\\", \\\",\\\", \\\"1\\\"}], \\\"\
+\[RightDoubleBracket]\\\"}]}]}], \\\"]\\\"}], \\\",\\\", \
+\\\"NumberString\\\"}], \\\"]\\\"}]\\).\"",2,523,601,15760506302474692350,
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.792512013007069*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"d861df48-873d-4963-a2d6-8fc77aa9efe2"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringCases","argt",
+   "\"\\!\\(\\*RowBox[{\\\"StringCases\\\"}]\\) called with \\!\\(\\*RowBox[{\
+\\\"0\\\"}]\\) arguments; \\!\\(\\*RowBox[{\\\"2\\\"}]\\) or \
+\\!\\(\\*RowBox[{\\\"3\\\"}]\\) arguments are expected.\"",2,523,602,
+   15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120130150695`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"7448dc7b-2fd6-4641-b538-d63145d9347b"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"1\\\"}]\\) of \
+\\!\\(\\*RowBox[{\\\"StringCases\\\", \\\"[\\\", \\\"]\\\"}]\\) does not \
+exist.\"",2,523,603,15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120130230703`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"4b027642-a0a3-44d0-97ec-ac961e71c9ce"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"1\\\"}]\\) of \
+\\!\\(\\*RowBox[{\\\"StringCases\\\", \\\"[\\\", \\\"]\\\"}]\\) does not \
+exist.\"",2,523,604,15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.792512013034071*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"3fef23d7-7ab2-4cb0-ac2e-94e953dd1520"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"Part\\\", \\\"::\\\", \
+\\\"partw\\\"}], \\\"MessageName\\\"]\\) will be suppressed during this \
+calculation.\"",2,523,605,15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.792512013134076*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"4dd4b979-363d-4fc6-a164-f4487ce82aba"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "ToExpression","notstrbox",
+   "\"\\!\\(\\*RowBox[{\\\"StringTake\\\", \\\"[\\\", RowBox[{RowBox[{\\\"\
+\[LeftSkeleton]\\\", \\\"11521\\\", \\\"\[RightSkeleton]\\\"}], \\\",\\\", \
+RowBox[{RowBox[{\\\"-\\\", \\\"15474\\\"}], \\\"+\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"11829\\\", \
+\\\",\\\", \\\"11850\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"13032\\\", \\\",\\\", \\\"13053\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"13681\\\", \\\",\\\", \\\"13702\\\"}], \\\"}\\\
+\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"14022\\\", \\\",\\\", \
+\\\"14036\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"15446\
+\\\", \\\",\\\", \\\"15473\\\"}], \\\"}\\\"}]}], \\\"}\\\"}], \\\"\
+\[LeftDoubleBracket]\\\", RowBox[{\\\"6\\\", \\\",\\\", \\\"1\\\"}], \\\"\
+\[RightDoubleBracket]\\\"}]}]}], \\\"]\\\"}]\\) is not a string or a box. \
+ToExpression can only interpret strings or boxes as Wolfram Language \
+input.\"",2,523,606,15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.792512013142077*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"5fe75162-55f0-4a29-be86-032c23540d52"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "ToExpression","notstrbox",
+   "\"\\!\\(\\*RowBox[{RowBox[{\\\"StringCases\\\", \\\"[\\\", \\\"]\\\"}], \
+\\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"1\\\", \\\",\\\", \\\"1\\\"}], \\\"\
+\[RightDoubleBracket]\\\"}]\\) is not a string or a box. ToExpression can \
+only interpret strings or boxes as Wolfram Language input.\"",2,523,607,
+   15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120131510773`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"db3ce0d6-4205-4500-a744-a094c1f92911"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "ToExpression","notstrbox",
+   "\"\\!\\(\\*RowBox[{RowBox[{\\\"StringCases\\\", \\\"[\\\", \\\"]\\\"}], \
+\\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"1\\\", \\\",\\\", \\\"2\\\"}], \\\"\
+\[RightDoubleBracket]\\\"}]\\) is not a string or a box. ToExpression can \
+only interpret strings or boxes as Wolfram Language input.\"",2,523,608,
+   15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120131590776`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"323ab159-2473-4666-8961-cfc73d9f4eac"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"ToExpression\\\", \
+\\\"::\\\", \\\"notstrbox\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
+during this calculation.\"",2,523,609,15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120131670785`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"34e66170-e62a-4c80-8380-f363302ff7a9"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringDrop","seqs",
+   "\"Sequence specification (+n, -n, {+n}, {-n}, {m, n}, or {m, n, s}) \
+expected at position \\!\\(\\*RowBox[{\\\"2\\\"}]\\) in \
+\\!\\(\\*RowBox[{\\\"StringDrop\\\", \\\"[\\\", RowBox[{RowBox[{\\\"\
+\[LeftSkeleton]\\\", \\\"27572\\\", \\\"\[RightSkeleton]\\\"}], \\\",\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"11829\\\", \
+\\\",\\\", \\\"11850\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"13032\\\", \\\",\\\", \\\"13053\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"13681\\\", \\\",\\\", \\\"13702\\\"}], \\\"}\\\
+\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"14022\\\", \\\",\\\", \
+\\\"14036\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"15446\
+\\\", \\\",\\\", \\\"15473\\\"}], \\\"}\\\"}]}], \\\"}\\\"}], \\\"\
+\[LeftDoubleBracket]\\\", RowBox[{\\\"6\\\", \\\",\\\", \\\"2\\\"}], \\\"\
+\[RightDoubleBracket]\\\"}]}], \\\"]\\\"}]\\).\"",2,523,610,
+   15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.792512013174079*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"ebf0056d-6b00-41b8-a82a-1d8873d62ce3"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringTake","strse",
+   "\"String or list of strings expected at position \\!\\(\\*RowBox[{\\\"1\\\
+\"}]\\) in \\!\\(\\*RowBox[{\\\"StringTake\\\", \\\"[\\\", RowBox[{RowBox[{\\\
+\"StringDrop\\\", \\\"[\\\", RowBox[{RowBox[{\\\"\[LeftSkeleton]\\\", \
+\\\"27572\\\", \\\"\[RightSkeleton]\\\"}], \\\",\\\", RowBox[{RowBox[{\\\"{\\\
+\", RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"11829\\\", \\\",\\\", \
+\\\"11850\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"13032\
+\\\", \\\",\\\", \\\"13053\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"13681\\\", \\\",\\\", \\\"13702\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"14022\\\", \\\",\\\", \\\"14036\\\"}], \\\"}\\\
+\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"15446\\\", \\\",\\\", \
+\\\"15473\\\"}], \\\"}\\\"}]}], \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \
+RowBox[{\\\"6\\\", \\\",\\\", \\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}], \
+\\\"]\\\"}], \\\",\\\", RowBox[{RowBox[{\\\"-\\\", \\\"1\\\"}], \\\"-\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"11829\\\", \
+\\\",\\\", \\\"11850\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"13032\\\", \\\",\\\", \\\"13053\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"13681\\\", \\\",\\\", \\\"13702\\\"}], \\\"}\\\
+\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"14022\\\", \\\",\\\", \
+\\\"14036\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"15446\
+\\\", \\\",\\\", \\\"15473\\\"}], \\\"}\\\"}]}], \\\"}\\\"}], \\\"\
+\[LeftDoubleBracket]\\\", RowBox[{\\\"6\\\", \\\",\\\", \\\"2\\\"}], \\\"\
+\[RightDoubleBracket]\\\"}], \\\"+\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"11829\\\", \\\",\\\", \\\"11850\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"13032\\\", \\\",\\\", \
+\\\"13053\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"13681\
+\\\", \\\",\\\", \\\"13702\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"14022\\\", \\\",\\\", \\\"14036\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"15446\\\", \\\",\\\", \\\"15473\\\"}], \\\"}\\\
+\"}]}], \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"7\\\", \\\",\\\
+\", \\\"1\\\"}], \\\"\[RightDoubleBracket]\\\"}]}]}], \\\"]\\\"}]\\).\"",2,
+   523,611,15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.79251201319808*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"15e6d6a5-90fc-4c23-86a0-b59f0d5f2c97"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringForm","sfr",
+   "\"Item \\!\\(\\*RowBox[{\\\"1\\\"}]\\) requested in \\\"\\!\\(\\*RowBox[{\
+\\\"\\\\\\\"String, File, ContentObject or non-empty list of these textual \
+objects expected for the text at position ``.\\\\\\\"\\\"}]\\)\\\" out of \
+range; \\!\\(\\*RowBox[{\\\"0\\\"}]\\) items available.\"",2,523,613,
+   15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120132190814`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"147ca18c-d06d-4048-a193-139db33d20b1"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "TextCases","nlpstrfile",
+   "\"String, File, ContentObject or non-empty list of these textual objects \
+expected for the text at position ``.\"",2,523,612,15760506302474692350,
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120132390823`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"00e14c76-4575-4150-a6e8-1e928ef5393b"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringCases","strse",
+   "\"String or list of strings expected at position \\!\\(\\*RowBox[{\\\"1\\\
+\"}]\\) in \\!\\(\\*RowBox[{\\\"StringCases\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"StringTake\\\", \\\"[\\\", RowBox[{RowBox[{\\\"StringDrop\
+\\\", \\\"[\\\", RowBox[{RowBox[{\\\"\[LeftSkeleton]\\\", \\\"27572\\\", \\\"\
+\[RightSkeleton]\\\"}], \\\",\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"11829\\\", \\\",\\\", \\\"11850\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"13032\\\", \\\",\\\", \
+\\\"13053\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"13681\
+\\\", \\\",\\\", \\\"13702\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"14022\\\", \\\",\\\", \\\"14036\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"15446\\\", \\\",\\\", \\\"15473\\\"}], \\\"}\\\
+\"}]}], \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"6\\\", \\\",\\\
+\", \\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}], \\\"]\\\"}], \\\",\\\", \
+RowBox[{RowBox[{\\\"-\\\", \\\"1\\\"}], \\\"-\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"11829\\\", \\\",\\\", \\\"11850\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"13032\\\", \\\",\\\", \
+\\\"13053\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"13681\
+\\\", \\\",\\\", \\\"13702\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"14022\\\", \\\",\\\", \\\"14036\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"15446\\\", \\\",\\\", \\\"15473\\\"}], \\\"}\\\
+\"}]}], \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"6\\\", \\\",\\\
+\", \\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}], \\\"+\\\", RowBox[{RowBox[{\
+\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"11829\\\", \\\",\\\", \
+\\\"11850\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"13032\
+\\\", \\\",\\\", \\\"13053\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"13681\\\", \\\",\\\", \\\"13702\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"14022\\\", \\\",\\\", \\\"14036\\\"}], \\\"}\\\
+\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"15446\\\", \\\",\\\", \
+\\\"15473\\\"}], \\\"}\\\"}]}], \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \
+RowBox[{\\\"7\\\", \\\",\\\", \\\"1\\\"}], \
+\\\"\[RightDoubleBracket]\\\"}]}]}], \\\"]\\\"}], \\\",\\\", \\\"NumberString\
+\\\"}], \\\"]\\\"}]\\).\"",2,523,614,15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120132610836`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"f549c08f-41c2-4c03-a34d-dcc538fe7f15"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringCases","argt",
+   "\"\\!\\(\\*RowBox[{\\\"StringCases\\\"}]\\) called with \\!\\(\\*RowBox[{\
+\\\"0\\\"}]\\) arguments; \\!\\(\\*RowBox[{\\\"2\\\"}]\\) or \
+\\!\\(\\*RowBox[{\\\"3\\\"}]\\) arguments are expected.\"",2,523,615,
+   15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120132900853`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"fea2bdaa-cdde-4b09-9b71-5d5de29f691c"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringTake","mseqs",
+   "\"Sequence specification (+n, -n, {+n}, {-n}, {m, n}, or {m, n, s}) or a \
+list of sequence specifications expected at position \\!\\(\\*RowBox[{\\\"2\\\
+\"}]\\) in \\!\\(\\*RowBox[{\\\"StringTake\\\", \\\"[\\\", RowBox[{RowBox[{\\\
+\"\[LeftSkeleton]\\\", \\\"7723\\\", \\\"\[RightSkeleton]\\\"}], \\\",\\\", \
+RowBox[{RowBox[{\\\"-\\\", \\\"12057\\\"}], \\\"+\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"8880\\\", \
+\\\",\\\", \\\"8901\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"9843\\\", \\\",\\\", \\\"9864\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"10338\\\", \\\",\\\", \\\"10359\\\"}], \\\"}\\\
+\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"10600\\\", \\\",\\\", \
+\\\"10614\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"11673\
+\\\", \\\",\\\", \\\"11700\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"12045\\\", \\\",\\\", \\\"12056\\\"}], \\\"}\\\"}]}], \
+\\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"7\\\", \\\",\\\", \
+\\\"1\\\"}], \\\"\[RightDoubleBracket]\\\"}]}]}], \\\"]\\\"}]\\).\"",2,523,
+   616,15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120190584154`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"cfaf8ab8-b4d9-4d47-b416-11b3d5a58b25"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringForm","sfr",
+   "\"Item \\!\\(\\*RowBox[{\\\"1\\\"}]\\) requested in \\\"\\!\\(\\*RowBox[{\
+\\\"\\\\\\\"String, File, ContentObject or non-empty list of these textual \
+objects expected for the text at position ``.\\\\\\\"\\\"}]\\)\\\" out of \
+range; \\!\\(\\*RowBox[{\\\"0\\\"}]\\) items available.\"",2,523,618,
+   15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.792512019066416*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"2d3f82bb-e7e4-47f5-958f-bd4225cb1678"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"StringForm\\\", \
+\\\"::\\\", \\\"sfr\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"",2,523,619,15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.792512019074416*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"1b9ee26b-6e79-49df-a32f-6127d20b4ec0"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "TextCases","nlpstrfile",
+   "\"String, File, ContentObject or non-empty list of these textual objects \
+expected for the text at position ``.\"",2,523,617,15760506302474692350,
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.792512019081417*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"fadec444-75ca-4b0a-84aa-fbb5a6a58afa"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"TextCases\\\", \\\"::\\\
+\", \\\"nlpstrfile\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"",2,523,620,15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120190894175`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"7c88aeb5-4c76-46e8-9ae0-04d794ae3258"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringCases","strse",
+   "\"String or list of strings expected at position \\!\\(\\*RowBox[{\\\"1\\\
+\"}]\\) in \\!\\(\\*RowBox[{\\\"StringCases\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"StringTake\\\", \\\"[\\\", RowBox[{RowBox[{\\\"\
+\[LeftSkeleton]\\\", \\\"7723\\\", \\\"\[RightSkeleton]\\\"}], \\\",\\\", \
+RowBox[{RowBox[{\\\"-\\\", \\\"12057\\\"}], \\\"+\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"8880\\\", \
+\\\",\\\", \\\"8901\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"9843\\\", \\\",\\\", \\\"9864\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"10338\\\", \\\",\\\", \\\"10359\\\"}], \\\"}\\\
+\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"10600\\\", \\\",\\\", \
+\\\"10614\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"11673\
+\\\", \\\",\\\", \\\"11700\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"12045\\\", \\\",\\\", \\\"12056\\\"}], \\\"}\\\"}]}], \
+\\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"7\\\", \\\",\\\", \
+\\\"1\\\"}], \\\"\[RightDoubleBracket]\\\"}]}]}], \\\"]\\\"}], \\\",\\\", \
+\\\"NumberString\\\"}], \\\"]\\\"}]\\).\"",2,523,621,15760506302474692350,
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120190994177`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"76876c2b-f985-45cc-af1a-b3789bc61482"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"StringCases\\\", \\\"::\
+\\\", \\\"strse\\\"}], \\\"MessageName\\\"]\\) will be suppressed during this \
+calculation.\"",2,523,622,15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120192034235`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"72c1ecbe-9f32-416c-9f91-bfcdc147dd2b"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringCases","argt",
+   "\"\\!\\(\\*RowBox[{\\\"StringCases\\\"}]\\) called with \\!\\(\\*RowBox[{\
+\\\"0\\\"}]\\) arguments; \\!\\(\\*RowBox[{\\\"2\\\"}]\\) or \
+\\!\\(\\*RowBox[{\\\"3\\\"}]\\) arguments are expected.\"",2,523,623,
+   15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.792512019254427*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"1188fcee-6e88-4ba6-8749-2234676e772f"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"StringCases\\\", \\\"::\
+\\\", \\\"argt\\\"}], \\\"MessageName\\\"]\\) will be suppressed during this \
+calculation.\"",2,523,624,15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120192634273`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"782432ad-652c-4041-a630-8a3bdd81fd4f"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringTake","mseqs",
+   "\"Sequence specification (+n, -n, {+n}, {-n}, {m, n}, or {m, n, s}) or a \
+list of sequence specifications expected at position \\!\\(\\*RowBox[{\\\"2\\\
+\"}]\\) in \\!\\(\\*RowBox[{\\\"StringTake\\\", \\\"[\\\", RowBox[{RowBox[{\\\
+\"\[LeftSkeleton]\\\", \\\"7727\\\", \\\"\[RightSkeleton]\\\"}], \\\",\\\", \
+RowBox[{RowBox[{\\\"-\\\", \\\"12514\\\"}], \\\"+\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"9084\\\", \
+\\\",\\\", \\\"9105\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"10050\\\", \\\",\\\", \\\"10071\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"10547\\\", \\\",\\\", \\\"10568\\\"}], \\\"}\\\
+\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"10824\\\", \\\",\\\", \
+\\\"10838\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"12015\
+\\\", \\\",\\\", \\\"12042\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"12502\\\", \\\",\\\", \\\"12513\\\"}], \\\"}\\\"}]}], \
+\\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"7\\\", \\\",\\\", \
+\\\"1\\\"}], \\\"\[RightDoubleBracket]\\\"}]}]}], \\\"]\\\"}]\\).\"",2,523,
+   625,15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.792512021044529*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"f474ee28-145a-4c9d-baab-d45c460e76b0"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"StringTake\\\", \
+\\\"::\\\", \\\"mseqs\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
+during this calculation.\"",2,523,626,15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120210535297`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"2b899483-6549-437a-a7c2-ee5305c86d5b"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"11\\\"}]\\) of \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"129\\\\\\\"\\\", \\\",\\\", \\\
+\"\\\\\\\"21\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"9\\\\\\\"\\\", \\\",\\\", \\\
+\"\\\\\\\"3\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\"}], \\\"}\\\"}], \
+\\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"30\\\\\\\"\\\", \\\",\\\", \
+\\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \
+\\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"1\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"7\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"1\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"5\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"1\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"1\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"1\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"1\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"1\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"1\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"2\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"2\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"1\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"2\\\\\\\"\\\"}], \
+\\\"}\\\"}]}], \\\"}\\\"}]\\) does not exist.\"",2,527,627,
+   15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.792512044653879*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"a637241f-d418-4bd8-8351-7aa241daafcc"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "ToExpression","notstrbox",
+   "\"\\!\\(\\*RowBox[{RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", RowBox[{\
+\\\"\\\\\\\"129\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"21\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"9\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\
+\\\", RowBox[{\\\"\\\\\\\"30\\\\\\\"\\\", \\\",\\\", \
+\\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \
+\\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"1\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"7\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"1\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"5\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"1\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"1\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"1\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"1\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"1\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"1\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"2\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"2\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"1\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"0\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"2\\\\\\\"\\\"}], \
+\\\"}\\\"}]}], \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"11\\\", \
+\\\",\\\", RowBox[{\\\"1\\\", \\\";;\\\", \\\"All\\\"}]}], \\\"\
+\[RightDoubleBracket]\\\"}]\\) is not a string or a box. ToExpression can \
+only interpret strings or boxes as Wolfram Language input.\"",2,527,628,
+   15760506302474692350,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.792508979261549*^9, 3.7925090670155683`*^9, 
+  3.792509193698814*^9, 3.7925114533410583`*^9, 3.792511523347062*^9, 
+  3.7925120446638803`*^9},
+ CellLabel->
+  "During evaluation of \
+In[519]:=",ExpressionUUID->"de26907b-b1ef-416c-887e-5fa8c75f0838"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"listofcountries", "=", 
+   RowBox[{"Take", "[", 
+    RowBox[{"DeleteDuplicates", "[", 
+     RowBox[{"WorldFullMod", "[", 
+      RowBox[{"[", 
+       RowBox[{";;", ",", "1"}], "]"}], "]"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"worldfullbydate", "=", 
+   RowBox[{"SortBy", "[", 
+    RowBox[{"WorldFullMod", ",", "Last"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"DateListPlot", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"worldfullbydate", "[", 
+         RowBox[{"[", "j", "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"j", ",", 
+          RowBox[{
+           RowBox[{"Position", "[", 
+            RowBox[{"worldfullbydate", ",", 
+             RowBox[{"listofcountries", "[", 
+              RowBox[{"[", "x", "]"}], "]"}]}], "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{";;", ",", "1"}], "]"}], "]"}]}], "}"}]}], "]"}], "[", 
+      RowBox[{"[", 
+       RowBox[{";;", ",", "2"}], "]"}], "]"}], ",", 
+     RowBox[{"DateObject", "[", 
+      RowBox[{"ToString", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"worldfullbydate", "[", 
+           RowBox[{"[", "j", "]"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"j", ",", 
+            RowBox[{
+             RowBox[{"Position", "[", 
+              RowBox[{"worldfullbydate", ",", 
+               RowBox[{"listofcountries", "[", 
+                RowBox[{"[", "x", "]"}], "]"}]}], "]"}], "[", 
+             RowBox[{"[", 
+              RowBox[{";;", ",", "1"}], "]"}], "]"}]}], "}"}]}], "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "7"}], "]"}], "]"}], "]"}], "]"}], ",", 
+     RowBox[{"PlotLabel", "\[Rule]", 
+      RowBox[{"listofcountries", "[", 
+       RowBox[{"[", "x", "]"}], "]"}]}], ",", 
+     RowBox[{"PlotRange", "->", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"2020", ",", "2", ",", "19"}], "}"}], ",", 
+          RowBox[{"DateValue", "[", 
+           RowBox[{
+            RowBox[{"DateList", "[", "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+             "\"\<Year\>\"", ",", "\"\<Month\>\"", ",", "\"\<Day\>\""}], 
+             "}"}]}], "]"}]}], "}"}], ",", "Automatic"}], "}"}]}]}], "]"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "1", ",", 
+     RowBox[{"Length", "[", "listofcountries", "]"}], ",", "1"}], "}"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.7925008267372513`*^9, 3.79250107463743*^9}, {
+   3.7925011425263133`*^9, 3.792501220388767*^9}, {3.7925012842364187`*^9, 
+   3.7925014045553007`*^9}, {3.792501678873991*^9, 3.792501767723072*^9}, 
+   3.7925021602475233`*^9, 3.7925021949275074`*^9, {3.79250266213223*^9, 
+   3.7925027087798977`*^9}, {3.7925027609778833`*^9, 3.7925027740196295`*^9}, 
+   3.792502832722987*^9, {3.792508316156622*^9, 3.7925083273142595`*^9}, 
+   3.7925083697246857`*^9, {3.7925085402504387`*^9, 3.792508567810015*^9}, {
+   3.7925093951723375`*^9, 3.7925093962604*^9}, {3.792513476487776*^9, 
+   3.7925134853432817`*^9}, {3.7925138309170475`*^9, 
+   3.7925138388685026`*^9}, {3.792513956581235*^9, 3.792513961491516*^9}},
+ CellLabel->
+  "In[540]:=",ExpressionUUID->"46c21625-1aac-4118-9e0b-258f43632713"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`x$$ = 5, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`x$$], 1, 94, 1}}, Typeset`size$$ = {
+    360., {121., 127.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`x$320123$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`x$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`x$$, $CellContext`x$320123$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> DateListPlot[
+        Part[
+         Table[
+          Part[$CellContext`worldfullbydate, $CellContext`j], {$CellContext`j, 
+           Part[
+            Position[$CellContext`worldfullbydate, 
+             Part[$CellContext`listofcountries, $CellContext`x$$]], 
+            Span[1, All], 1]}], 
+         Span[1, All], 2], 
+        DateObject[
+         ToString[
+          Part[
+           Table[
+            
+            Part[$CellContext`worldfullbydate, $CellContext`j], \
+{$CellContext`j, 
+             Part[
+              Position[$CellContext`worldfullbydate, 
+               Part[$CellContext`listofcountries, $CellContext`x$$]], 
+              Span[1, All], 1]}], 1, 7]]], PlotLabel -> 
+        Part[$CellContext`listofcountries, $CellContext`x$$], 
+        PlotRange -> {{{2020, 2, 19}, 
+           DateValue[
+            DateList[], {"Year", "Month", "Day"}]}, Automatic}], 
+      "Specifications" :> {{$CellContext`x$$, 1, 94, 1}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{411., {167., 174.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Input",
+ CellChangeTimes->{3.7925140731319017`*^9},
+ CellLabel->
+  "In[543]:=",ExpressionUUID->"e0e3edfd-64c9-4a80-b7e8-a2195f4b385b"]
+},
+WindowSize->{1671, 857},
+WindowMargins->{{14, Automatic}, {33, Automatic}},
+TaggingRules->{"TryRealOnly" -> False},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 18415, 410, 998, "Input",ExpressionUUID->"24a6dfd4-be02-4118-a445-5f30b9742028"],
+Cell[18998, 434, 993, 18, 21, "Message",ExpressionUUID->"a22fca26-e3a9-4bc1-8d5b-b44447d1471a"],
+Cell[19994, 454, 1433, 24, 21, "Message",ExpressionUUID->"0abfa2b7-ac6b-47b8-8158-38c20c62e150"],
+Cell[21430, 480, 697, 14, 21, "Message",ExpressionUUID->"2a33c99f-0a2a-4950-a51f-f535644632ef"],
+Cell[22130, 496, 532, 12, 21, "Message",ExpressionUUID->"330495d9-f1c6-4f5d-a5fb-c54d253b93a2"],
+Cell[22665, 510, 1455, 25, 21, "Message",ExpressionUUID->"d861df48-873d-4963-a2d6-8fc77aa9efe2"],
+Cell[24123, 537, 609, 13, 21, "Message",ExpressionUUID->"7448dc7b-2fd6-4641-b538-d63145d9347b"],
+Cell[24735, 552, 531, 12, 21, "Message",ExpressionUUID->"4b027642-a0a3-44d0-97ec-ac961e71c9ce"],
+Cell[25269, 566, 529, 12, 21, "Message",ExpressionUUID->"3fef23d7-7ab2-4cb0-ac2e-94e953dd1520"],
+Cell[25801, 580, 566, 12, 21, "Message",ExpressionUUID->"4dd4b979-363d-4fc6-a164-f4487ce82aba"],
+Cell[26370, 594, 1377, 23, 21, "Message",ExpressionUUID->"5fe75162-55f0-4a29-be86-032c23540d52"],
+Cell[27750, 619, 709, 14, 21, "Message",ExpressionUUID->"db3ce0d6-4205-4500-a744-a094c1f92911"],
+Cell[28462, 635, 709, 14, 21, "Message",ExpressionUUID->"323ab159-2473-4666-8961-cfc73d9f4eac"],
+Cell[29174, 651, 580, 12, 21, "Message",ExpressionUUID->"34e66170-e62a-4c80-8380-f363302ff7a9"],
+Cell[29757, 665, 1336, 23, 21, "Message",ExpressionUUID->"ebf0056d-6b00-41b8-a82a-1d8873d62ce3"],
+Cell[31096, 690, 2697, 40, 56, "Message",ExpressionUUID->"15e6d6a5-90fc-4c23-86a0-b59f0d5f2c97"],
+Cell[33796, 732, 697, 14, 21, "Message",ExpressionUUID->"147ca18c-d06d-4048-a193-139db33d20b1"],
+Cell[34496, 748, 532, 12, 21, "Message",ExpressionUUID->"00e14c76-4575-4150-a6e8-1e928ef5393b"],
+Cell[35031, 762, 2797, 41, 56, "Message",ExpressionUUID->"f549c08f-41c2-4c03-a34d-dcc538fe7f15"],
+Cell[37831, 805, 609, 13, 21, "Message",ExpressionUUID->"fea2bdaa-cdde-4b09-9b71-5d5de29f691c"],
+Cell[38443, 820, 1526, 25, 21, "Message",ExpressionUUID->"cfaf8ab8-b4d9-4d47-b416-11b3d5a58b25"],
+Cell[39972, 847, 695, 14, 21, "Message",ExpressionUUID->"2d3f82bb-e7e4-47f5-958f-bd4225cb1678"],
+Cell[40670, 863, 570, 12, 21, "Message",ExpressionUUID->"1b9ee26b-6e79-49df-a32f-6127d20b4ec0"],
+Cell[41243, 877, 530, 12, 21, "Message",ExpressionUUID->"fadec444-75ca-4b0a-84aa-fbb5a6a58afa"],
+Cell[41776, 891, 578, 12, 21, "Message",ExpressionUUID->"7c88aeb5-4c76-46e8-9ae0-04d794ae3258"],
+Cell[42357, 905, 1548, 26, 21, "Message",ExpressionUUID->"76876c2b-f985-45cc-af1a-b3789bc61482"],
+Cell[43908, 933, 575, 12, 21, "Message",ExpressionUUID->"72c1ecbe-9f32-416c-9f91-bfcdc147dd2b"],
+Cell[44486, 947, 607, 13, 21, "Message",ExpressionUUID->"1188fcee-6e88-4ba6-8749-2234676e772f"],
+Cell[45096, 962, 574, 12, 21, "Message",ExpressionUUID->"782432ad-652c-4041-a630-8a3bdd81fd4f"],
+Cell[45673, 976, 1526, 25, 21, "Message",ExpressionUUID->"f474ee28-145a-4c9d-baab-d45c460e76b0"],
+Cell[47202, 1003, 574, 12, 21, "Message",ExpressionUUID->"2b899483-6549-437a-a7c2-ee5305c86d5b"],
+Cell[47779, 1017, 2894, 42, 21, "Message",ExpressionUUID->"a637241f-d418-4bd8-8351-7aa241daafcc"],
+Cell[50676, 1061, 3109, 45, 21, "Message",ExpressionUUID->"de26907b-b1ef-416c-887e-5fa8c75f0838"]
+}, Open  ]],
+Cell[53800, 1109, 3374, 85, 105, "Input",ExpressionUUID->"46c21625-1aac-4118-9e0b-258f43632713"],
+Cell[57177, 1196, 2502, 57, 356, "Input",ExpressionUUID->"e0e3edfd-64c9-4a80-b7e8-a2195f4b385b"]
+}
+]
+*)
+
