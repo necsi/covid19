@@ -66,3 +66,8 @@ def plot_figure(probs):
     plt.xlim(10, 10**5);
     plt.ylim(1, 10**6);
     plt.savefig('event_risk_planner.png')
+    
+    
+if __name__ == "__main__":
+    probs = calculate_event_sizes()
+    plot_figure(probs)
