@@ -12,7 +12,7 @@ This is the directory where documentation goes. Start here. This also contains a
 
 This is the directory where spec for APIs, including ElasticSearch schemas goes.
 
-## code
+## src
 
 This is the top-level directory for all of the code that volunteers write.
 
