@@ -10,8 +10,4 @@ This is a list of links to various resources.
 ## Data Sources
 
 - [Spreadsheet Data](https://docs.google.com/spreadsheets/d/1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/edit#gid=428126019)
-- [Corona Virus Tech Handbook Data](https://coronavirustechhandbook.com/data)
-
-## Visualizations
-
-- [Corona Virus Tech Handbook Visualizations](https://coronavirustechhandbook.com/infographics)
+- [Coronavirus Tech Handbook](https://coronavirustechhandbook.com/)
