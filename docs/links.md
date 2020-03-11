@@ -11,6 +11,7 @@ This is a list of links to various resources.
 
 - [Spreadsheet Data for Case Tracking](https://docs.google.com/spreadsheets/d/1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/edit#gid=428126019)
 - [Spreadsheet Data for Policy Tracking](https://docs.google.com/spreadsheets/d/1ITsY1N5kQYuj59-vkji_kEMMOUXx9JuOiW33xYqf3Ec/edit?usp=sharing)
+- [Spreadsheet Data for Government Measures](https://docs.google.com/spreadsheets/d/18f0eX5trKnWjR0RTv_-XdJGGKHQDu8r2cOU3TwFrVdM/edit?usp=sharing)
 - [Coronavirus Tech Handbook](https://coronavirustechhandbook.com/)
 
 ## Visualizations
