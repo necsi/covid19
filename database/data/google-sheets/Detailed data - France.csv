@@ -1,4 +1,4 @@
-,Auvergne-Rhône-Alpes,Bourgogne-Franche-Comté,Bretagne,Centre-Val de Loire,Corse,Grand Est,Hauts-de-France,Ile-de-France,Normandie,Nouvelle-Aquitaine,Occitanie,Pays de la Loire,Provence-Alpes-Côte d’Azur,"Guadeloupe, Saint-Martin, Saint-Barthélemy",Guyane,Martinique ,Mayotte,La Réunion,Total,New
+SOURCE,Auvergne-Rhône-Alpes,Bourgogne-Franche-Comté,Bretagne,Centre-Val de Loire,Corse,Grand Est,Hauts-de-France,Ile-de-France,Normandie,Nouvelle-Aquitaine,Occitanie,Pays de la Loire,Provence-Alpes-Côte d’Azur,"Guadeloupe, Saint-Martin, Saint-Barthélemy",Guyane,Martinique ,Mayotte,La Réunion,Total,New
 2020-01-22,,,,,,,,,,,,,,,,,,,0,0
 2020-01-23,,,,,,,,,,,,,,,,,,,0,0
 2020-01-24,,,,,,,,,,,,,,,,,,,2,2
@@ -40,7 +40,16 @@
 2020-02-29,,,,,,,,,,,,,,,,,,,100,43
 2020-03-01,,,,,,,,,,,,,,,,,,,130,30
 2020-03-02,,,,,,,,,,,,,,,,,,,191,61
-2020-03-03,,,,,,,,,,,,,,,,,,,204,13
-2020-03-04,,,,,,,,,,,,,,,,,,,285,81
-2020-03-05,64,39,29,2,3,77,74,76,6,8,11,8,18,3,5,0,0,0,422,137
-2020-03-06,,,,,,,,,,,,,,,,,,,577,155
+2020-03-03,,,,,,,,,,,,,,,,,,,212,21
+2020-03-04,,,,,,,,,,,,,,,,,,,285,73
+2020-03-05,64,39,29,2,3,77,74,76,6,8,11,8,18,3,5,0,0,0,423,138
+2020-03-06,75,78,32,11,3,136,97,89,11,11,18,16,26,3,5,2,0,0,613,190
+2020-03-07,102,129,40,16,5,250,173,104,11,17,36,18,38,3,5,2,0,0,949,336
+2020-03-08,146,,71,,38,262,173,300,25,39,,,72,,,,,,,
+2020-03-09,,,,,,,,,,,,,,,,,,,,
+2020-03-10,,,,,,,,,,,,,,,,,,,,
+2020-03-11,,,,,,,,,,,,,,,,,,,,
+2020-03-12,,,,,,,,,,,,,,,,,,,,
+2020-03-13,,,,,,,,,,,,,,,,,,,,
+2020-03-14,,,,,,,,,,,,,,,,,,,,
+2020-03-15,,,,,,,,,,,,,,,,,,,,

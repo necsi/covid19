@@ -1,27 +1,8 @@
-import requests
-import codecs
-import csv
-from contextlib import closing
 import numpy as np
 import pandas as pd
 import json
 from datetime import datetime, timedelta
-
-
-def download_csv_to_dataframe(url):
-    """
-    Download a CSV file and return a Pandas DataFrame.
-
-    :param url: str
-    :return: pandas.DataFrame
-    """
-    with closing(requests.get(url, stream=True)) as r:
-        reader = csv.reader(codecs.iterdecode(r.iter_lines(), 'utf-8'), delimiter=',', quotechar='"')
-        data = [row for row in reader]
-        header_row = data[0]
-        data = data[1:]
-        df = pd.DataFrame(data = data, index=np.arange(1, len(data)+1), columns=header_row)
-        return df
+from ..utils.csv_to_dataframe import download_csv_to_dataframe
 
 
 def clean_italy_data(df):
@@ -49,10 +30,11 @@ def clean_italy_data(df):
     return df
 
 
-def create_json_for_mapping_software(df):
+def create_json_for_mapping_software(df, target_directory):
     """
     Clean italy data
 
+    :param target_directory: str 
     :param df: pandas.DataFrame
     :return: None
     """
@@ -75,18 +57,24 @@ def create_json_for_mapping_software(df):
         format_for_map[key] = {'scalerank': confirmed_by_region[key], 'one_day': delta}
 
     # Save dictionary as json file
-    with open('italy/italy-confirmed-by-region.json', 'w') as json_file:
+    with open(f'{target_directory}italy-confirmed-by-region.json', 'w') as json_file:
         json.dump(format_for_map, json_file)
     return None
 
 
-# Download CSV to pandas Dataframe
-df = download_csv_to_dataframe('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv')
+def download_italy_data(target_directory):
+    """
+    Downloads a CSV and returns a pandas DataFrame
 
-# Clean data
-df = clean_italy_data(df)
+    :param target_directory: str
+    :return: pandas.DataFrame
+    """
+    # Download CSV to pandas Dataframe
+    df = download_csv_to_dataframe('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv')
 
-# Save CSV for later aggregation
-df.to_csv('italy/italy-data.csv', index=False)
+    # Clean data
+    df = clean_italy_data(df)
 
-create_json_for_mapping_software(df)
+    # Save CSV for later aggregation
+    df.to_csv(f'{target_directory}italy-data.csv', index=False)
+    return df
