@@ -117,7 +117,14 @@
         Promise.all([
             d3.json(strCountry),
             d3.csv("content/stats/iran.csv")])
-            .then(ready);
+            .then(ready)
+
+
+        function update_plot_data(data){
+            console.log(data)
+        }
+
+
         function ready(country) {
             let map_data=country[0]
             let stat=country[1]
@@ -162,8 +169,20 @@
                 .attr('fill','none')
                 .style("stroke", "black")
                 .style("stroke-width", ".5")
+
+
+            //////////////////////load charts
+
+            update_plot_data(stat)
+
+
+
         }
         d3.select(self.frameElement).style("height", height + "px");
+
+
+
+
     };
     ////////////dropdown menu change
     d3.select("#select_countries")
@@ -179,13 +198,14 @@
     ///////////// charts using eCharts
 
 
-    let dom_right = document.getElementById("container");
-    let myChart = echarts.init(dom_right);
+    //let dom_right = document.getElementById("#chart_1_2");
+    //let myChart = echarts.init(dom_right);
 
-    data=[];
-    function update_plot_data(cb){
-        data=[]
-        global_data.forEach(function(d)
+    //data=[];
+    function update_plot_data_(cb){
+        //data=[]
+        console.log(cb)
+        /*global_data.forEach(function(d)
         {if(d.id===cb)
         {
             let mid_data_dates=d.data.dates;
@@ -227,9 +247,9 @@
                 }
             ]
         };
-        myChart.setOption(option_right);
+        myChart.setOption(option_right);*/
     }
-    ;
+
 
 
 </script>
