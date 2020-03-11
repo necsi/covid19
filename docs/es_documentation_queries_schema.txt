@@ -1,0 +1,237 @@
+curl -X POST "10.90.0.1:9200/italy_last/_search?size=0&pretty" -H 'Content-Type: application/json' -d'
+{
+    "aggregations" : {
+        "large-grid" : {
+            "geohash_grid" : {
+                "field" : "location",
+                "precision" : 3
+            }
+        }
+    }
+}
+'
+
+
+{
+  "took" : 1,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 1605,
+    "max_score" : 0.0,
+    "hits" : [ ]
+  },
+  "aggregations" : {
+    "large-grid" : {
+      "buckets" : [
+        {
+          "key" : "u0n",
+          "doc_count" : 165
+        },
+        {
+          "key" : "spz",
+          "doc_count" : 120
+        },
+        {
+          "key" : "u20",
+          "doc_count" : 90
+        },
+        {
+          "key" : "u0p",
+          "doc_count" : 90
+        },
+        {
+          "key" : "srb",
+          "doc_count" : 90
+        },
+        {
+          "key" : "sr9",
+          "doc_count" : 90
+        },
+        {
+          "key" : "sr6",
+          "doc_count" : 90
+        },
+        {
+          "key" : "sr8",
+          "doc_count" : 75
+        },
+        {
+          "key" : "sqg",
+          "doc_count" : 75
+        },
+        {
+          "key" : "u21",
+          "doc_count" : 60
+        },
+        {
+          "key" : "u0j",
+          "doc_count" : 60
+        },
+        {
+          "key" : "sqd",
+          "doc_count" : 60
+        },
+        {
+          "key" : "spy",
+          "doc_count" : 60
+        },
+        {
+          "key" : "srh",
+          "doc_count" : 45
+        },
+        {
+          "key" : "sr7",
+          "doc_count" : 45
+        },
+        {
+          "key" : "spv",
+          "doc_count" : 45
+        },
+        {
+          "key" : "spn",
+          "doc_count" : 45
+        },
+        {
+          "key" : "srd",
+          "doc_count" : 30
+        },
+        {
+          "key" : "src",
+          "doc_count" : 30
+        },
+        {
+          "key" : "sr5",
+          "doc_count" : 30
+        },
+        {
+          "key" : "sr3",
+          "doc_count" : 30
+        },
+        {
+          "key" : "sq9",
+          "doc_count" : 30
+        },
+        {
+          "key" : "spx",
+          "doc_count" : 30
+        },
+        {
+          "key" : "sny",
+          "doc_count" : 30
+        },
+        {
+          "key" : "u22",
+          "doc_count" : 15
+        },
+        {
+          "key" : "sr4",
+          "doc_count" : 15
+        },
+        {
+          "key" : "sr2",
+          "doc_count" : 15
+        },
+        {
+          "key" : "squ",
+          "doc_count" : 15
+        },
+        {
+          "key" : "sqc",
+          "doc_count" : 15
+        },
+        {
+          "key" : "sqb",
+          "doc_count" : 15
+        }
+      ]
+    }
+  }
+}
+
+
+to decode keys use pygeohash package in python
+
+import pygeohash as pgh
+
+pgh.encode(42.6, -5.6) # >>> ‘ezs42e44yx96’
+pgh.encode(42.6, -5.6, precision=5) # >>> ‘ezs42’
+print(pgh.decode('u17')) # >>> (‘42.6’, ‘-5.6’)
+#pgh.geohash_approximate_distance(‘bcd3u’, ‘bc83n’) # >>> 625441
+
+
+Query by time
+
+curl -X POST "10.90.0.1:9200/italy_last/_search?size=0&pretty" -H 'Content-Type: application/json' -d'
+{
+"query": {
+   "range" : {
+            "date" : {
+                  
+                "gte": "2020-03-08 18:00:00",
+                "lt" :  "now"
+            }
+        }
+  },
+    "aggregations" : {
+        "large-grid" : {
+            "geohash_grid" : {
+                "field" : "location",
+                "precision" : 3
+            }
+        }
+    }
+}
+'
+
+
+
+Mapping/schema of the dataset:
+
+{
+  "mapping": {
+    "_doc": {
+      "_meta": {
+        "created_by": "ml-file-data-visualizer"
+      },
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        },
+        "ISO3": {
+          "type": "keyword"
+        },
+        "code_province": {
+          "type": "long"
+        },
+        "code_region": {
+          "type": "long"
+        },
+        "confirmed": {
+          "type": "long"
+        },
+        "date": {
+          "type": "date",
+          "format": "8yyyy-MM-dd HH:mm:ss"
+        },
+        "location": {
+          "type": "geo_point"
+        },
+        "province": {
+          "type": "keyword"
+        },
+        "province_abbr": {
+          "type": "keyword"
+        },
+        "region": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}
