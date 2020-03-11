@@ -1,0 +1,182 @@
+<html>
+  <head>
+    <title>Coronavirus Statistics</title>
+    <script src="lib/d3.v3.min.js"></script>
+    <script src="lib/topojson.v0.min.js"></script>
+    <script src="lib/jquery.js"></script>
+    <style type="text/css">
+.background {
+  fill: none;
+  stroke: black;
+  stroke-width: 3.5px;
+  pointer-events: all;
+}
+ 
+#states{
+  fill: rgb(188, 189, 220);
+  stroke: #FFF;
+  opacity: 0.85;
+}
+
+path:hover{
+
+}
+
+#states .active {
+  /*fill: lightblue;*/
+  fill: rgb(117, 107, 177);
+}
+
+text {
+  stroke-width: 0;
+  opacity: 1;
+  fill: black;
+  font-weight:bold;
+}
+
+.maplab {
+}
+    </style>
+
+  </head>
+<body>
+
+<div>
+  <div style="left:10px;top:400px;position: absolute">
+    Province: <span id="ostan"></span><br>
+    Infected: <span id="infected"></span><br>
+   <!-- Dead: <span id="dead"></span>-->
+  </div>
+
+<div id="map">
+</div>
+</div>
+
+  <script type="text/javascript">
+
+let width = 960,
+    height = 700,
+    centered;
+
+//var projection = d3.geo.albers();
+//var path = d3.geo.path().projection(projection);
+
+
+var svg = d3.select("#map").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var g = svg.append("g")
+    .attr("transform", "translate(0,0)")
+    .append("g")
+    .attr("id", "states");
+
+var subunits;
+
+// coloring
+let minval=0;
+let maxval = 200;
+let startcolor= '#b4ba92';
+let endColor = '#e06f50';
+
+let colorScale = d3.scale.linear()
+         .domain([minval, maxval])
+         .range([startcolor, endColor ]);
+
+// legend as gradient
+let leg = svg.append("g")
+    .attr("transform", "translate(10,400)")
+  .append("g")
+    .attr("id", "legend");
+let gradient = leg.append("svg:defs")
+  .append("svg:linearGradient")
+    .attr("id", "gradient")
+    .attr("x1", "0%")
+    .attr("y1", "0%")
+    .attr("x2", "0%")
+    .attr("y2", "100%")
+    .attr("spreadMethod", "pad");
+
+gradient.append("svg:stop")
+    .attr("offset", "0%")
+    .attr("stop-color", endColor)
+    .attr("stop-opacity", 0.85);
+
+gradient.append("svg:stop")
+    .attr("offset", "100%")
+    .attr("stop-color", startcolor)
+    .attr("stop-opacity", 0.85);
+
+/*leg.append("rect")
+    .attr("width", 40)
+    .attr("height", 200)
+    // .attr("x", 10)
+    // .attr("y", 50)
+    .attr('fill', "url(#gradient)");
+leg.append("text")
+   .text("15M")
+   .attr('x', 0)
+   .attr('y', -5);
+leg.append("text")
+   .text("0")
+   .attr('x', 15)
+   .attr('y', 215);
+// end of legend
+*/
+
+d3.json("./map_data/iran_new_topo.json", function(error, iran) {
+    subunits = topojson.object(iran, iran.objects.iran_new).geometries;
+    d3.json("./data/data.json",function (data) {
+    var projection = d3.geo.mercator()
+    .center([51, 35])
+        .scale(2000)
+        .translate([width / 3, height / 3]);
+
+    var path = d3.geo.path()
+        .projection(projection);
+
+	g.selectAll("path")
+      .data(subunits)
+    .enter().append("path")
+    .attr("d", path)
+    .attr('fill',function(d){
+       if(data[d.properties.Name].infected===0){return "#f4f4f4"}
+      else{return colorScale(data[d.properties.Name].infected);}
+    })
+    .on("click", click)
+    .on("mousemove", mousemove);
+    g.selectAll("text")
+    .data(subunits)
+    .enter()
+    .append("svg:text")
+    .text(function(d){
+        return data[d.properties.Name]['name'];
+
+    })
+    .attr("class", "maplab")
+    .attr("x", function(d){
+        return path.centroid(d)[0];
+    })
+    .attr("y", function(d){
+        return  path.centroid(d)[1];
+    })
+    .attr("text-anchor","middle")
+    .attr('font-size','9pt')
+            .style('fill', 'black')
+
+function click(d) {
+  
+}
+
+function mousemove(d){
+  $('#ostan').text(data[d.properties.Name]['name']);
+  $('#infected').text(data[d.properties.Name]['infected']);
+  //$('#dead').text(data[d.id]["dead"]);
+}
+
+});
+});
+  </script>
+
+</body>
+</html>  
