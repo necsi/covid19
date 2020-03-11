@@ -1,0 +1,3 @@
+[submodule "src/julia-exp-regression/public/data"]
+	path = src/julia-exp-regression/public/data
+	url = git@github.com:CSSEGISandData/COVID-19
