@@ -17,3 +17,4 @@ This is a list of links to various resources.
 ## Visualizations
 
 - [Doubling Time Tracking](https://covid19.owenlynch.org/?country=US&days=7)
+- [Animation of the spread of COVID-19 over time](https://github.com/mryanjulian/Coronavirus_Spread/blob/master/COVID19.gif)
