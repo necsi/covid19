@@ -10,6 +10,10 @@ This repository is the main data source repository for COVID-19 data used by [en
 
 Visualizations and dashboards at ([endcoronavirus.org](https://www.endcoronavirus.org/)) is created by the New England Complex Systems Institute.
 
+### How to update data from sources
+
+Just run `run_update.py` from within this directory.
+
 ### About Us
 
 [endCoronavirus.org](https://www.endcoronavirus.org/) is built and maintained by the New England Complex Systems Institute (NECSI) and collaborators. Our goal is to minimize the impact of the Coronavirus COVID-19 by providing useful data and guidelines for action.
