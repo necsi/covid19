@@ -17,11 +17,14 @@
 
 </head>
 <body style="height: 100%; margin: 0">
-<table border="4">
+<table border="0">
     <tr>
         <td width="50%">
 
             <select id="select_countries">
+                <option value="south-korea">South Korea</option>
+                <option value="iran">Iran</option>
+                <option value="italy" selected>Italy</option>
                 <option value="algeria">Algeria</option>
                 <option value="argentina">Argentina</option>
                 <option value="azerbaijan">Azerbaijan</option>
@@ -34,9 +37,7 @@
                 <option value="france">France</option>
                 <option value="germany">Germany</option>
                 <option value="india">India</option>
-                <option value="iran" selected>Iran</option>
                 <option value="ireland">Ireland</option>
-                <option value="italy">Italy</option>
                 <option value="japan">Japan</option>
                 <option value="liberia">Liberia</option>
                 <option value="nepal">Nepal</option>
@@ -93,7 +94,7 @@
 
 <script>
     let data=[];
-    let global_test
+    let global_test;
     let mapCanvas;
     function initiate(width=400, height=400)
     {
@@ -114,14 +115,13 @@
         }
         return [d3.min(lst_infected),d3.max(lst_infected)]
     }
-    let makePlots=function (strCountry="",width=400, height=400)
+    let makePlots=function (country_name,strCountry="",width=400, height=400)
     {
         Promise.all([
              d3.json(strCountry)
-            ,d3.csv("content/stats/iran.csv")
-           // ,d3.json('sample.json')
+            ,d3.csv("content/stats/"+country_name+".csv")
         ])
-            .then(ready)
+            .then(ready);
 
 
         function ready(country) {
@@ -149,7 +149,8 @@
                 .attr("fill", function(d) {
                     if(stat.length>0)
                     {
-                        return color(parseInt(stat[stat.length - 1][d.properties.Name]))
+                        console.log(d.properties.NAME_1)
+                        return color(parseInt(stat[stat.length - 1][d.properties.NAME_1]))
                     }
                     else
                     {
@@ -160,6 +161,7 @@
                 .style("stroke-width", "1")
                 .attr("d", path)
                 .on("mousemove", function (d) {
+                    console.log(d)
                 });
             mapCanvas
                 .insert("path")
@@ -173,32 +175,29 @@
             //////////////////////load charts
 
             let prov_data=update_all_provinces(country[1]);
-            plot('chart_1_2',prov_data[0],prov_data[1],prov_data[2]);
+            plot('chart_1_2',prov_data[0],prov_data[1],prov_data[2],prov_data[3],title='All Provinces/States');
             let sums=cumulative(country[1]);
-            plot('chart_2_1',sums[0],sums[1],sums[2])
+            plot('chart_2_1',sums[0],sums[1],sums[2],sums[3],title='Total Confirmed and Death');
 
             //let dayCases=daily_cases(country[1]);
             let dayCases = daily_cases_by_province(country[1]);
 
-            plot('chart_2_2',dayCases[0],dayCases[1],dayCases[2])
+            plot('chart_2_2',dayCases[0],dayCases[1],dayCases[2],dayCases[3],title='Number of Daily New Cases')
 
 
         }
         d3.select(self.frameElement).style("height", height + "px");
 
-
-
-
     };
     ////////////dropdown menu change
     d3.select("#select_countries")
         .on('change',function()
-        {
-            let selecteCountry='./content/countries/'+d3.select(this).property('value')+'/';
-            makePlots(strCountry=selecteCountry+"/topo.json");
+        {   let country_name=d3.select(this).property('value')
+            let selecteCountry='./content/countries/'+country_name+'/';
+            makePlots(country_name=country_name,strCountry=selecteCountry+"/topo.json");
         });
     initiate();
-    makePlots(strCountry="./content/countries/iran/topo.json");
+    makePlots(country_name='italy',strCountry="./content/countries/italy/topo.json");
 
 
     ///////////// charts using eCharts
@@ -220,12 +219,23 @@
         let my_provinces = Object.keys(global_data[0]);
         let item = '';
         let legends = [];
+        let legendselected={};
         for (let i = 0; i < my_provinces.length; i++) {
             item = my_provinces[i];
             if (item !== 'Time' && item !== 'Sum' && item !== 'Total death' && item.trim() !== '') {
                 legends.push(item);
+                if(i===1)
+                {
+                    console.log("true")
+                    legendselected[item]=true;
+                }
+                else
+                {
+                    legendselected[item]=false;
+                }
+
                 lines.push({name: item, data: get_key_data(global_data,item), type: 'line'})}}
-        return [X,lines,legends]}
+        return [X,lines,legends,legendselected]}
 
 
     function daily_cases(global_data)
@@ -242,8 +252,6 @@
         for(let i=1;i<data.length;i++){
             res.push(data[i]-data[i-1])
             }
-        //X=X.splice(0,1)
-        console.log(res)
         lines.push({name: 'daily', data: res, type: 'line'});
 
         return [X,lines,legends]
@@ -257,12 +265,23 @@
         let my_provinces = Object.keys(global_data[0]);
         let item = '';
         let legends = [];
+        let legendselected={};
         for (let i = 0; i < my_provinces.length; i++) {
             item = my_provinces[i];
+
             if (item !== 'Time' && item !== 'Sum' && item !== 'Total death' && item.trim() !== '') {
                 legends.push(item);
+                if(i===1)
+                {
+                    console.log(i);
+                    legendselected[item]=true;
+                }
+                else
+                {
+                    legendselected[item]=false;
+                }
                 lines.push({name: item, data: cumsum_to_daily(get_key_data(global_data,item)), type: 'line'})}}
-        return [X,lines,legends]}
+        return [X,lines,legends,legendselected]}
 
 
     function cumsum_to_daily(cumsum=[])
@@ -282,25 +301,44 @@
         let cumsum = get_key_data(global_data,'Sum');
         let total_dead=get_key_data(global_data,'Total death');
         let legends=['Sum','Total death'];
+        let legendselected={'Sum':true,'Total death':true};
         let lines=[];
         let item = '';
         for (let i = 0; i < legends.length; i++) {
             item = legends[i];
-            lines.push({name: item, data: get_key_data(global_data, item), type: 'line'})
+            lines.push({name: item, data: get_key_data(global_data, item), type: 'line'});
+            lines.push({name: item, data: get_key_data(global_data, item), type: 'bar'});
         }
-        return [X,lines,legends]
+        return [X,lines,legends,legendselected]
     }
-        
-        
-    function plot(div,X,lines,legends)
+
+    function plot(div,X,lines,legends,legendselected=[],title='',subtext='',orientation_from_left='center')
     {
         let dom = document.getElementById(div);
         let myChart = echarts.init(dom);
         let app = {};
         let option = null;
         option = {
+            title: {
+
+                text: title,
+                subtext: subtext,
+                left: orientation_from_left,
+                top: 'bottom',
+                ///textStyle: 'lighter',
+                textStyle: {
+                    fontWeight:200,
+                    color : 'black'
+                }
+
+            },
             legend: {
-                data: legends
+                data: legends,
+                selected:legendselected,
+                orient : 'vertical',
+                align : 'right',
+                right : '100'
+
             },
             tooltip: {
                 trigger: 'axis'
@@ -311,9 +349,40 @@
             },
 
             yAxis: {
-                type: 'value'
+                //logBase :10 ,
+                type: 'value',
+                triggerEvent: true,
+                event: mousedown(function (e) {
+                    console.log(e)
+                })
+
             },
-            series: lines
+            series: lines,
+            dataZoom: [
+                {
+                    type: 'slider',
+                    xAxisIndex: 0,
+                    filterMode: 'empty',
+                    show:false
+
+                },
+                {
+                    type: 'slider',
+                    yAxisIndex: 0,
+                    filterMode: 'empty'
+                },
+                {
+                    type: 'inside',
+                    xAxisIndex: 0,
+                    filterMode: 'empty'
+                },
+                {
+                    type: 'inside',
+                    yAxisIndex: 0,
+                    filterMode: 'empty'
+                }
+            ],
+
         };
         if (option && typeof option === "object") {
             myChart.setOption(option, true);
