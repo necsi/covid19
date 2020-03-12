@@ -14,6 +14,9 @@ This is a list of links to various resources.
 - [Spreadsheet Data for Government Measures](https://docs.google.com/spreadsheets/d/18f0eX5trKnWjR0RTv_-XdJGGKHQDu8r2cOU3TwFrVdM/edit?usp=sharing)
 - [Coronavirus Tech Handbook](https://coronavirustechhandbook.com/)
 
+## Dashboards
+- [US county-level data, descriptions of cases, and links to original sources](https://coronavirus.1point3acres.com/en)
+
 ## Visualizations
 
 - [Doubling Time Tracking](https://covid19.owenlynch.org/?country=US&days=7)
