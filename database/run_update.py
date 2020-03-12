@@ -14,6 +14,10 @@ download_google_sheets('data/google-sheets/', download_urls)
 # Download John Hopkins data
 download_john_hopkins_data('data/')
 
+download_john_hopkins_confirmed_cases_deltas_time_series('data/')
+download_john_hopkins_death_cases_deltas_time_series('data/')
+download_john_hopkins_recovered_cases_deltas_time_series('data/')
+
 # Download Italy data
 df = download_italy_data('data/')
 create_json_for_mapping_software(df, 'mapping-data/')
