@@ -2,7 +2,7 @@
 
 This is the single github repository for all of the NECSI efforts for coronavirus. From now on, please add your code to this directory, so that we can collaborate more effectively.
 
-If you want to work on this, please send a pull request adding yourself to [links/contributors.md](links/contributors.md) with a description of what you are working on/what you want to work on.
+If you want to work on this, please send a pull request adding yourself to [links/contributors.md](https://github.com/necsi/covid19/blob/master/docs/contributors.md) with a description of what you are working on/what you want to work on.
 
 # Subdirectories
 
