@@ -21,3 +21,7 @@ This is the top-level directory for all of the code that volunteers write.
 Whenever you make a new visualization, please add documentation for it to "docs/visualizations.md". Ideally, you include the code in a subdirectory, but if this is not possible, then you should still add a link.
 
 All models should also go in this.
+
+# Legal
+
+This code is released under an MIT license, and any data is released in accordance with https://project-open-data.cio.gov/policy-memo/.
