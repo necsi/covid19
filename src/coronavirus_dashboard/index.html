@@ -22,43 +22,46 @@
         <td width="50%">
 
             <select id="select_countries">
+                <option value="japan" selected>Japan</option>
                 <option value="south-korea">South Korea</option>
                 <option value="iran">Iran</option>
-                <option value="italy" selected>Italy</option>
-                <option value="algeria">Algeria</option>
-                <option value="argentina">Argentina</option>
-                <option value="azerbaijan">Azerbaijan</option>
-                <option value="belgium">Belgium</option>
-                <option value="china">China</option>
-                <option value="colombia">Colombia</option>
-                <option value="czech-republic">Czech Republic</option>
-                <option value="denmark">Denmark</option>
-                <option value="finland">Finland</option>
-                <option value="france">France</option>
-                <option value="germany">Germany</option>
-                <option value="india">India</option>
-                <option value="ireland">Ireland</option>
-                <option value="japan">Japan</option>
-                <option value="liberia">Liberia</option>
-                <option value="nepal">Nepal</option>
-                <option value="netherlands">Netherlands</option>
-                <option value="new-zealand">New Zealand</option>
-                <option value="nigeria">Nigeria</option>
-                <option value="norway">Norway</option>
-                <option value="pakistan">Pakistan</option>
-                <option value="peru">Peru</option>
-                <option value="philippines">Philippines</option>
-                <option value="poland">Poland</option>
-                <option value="portugal">Portugal</option>
-                <option value="romania">Romania</option>
-                <option value="south-africa">South Africa</option>
-                <option value="spain">Spain</option>
-                <option value="sweden">Sweden</option>
-                <option value="turkey">Turkey</option>
-                <option value="united-arab-emirates">United Arab Emirates</option>
-                <option value="united-kingdom">United Kingdom</option>
-                <option value="us-states">United states</option>
-                <option value="venezuela">Venezuela</option>
+                <option value="italy" >Italy</option>
+                <!--
+                 <option value="algeria">Algeria</option>
+
+                 <option value="argentina">Argentina</option>
+                 <option value="azerbaijan">Azerbaijan</option>
+                 <option value="belgium">Belgium</option>
+                 <option value="china">China</option>
+                 <option value="colombia">Colombia</option>
+                 <option value="czech-republic">Czech Republic</option>
+                 <option value="denmark">Denmark</option>
+                 <option value="finland">Finland</option>
+                 <option value="france">France</option>
+                 <option value="germany">Germany</option>
+                 <option value="india">India</option>
+                 <option value="ireland">Ireland</option>
+
+                 <option value="liberia">Liberia</option>
+                 <option value="nepal">Nepal</option>
+                 <option value="netherlands">Netherlands</option>
+                 <option value="new-zealand">New Zealand</option>
+                 <option value="nigeria">Nigeria</option>
+                 <option value="norway">Norway</option>
+                 <option value="pakistan">Pakistan</option>
+                 <option value="peru">Peru</option>
+                 <option value="philippines">Philippines</option>
+                 <option value="poland">Poland</option>
+                 <option value="portugal">Portugal</option>
+                 <option value="romania">Romania</option>
+                 <option value="south-africa">South Africa</option>
+                 <option value="spain">Spain</option>
+                 <option value="sweden">Sweden</option>
+                 <option value="turkey">Turkey</option>
+                 <option value="united-arab-emirates">United Arab Emirates</option>
+                 <option value="united-kingdom">United Kingdom</option>
+                 <option value="us-states">United states</option>
+                 <option value="venezuela">Venezuela</option>-->
             </select>
         </td>
     </tr>
@@ -96,6 +99,18 @@
     let data=[];
     let global_test;
     let mapCanvas;
+
+
+
+    function set_echarts_option(canvas_id,objOptionUpdate={yAxis:{type:'log'}}){
+
+        let theChart = document.getElementById(canvas_id);
+        let existInstance = echarts.getInstanceByDom(theChart);
+        //console.log(existInstance.getOption().legend[0].selected['Toyama'])
+        console.log(objOptionUpdate);
+        existInstance.setOption(objOptionUpdate)
+    }
+
     function initiate(width=400, height=400)
     {
         mapCanvas = d3.select("#map_container")
@@ -118,7 +133,7 @@
     let makePlots=function (country_name,strCountry="",width=400, height=400)
     {
         Promise.all([
-             d3.json(strCountry)
+            d3.json(strCountry)
             ,d3.csv("content/stats/"+country_name+".csv")
         ])
             .then(ready);
@@ -136,9 +151,8 @@
             let minmax=get_stat_min_max(country[1])
             let color = d3.scaleLinear()
                 .domain(minmax)
-                .range(['#d7d0d0',
-                    '#D72000',
-                    '#9e0024'])
+                .range(['#cbbbbb',
+                    '#5b000e'])
                 .interpolate(d3.interpolateHcl);
             mapCanvas.selectAll("path").remove();
             mapCanvas.append("g")
@@ -149,8 +163,19 @@
                 .attr("fill", function(d) {
                     if(stat.length>0)
                     {
-                        console.log(d.properties.NAME_1)
-                        return color(parseInt(stat[stat.length - 1][d.properties.NAME_1]))
+                        //console.log(d.properties.NAME_1)
+                        let val=stat[stat.length - 1][d.properties.NAME_1]
+                        if (val===undefined)
+                        {
+                            console.log(d.properties.NAME_1)
+                            return color(0)
+                        }
+                        else
+                        {
+                            return color(parseInt(val))
+                        }
+
+
                     }
                     else
                     {
@@ -158,17 +183,30 @@
                     }
 
                 })
-                .style("stroke-width", "1")
+                .style("stroke-width", ".5")
                 .attr("d", path)
-                .on("mousemove", function (d) {
-                    console.log(d)
-                });
+                .on("click", function (d) {
+                    let touched_province=d.properties['NAME_1'];
+                    var opt_update = JSON.parse('{"legend":[{"selected": {"'+touched_province+'":"true"}}]}');
+                    set_echarts_option("chart_1_2",opt_update)
+                })
+            /*.on("mousemove", function (d) {
+                let touched_province=d.properties['NAME_1'];
+                var opt_update = JSON.parse('{"legend":[{"selected": {"'+touched_province+'":"true"}}]}');
+                set_echarts_option("chart_1_2",opt_update)
+            })
+            .on("mouseout", function (d) {
+
+                let touched_province=d.properties['NAME_1'];
+                var opt_update = JSON.parse('{"legend":[{"selected": {"'+touched_province+'":"false"}}]}');
+                set_echarts_option("chart_1_2",opt_update)
+            })*/
             mapCanvas
                 .insert("path")
                 .datum(feat_data)
                 .attr("d", path)
                 .attr('fill','none')
-                .style("stroke", "black")
+                .style("stroke", "#fafafa")
                 .style("stroke-width", ".5");
 
 
@@ -194,10 +232,10 @@
         .on('change',function()
         {   let country_name=d3.select(this).property('value')
             let selecteCountry='./content/countries/'+country_name+'/';
-            makePlots(country_name=country_name,strCountry=selecteCountry+"/topo.json");
+            makePlots(country_name,strCountry=selecteCountry+"/topo.json");
         });
     initiate();
-    makePlots(country_name='italy',strCountry="./content/countries/italy/topo.json");
+    makePlots(country_name='japan',strCountry="./content/countries/japan/topo.json");
 
 
     ///////////// charts using eCharts
@@ -226,7 +264,6 @@
                 legends.push(item);
                 if(i===1)
                 {
-                    console.log("true")
                     legendselected[item]=true;
                 }
                 else
@@ -246,12 +283,11 @@
         let item = '';
         let legends = [];
         data=get_key_data(global_data,'Sum');
-        global_test=global_data;
         data.splice(0, 1);
         let res=[];
         for(let i=1;i<data.length;i++){
             res.push(data[i]-data[i-1])
-            }
+        }
         lines.push({name: 'daily', data: res, type: 'line'});
 
         return [X,lines,legends]
@@ -273,7 +309,6 @@
                 legends.push(item);
                 if(i===1)
                 {
-                    console.log(i);
                     legendselected[item]=true;
                 }
                 else
@@ -333,11 +368,16 @@
 
             },
             legend: {
+
+
                 data: legends,
                 selected:legendselected,
-                orient : 'vertical',
-                align : 'right',
-                right : '100'
+                //orient : 'vertical',
+                //align : 'right',
+                //right : '100',
+                type: 'scroll',
+                orient: 'horizontal'
+
 
             },
             tooltip: {
@@ -349,12 +389,9 @@
             },
 
             yAxis: {
-                //logBase :10 ,
+
                 type: 'value',
                 triggerEvent: true,
-                event: mousedown(function (e) {
-                    console.log(e)
-                })
 
             },
             series: lines,
@@ -363,7 +400,8 @@
                     type: 'slider',
                     xAxisIndex: 0,
                     filterMode: 'empty',
-                    show:false
+                    show:false,
+
 
                 },
                 {
