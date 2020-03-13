@@ -14,7 +14,21 @@
     <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script src="js/jquery.js"></script>
     <!-- Compressed CSS -->
-
+    <style>
+        div.tooltip {
+            position: absolute;
+            text-align: center;
+            text-anchor: middle;
+            width: 80px;
+            height: 36px;
+            padding: 2px;
+            font: 12px sans-serif;
+            color: #0a0a0a;
+            background: #fff;
+            border: 0px;
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body style="height: 100%; margin: 0">
 <table border="0">
@@ -139,6 +153,8 @@
             .then(ready);
 
 
+
+
         function ready(country) {
             let map_data=country[0]
             let stat=country[1]
@@ -154,6 +170,14 @@
                 .range(['#cbbbbb',
                     '#5b000e'])
                 .interpolate(d3.interpolateHcl);
+
+            // province name tooltip
+
+            let tooltip = d3.select("body").append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
+
+
             mapCanvas.selectAll("path").remove();
             mapCanvas.append("g")
                 .attr("class", "counties")
@@ -190,6 +214,20 @@
                     var opt_update = JSON.parse('{"legend":[{"selected": {"'+touched_province+'":"true"}}]}');
                     set_echarts_option("chart_1_2",opt_update)
                 })
+                .on("mouseover",(d)=>{
+                    tooltip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    tooltip.html(d.properties['NAME_1'])
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+                    console.log(d.properties['NAME_1'])
+                })
+                .on("mouseout", function(d) {
+                    tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                });
             /*.on("mousemove", function (d) {
                 let touched_province=d.properties['NAME_1'];
                 var opt_update = JSON.parse('{"legend":[{"selected": {"'+touched_province+'":"true"}}]}');
