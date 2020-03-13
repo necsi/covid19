@@ -14,3 +14,6 @@ Please add yourself to this list with a short description of what you are workin
 
    I am currently analyzing to understand how countries are controlling the spread of coronavirus. 
 
+- Sepehr Sharifi
+
+   I will be analyzing the policies in place by various countries to control the pandemic, starting with Canada.
