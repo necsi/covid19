@@ -17,6 +17,10 @@ Please add yourself to this list with a short description of what you are workin
 - Sepehr Sharifi
 
    I will be analyzing the policies in place by various countries to control the pandemic, starting with Canada.
+   
+ - Imad Ahmad
+   
+   I work on Image processing/Computer Vision and to curate Deep Learning Models for training and testing data. Starting with      Pakistan.
 
 - Anna Lu
 
