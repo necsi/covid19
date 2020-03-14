@@ -21,3 +21,7 @@ Please add yourself to this list with a short description of what you are workin
  - Imad Ahmad
    
    I work on Image processing/Computer Vision and to curate Deep Learning Models for training and testing data. Starting with      Pakistan.
+
+- Anna Lu
+
+   Data engineering and DevOps supporting analytics with Olga Buchel and Brian Stearns
