@@ -116,7 +116,8 @@
 
 
 
-    function set_echarts_option(canvas_id,objOptionUpdate={yAxis:{type:'log'}}){
+    function set_echarts_option(canvas_id,objOptionUpdate={yAxis:{type:'log'}})
+    {
 
         let theChart = document.getElementById(canvas_id);
         let existInstance = echarts.getInstanceByDom(theChart);
@@ -125,13 +126,14 @@
         existInstance.setOption(objOptionUpdate)
     }
 
-    function initiate(width=400, height=400)
+    function initiate_map(width=400, height=400)
     {
         mapCanvas = d3.select("#map_container")
             .append("svg")
             .attr("width", width)
             .attr("height", height);
     }
+
     function get_stat_min_max(stat)
     {
         let stat_=stat[stat.length-1];
@@ -144,27 +146,108 @@
         }
         return [d3.min(lst_infected),d3.max(lst_infected)]
     }
+
     let makePlots=function (country_name,strCountry="",width=400, height=400)
     {
+
+        function cumulative(global_data) {
+            let X = get_key_Datetime(global_data,'Time');
+            let cumsum = get_key_data(global_data,'Sum');
+            let total_dead=get_key_data(global_data,'Total death');
+            let legends=['Sum','Total death'];
+            let legendselected={'Sum':true,'Total death':true};
+            let lines=[];
+            let item = '';
+            for (let i = 0; i < legends.length; i++) {
+                item = legends[i];
+                lines.push({name: item, data: get_key_data(global_data, item), type: 'line'});
+                lines.push({name: item, data: get_key_data(global_data, item), type: 'bar'});
+            }
+            return [X,lines,legends,legendselected]
+        }
+
+        function daily_cases_by_province(global_data)
+        {
+            let X = get_key_Datetime(global_data,'Time');
+            let lines = [];
+            let my_provinces = Object.keys(global_data[0]);
+            let item = '';
+            let legends = [];
+            let legendselected={};
+            for (let i = 0; i < my_provinces.length; i++) {
+                item = my_provinces[i];
+
+                if (item !== 'Time' && item !== 'Sum' && item !== 'Total death' && item.trim() !== '') {
+                    legends.push(item);
+                    if(i===1)
+                    {
+                        legendselected[item]=true;
+                    }
+                    else
+                    {
+                        legendselected[item]=false;
+                    }
+                    lines.push({name: item, data: cumsum_to_daily(get_key_data(global_data,item)), type: 'line'})}}
+            return [X,lines,legends,legendselected]}
+
+        function daily_cases(global_data)
+        {
+            let X = get_key_Datetime(global_data,'Time');
+            let lines = [];
+            let my_provinces = Object.keys(global_data[0]);
+            let item = '';
+            let legends = [];
+            data=get_key_data(global_data,'Sum');
+            data.splice(0, 1);
+            let res=[];
+            for(let i=1;i<data.length;i++){
+                res.push(data[i]-data[i-1])
+            }
+            lines.push({name: 'daily', data: res, type: 'line'});
+
+            return [X,lines,legends]
+        }
+
         Promise.all([
             d3.json(strCountry)
             ,d3.csv("content/stats/"+country_name+".csv")
         ])
             .then(ready);
 
+        function update_all_provinces(global_data)
+        {
+            let X = get_key_Datetime(global_data,'Time');
+            let lines = [];
+            let my_provinces = Object.keys(global_data[0]);
+            let item = '';
+            let legends = [];
+            let legendselected={};
+            for (let i = 0; i < my_provinces.length; i++) {
+                item = my_provinces[i];
+                if (item !== 'Time' && item !== 'Sum' && item !== 'Total death' && item.trim() !== '') {
+                    legends.push(item);
+                    if(i===1)
+                    {
+                        legendselected[item]=true;
+                    }
+                    else
+                    {
+                        legendselected[item]=false;
+                    }
 
-
+                    lines.push({name: item, data: get_key_data(global_data,item), type: 'line'})}}
+            return [X,lines,legends,legendselected]}
 
         function ready(country) {
-            let map_data=country[0]
-            let stat=country[1]
+            let map_data=country[0];
+            let stat=country[1];
             let feat_data=topojson.feature(map_data, map_data.objects[Object.keys(map_data.objects)[0]]);
             let center = d3.geoCentroid(country);
             let projection = d3.geoMercator()
                 .fitExtent([[0 , 0 ], [400,400]  ],feat_data);
             let path = d3.geoPath()
                 .projection(projection);
-            let minmax=get_stat_min_max(country[1])
+            let minmax=get_stat_min_max(country[1]);
             let color = d3.scaleLinear()
                 .domain(minmax)
                 .range(['#cbbbbb',
@@ -176,7 +259,6 @@
             let tooltip = d3.select("body").append("div")
                 .attr("class", "tooltip")
                 .style("opacity", 0);
-
 
             mapCanvas.selectAll("path").remove();
             mapCanvas.append("g")
@@ -198,8 +280,6 @@
                         {
                             return color(parseInt(val))
                         }
-
-
                     }
                     else
                     {
@@ -272,12 +352,10 @@
             let selecteCountry='./content/countries/'+country_name+'/';
             makePlots(country_name,strCountry=selecteCountry+"/topo.json");
         });
-    initiate();
+    initiate_map();
     makePlots(country_name='japan',strCountry="./content/countries/japan/topo.json");
 
-
     ///////////// charts using eCharts
-
 
     function get_key_data(global_data,key) {
         let temp = [];
@@ -288,75 +366,6 @@
         let temp = [];
         global_data.forEach(function (d) {temp.push(d[key])});return temp}
 
-    function update_all_provinces(global_data)
-    {
-        let X = get_key_Datetime(global_data,'Time');
-        let lines = [];
-        let my_provinces = Object.keys(global_data[0]);
-        let item = '';
-        let legends = [];
-        let legendselected={};
-        for (let i = 0; i < my_provinces.length; i++) {
-            item = my_provinces[i];
-            if (item !== 'Time' && item !== 'Sum' && item !== 'Total death' && item.trim() !== '') {
-                legends.push(item);
-                if(i===1)
-                {
-                    legendselected[item]=true;
-                }
-                else
-                {
-                    legendselected[item]=false;
-                }
-
-                lines.push({name: item, data: get_key_data(global_data,item), type: 'line'})}}
-        return [X,lines,legends,legendselected]}
-
-
-    function daily_cases(global_data)
-    {
-        let X = get_key_Datetime(global_data,'Time');
-        let lines = [];
-        let my_provinces = Object.keys(global_data[0]);
-        let item = '';
-        let legends = [];
-        data=get_key_data(global_data,'Sum');
-        data.splice(0, 1);
-        let res=[];
-        for(let i=1;i<data.length;i++){
-            res.push(data[i]-data[i-1])
-        }
-        lines.push({name: 'daily', data: res, type: 'line'});
-
-        return [X,lines,legends]
-    }
-
-
-    function daily_cases_by_province(global_data)
-    {
-        let X = get_key_Datetime(global_data,'Time');
-        let lines = [];
-        let my_provinces = Object.keys(global_data[0]);
-        let item = '';
-        let legends = [];
-        let legendselected={};
-        for (let i = 0; i < my_provinces.length; i++) {
-            item = my_provinces[i];
-
-            if (item !== 'Time' && item !== 'Sum' && item !== 'Total death' && item.trim() !== '') {
-                legends.push(item);
-                if(i===1)
-                {
-                    legendselected[item]=true;
-                }
-                else
-                {
-                    legendselected[item]=false;
-                }
-                lines.push({name: item, data: cumsum_to_daily(get_key_data(global_data,item)), type: 'line'})}}
-        return [X,lines,legends,legendselected]}
-
-
     function cumsum_to_daily(cumsum=[])
     {
         res=[];
@@ -365,24 +374,6 @@
             res.push(cumsum[i]-cumsum[i-1])
         }
         return res;
-    }
-
-
-
-    function cumulative(global_data) {
-        let X = get_key_Datetime(global_data,'Time');
-        let cumsum = get_key_data(global_data,'Sum');
-        let total_dead=get_key_data(global_data,'Total death');
-        let legends=['Sum','Total death'];
-        let legendselected={'Sum':true,'Total death':true};
-        let lines=[];
-        let item = '';
-        for (let i = 0; i < legends.length; i++) {
-            item = legends[i];
-            lines.push({name: item, data: get_key_data(global_data, item), type: 'line'});
-            lines.push({name: item, data: get_key_data(global_data, item), type: 'bar'});
-        }
-        return [X,lines,legends,legendselected]
     }
 
     function plot(div,X,lines,legends,legendselected=[],title='',subtext='',orientation_from_left='center')
@@ -464,8 +455,6 @@
             myChart.setOption(option, true);
         }
     }
-
-
 
 </script>
 </body>
