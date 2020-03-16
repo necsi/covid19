@@ -25,3 +25,6 @@ Please add yourself to this list with a short description of what you are workin
 - Anna Lu
 
    Data engineering and DevOps supporting analytics with Olga Buchel and Brian Stearns
+
+- Makenzi Nzau 
+   Working on data visualization, analysis and acqusition.
