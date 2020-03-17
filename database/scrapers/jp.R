@@ -82,6 +82,7 @@ two <-
   mutate(
     country = "japan"
   ) %>% 
+  # Add confirmed of 0 to rows where we added dates because there were no cases
   replace_na(
     list(confirmed = 0)
   ) %>% 
@@ -106,13 +107,6 @@ four <-
   three %>%
   mutate(
     source = url
-  ) %>%
-  replace_na(
-    list(
-      city = "unspecified",
-      status = "unspecified",
-      province = "unspecified"
-    )
   ) %>%
   group_by(
     date,
