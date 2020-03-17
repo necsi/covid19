@@ -1,0 +1,12 @@
+conflicted
+dplyr
+fs
+gestalt
+ggmap
+googlesheets4
+readr
+RSelenium
+rvest
+seleniumPipes
+stringr
+tidyr
