@@ -1,12 +1,7 @@
-source("database/scrapers/keys.R")
-library(ggmap)
-library(googlesheets4)
-library(dplyr)
-library(tidyr)
+source("database/scrapers/utils.R")
 
 # TODO: should Recovered include Discharged?
 
-# Specify function names from packages that should take precedence in name conflicts
 conflicted::conflict_prefer("dplyr", "filter")
 conflicted::conflict_prefer("dplyr", "lag")
 
@@ -26,11 +21,6 @@ cols <-
     "daily_diff_dead",
     "source"
   )
-
-na_to_zero <- function(x) {
-  if (is.na(x)) 0
-  else x
-}
 
 url <- 
   "https://docs.google.com/spreadsheets/d/1jfB4muWkzKTR0daklmf8D5F0Uf_IYAgcx_-Ij9McClQ/edit#gid=0"
@@ -59,30 +49,10 @@ one <-
   ) %>% 
   drop_na(date)
 
-
-# Set up Google Maps key
-register_google(gmaps_key)
-
-lat_longs <- 
+lls <- 
   one %>% 
-  distinct(
-    city, province, country
-  ) %>% 
-  replace_na(
-    list(
-      city = "",
-      province = ""
-    )
-  ) %>% 
-  mutate(
-    location = elmers("{city} {province} {country}") %>% 
-      stringr::str_squish(),
-    ll = 
-      list(geocode(location))
-  ) 
-
-write_or_append(lat_longs)
-
+  sample_n(20) %>% # TODO: take out
+  attach_lat_long()
 
 # Dataframe with one row for every date from the first to last date in the sheet
 all_days_df <- 
@@ -92,8 +62,8 @@ all_days_df <-
       lubridate::as_date()
   )
 
-two <- 
-    one %>% 
+three <- 
+    two %>% 
     # Get a row for all dates even if they don't appear in sheet
     full_join(
       all_days_df,
@@ -140,8 +110,8 @@ two <-
     )
   )
 
-three <- 
-  two %>% 
+out <- 
+  three %>% 
   mutate(
     lag_date = lag(date),
     daily_diff_confirm = 

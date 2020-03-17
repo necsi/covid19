@@ -4,6 +4,8 @@ fs
 gestalt
 ggmap
 googlesheets4
+here
+magrittr
 readr
 RSelenium
 rvest
