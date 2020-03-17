@@ -5,6 +5,7 @@ gestalt
 ggmap
 googlesheets4
 here
+lubridate
 magrittr
 purrr
 readr

@@ -1,4 +1,8 @@
-source("database/scrapers/utils.R")
+source(here::here("database/scrapers/utils.R"))
+
+todays_date <- lubridate::today()
+
+OUT_PATH <- here(elmers("database/scrapers/dat/jp/{todays_date}.csv"))
 
 # TODO: should Recovered include Discharged?
 
@@ -15,6 +19,9 @@ cols <-
     "long",
     "confirmed",
     "recovered",
+    "unspecified", 
+    "hospitalized", 
+    "discharged",
     "dead",
     "daily_diff_confirm",
     "daily_diff_recover",
@@ -48,16 +55,14 @@ one <-
   ) %>%
   mutate(
     date = lubridate::as_date(date_added),
-    country = "japan",
-    confirmed = 1
+    country = "japan"
   ) %>%
   select(
     date,
     city = detected_city,
     province = detected_prefecture,
     country,
-    status,
-    confirmed
+    status
   ) %>%
   arrange(
     date
@@ -82,14 +87,11 @@ two <-
   mutate(
     country = "japan"
   ) %>% 
-  # Add confirmed of 0 to rows where we added dates because there were no cases
-  replace_na(
-    list(confirmed = 0)
-  ) %>% 
-  arrange(date) 
+  arrange(date,
+          province, 
+          city) 
 
 two %>%
-  sample_n(20) %>% # TODO: take out
   # Append to CSV
   attach_lat_long() 
 
@@ -106,7 +108,12 @@ three <-
 four <-
   three %>%
   mutate(
-    source = url
+    source = url,
+    status = 
+      case_when(
+        is.na(status) ~ "unspecified",
+        TRUE ~ status
+      )
   ) %>%
   group_by(
     date,
@@ -116,7 +123,6 @@ four <-
     lat,
     long,
     status,
-    confirmed,
     source
   ) %>%
   count() %>%
@@ -135,9 +141,19 @@ four <-
     list(
       recovered = 0,
       unspecified = 0,
+      hospitalized = 0,
+      discharged = 0,
       dead = 0
     )
-  )
+  ) %>% 
+  rowwise() %>% 
+  mutate(
+    confirmed = 
+      sum(
+        recovered, unspecified, hospitalized, discharged, dead, 
+        na.rm = TRUE)
+  ) %>% 
+  ungroup()
 
 out <-
   four %>%
@@ -151,3 +167,5 @@ out <-
       dead - lag(dead)
   ) %>%
   select(cols)
+
+readr::write_csv(out, OUT_PATH)
