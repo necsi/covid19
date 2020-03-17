@@ -28,4 +28,7 @@ Please add yourself to this list with a short description of what you are workin
 
 - Robert Graham
 
-  Data engineering and cloud infra
+  Data engineering and cloud infrastructure
+
+- Makenzi Nzau 
+   Working on data visualization, analysis and acqusition.
