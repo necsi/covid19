@@ -1,0 +1,49 @@
+Links to parse: https://docs.google.com/document/d/1frvYoh9J718HFgt0RbfEumDkpJnvNjEBp8DbFZwhI_E/edit
+
+
+Format
+
+date,city,province,country,lat/long,confirmed,recovered,dead,daily_diff_confirm,daily_diff_recover,daily_diff_dead
+1/22/20,,,Thailand,"15,101",2,0,0,-1,-1,-1
+1/23/20,,,Thailand,"15,101",3,0,0,1,0,0
+1/24/20,,,Thailand,"15,101",5,0,0,2,0,0
+1/25/20,,,Thailand,"15,101",7,0,0,2,0,0
+1/26/20,,,Thailand,"15,101",8,2,0,1,2,0
+1/27/20,,,Thailand,"15,101",8,2,0,0,0,0
+1/28/20,,,Thailand,"15,101",14,5,0,6,3,0
+1/29/20,,,Thailand,"15,101",14,5,0,0,0,0
+1/30/20,,,Thailand,"15,101",14,5,0,0,0,0
+1/31/20,,,Thailand,"15,101",19,5,0,5,0,0
+2/1/20,,,Thailand,"15,101",19,5,0,0,0,0
+2/2/20,,,Thailand,"15,101",19,5,0,0,0,0
+2/3/20,,,Thailand,"15,101",19,5,0,0,0,0
+
+
+
+
+https://colab.research.google.com/drive/1tsUXhhp01UoKXGpgBI4N4MLrq7vQmJWy - Japan
+https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv - Italy
+Japan new
+https://docs.google.com/spreadsheets/d/1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/edit#gid=1159263495
+Iran new:
+https://docs.google.com/spreadsheets/d/1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/edit#gid=123007195
+https://docs.google.com/spreadsheets/d/1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/edit#gid=428126019 - Korea
+ 
+https://docs.google.com/spreadsheets/d/1V3M23FWpRq6wa_Sz4uZUNchwZdMdXrUFOdvxLED-KQ4/edit?ts=5e66419b#gid=1143511030 - netherlands
+ 
+https://coronavirus.1point3acres.com/en - US data 
+ 
+https://www.arcgis.com/apps/opsdashboard/index.html#/f94c3c90da5b4e9f9a0b19484dd4bb14 - UK data
+ 
+https://github.com/jihoo-kim/Coronavirus-Dataset/
+ 
+https://docs.google.com/spreadsheets/d/1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/edit#gid=1840632470 - Spain
+ 
+https://docs.google.com/spreadsheets/d/1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/edit#gid=266090829 - Colombia
+ 
+Maybe these data from Spain are better?
+https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/Actualizacion_41_COVID-19.pdf - Spain
+https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/Actualizacion_40_COVID-19.pdf - Spain
+Germany
+https://interaktiv.morgenpost.de/corona-virus-karte-infektionen-deutschland-weltweit/data/Coronavirus.current.csv?1583446270258
+
