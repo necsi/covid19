@@ -6,6 +6,7 @@ ggmap
 googlesheets4
 here
 magrittr
+purrr
 readr
 RSelenium
 rvest

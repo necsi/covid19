@@ -7,9 +7,11 @@ library(here)
 library(magrittr)
 library(tidyr)
 
+LL_PATH <- here("database/scrapers/lat_longs.csv")
+
 # Specify function names from packages that should take precedence in name conflicts
-conflicted::conflict_prefer("dplyr", "filter")
-conflicted::conflict_prefer("dplyr", "lag")
+filter <- dplyr::filter
+lag <- dplyr::lag
 
 register_google(gmaps_key)
 
@@ -28,26 +30,18 @@ write_or_append <- function(tbl, path) {
   }
 }
 
+try_geocode <- purrr::possibly(geocode, 
+                               otherwise = 
+                                 tibble(long = NA_real_,
+                                        lat = NA_real_)
+                               )
+
 # Store a dataframe of city, province, country and the associated lat long
-attach_lat_long <- function(tbl, path = here("database/scrapers/lat_longs.csv")) {
+attach_lat_long <- function(tbl, path = LL_PATH) {
   # Set up Google Maps key
   register_google(gmaps_key)
   
   tbl %<>% 
-    select(
-      city, province, country
-    ) %>% 
-    mutate_all(
-      stringr::str_to_lower
-    ) %>%
-    mutate_all(
-      stringr::str_squish
-    ) %>% 
-    mutate_if(
-      is.character,
-      na_if,
-      "unspecified"
-    ) %>% 
     distinct(
       city, province, country
     )
@@ -78,7 +72,7 @@ attach_lat_long <- function(tbl, path = here("database/scrapers/lat_longs.csv"))
     rowwise() %>% 
     mutate(
       ll = 
-        list(geocode(location))
+        list(try_geocode(location))
     ) %>% 
     unnest(ll) %>% 
     rename(
@@ -87,4 +81,6 @@ attach_lat_long <- function(tbl, path = here("database/scrapers/lat_longs.csv"))
     na_if("")
     
   write_or_append(lat_longs, path)
+  
+  lat_longs
 }
