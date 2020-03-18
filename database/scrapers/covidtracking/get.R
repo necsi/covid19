@@ -37,5 +37,8 @@ readr::write_csv(states_current,
 readr::write_csv(states_daily, 
                  elmers("{path_prefix}/{current_datetime}_states_info.csv"))
 readr::write_csv(states_info, 
-                 elmers("{path_prefix}/{current_datetime}_sus_current.csv"))
+                 elmers("{path_prefix}/{current_datetime}_us_current.csv"))
+
+readr::write_csv(states_current, 
+                 elmers("../../{current_datetime}_states_daily.csv"))
 

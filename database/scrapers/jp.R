@@ -4,22 +4,18 @@ todays_date <- lubridate::today()
 
 OUT_PATH <- here(elmers("database/scrapers/dat/jp/{todays_date}.csv"))
 
-# TODO: should Recovered include Discharged?
-
-conflicted::conflict_prefer("dplyr", "filter")
-conflicted::conflict_prefer("dplyr", "lag")
-
 cols <-
   c(
     "date",
     "city",
     "province",
     "country",
-    "lat",
-    "long",
+    "location",
     "confirmed",
     "recovered",
-    
+    "unspecified",
+    "hospitalized",
+    "discharged",
     "dead",
     "daily_diff_confirm",
     "daily_diff_recover",
@@ -111,15 +107,15 @@ four <-
       case_when(
         is.na(status) ~ "unspecified",
         TRUE ~ status
-      )
+      ),
+    location = elmers("{lat},{long}")
   ) %>%
   group_by(
     date,
     city,
     province,
     country,
-    lat,
-    long,
+    location,
     status,
     source
   ) %>%
