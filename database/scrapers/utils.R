@@ -22,6 +22,11 @@ na_to_zero <- function(x) {
   else x
 }
 
+replace_null <- function(x) {
+  if (length(x) == 0) NA
+  else x
+}
+
 write_or_append <- function(tbl, path) {
   if (!fs::file_exists(path)) {
     readr::write_csv(tbl, path)

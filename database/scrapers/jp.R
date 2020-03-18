@@ -19,9 +19,7 @@ cols <-
     "long",
     "confirmed",
     "recovered",
-    "unspecified", 
-    "hospitalized", 
-    "discharged",
+    
     "dead",
     "daily_diff_confirm",
     "daily_diff_recover",
