@@ -3,6 +3,7 @@ dplyr
 fs
 gestalt
 ggmap
+glue
 googlesheets4
 here
 httr
@@ -13,5 +14,6 @@ readr
 RSelenium
 rvest
 seleniumPipes
+snakecase
 stringr
 tidyr

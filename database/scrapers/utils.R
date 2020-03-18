@@ -18,13 +18,19 @@ register_google(gmaps_key)
 elmers <- glue::glue %>>>% as.character
 
 na_to_zero <- function(x) {
-  if (is.na(x)) 0
-  else x
+  if (is.na(x)) {
+    0
+  } else {
+    x
+  }
 }
 
 replace_null <- function(x) {
-  if (length(x) == 0) NA
-  else x
+  if (length(x) == 0) {
+    NA
+  } else {
+    x
+  }
 }
 
 write_or_append <- function(tbl, path) {
@@ -35,57 +41,59 @@ write_or_append <- function(tbl, path) {
   }
 }
 
-try_geocode <- purrr::possibly(geocode, 
-                               otherwise = 
-                                 tibble(long = NA_real_,
-                                        lat = NA_real_)
-                               )
+try_geocode <- purrr::possibly(geocode,
+  otherwise =
+    tibble(
+      long = NA_real_,
+      lat = NA_real_
+    )
+)
 
 # Store a dataframe of city, province, country and the associated lat long
 attach_lat_long <- function(tbl, path = LL_PATH) {
   # Set up Google Maps key
   register_google(gmaps_key)
-  
-  tbl %<>% 
+
+  tbl %<>%
     distinct(
       city, province, country
     )
-  
+
   if (fs::file_exists(path)) {
     existing_lls <- readr::read_csv(path)
-    
-    tbl %<>% 
+
+    tbl %<>%
       anti_join(
         existing_lls,
         by = c("city", "province", "country")
       )
   }
-  
-  lat_longs <- 
-    tbl %>% 
+
+  lat_longs <-
+    tbl %>%
     replace_na(
       list(
         city = "",
         province = "",
         country = ""
       )
-    ) %>% 
+    ) %>%
     mutate(
-      location = elmers("{city} {province} {country}") %>% 
+      location = elmers("{city} {province} {country}") %>%
         stringr::str_squish()
-    ) %>% 
-    rowwise() %>% 
+    ) %>%
+    rowwise() %>%
     mutate(
-      ll = 
+      ll =
         list(try_geocode(location))
-    ) %>% 
-    unnest(ll) %>% 
+    ) %>%
+    unnest(ll) %>%
     rename(
       long = lon
-    ) %>% 
+    ) %>%
     na_if("")
-    
+
   write_or_append(lat_longs, path)
-  
+
   lat_longs
 }

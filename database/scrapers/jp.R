@@ -71,7 +71,7 @@ all_days_df <-
         lubridate::as_date()
   )
 
-two <- 
+two <-
   one %>%
   # Get a row for all dates even if they don't appear in sheet
   full_join(
@@ -80,16 +80,18 @@ two <-
   ) %>%
   mutate(
     country = "japan"
-  ) %>% 
-  arrange(date,
-          province, 
-          city) 
+  ) %>%
+  arrange(
+    date,
+    province,
+    city
+  )
 
 two %>%
   # Append to CSV
-  attach_lat_long() 
+  attach_lat_long()
 
-lls <- 
+lls <-
   readr::read_csv(LL_PATH)
 
 three <-
@@ -103,7 +105,7 @@ four <-
   three %>%
   mutate(
     source = url,
-    status = 
+    status =
       case_when(
         is.na(status) ~ "unspecified",
         TRUE ~ status
@@ -139,15 +141,22 @@ four <-
       discharged = 0,
       dead = 0
     )
-  ) %>% 
-  rowwise() %>% 
+  ) %>%
+  rowwise() %>%
   mutate(
-    confirmed = 
+    confirmed =
       sum(
-        recovered, unspecified, hospitalized, discharged, dead, 
-        na.rm = TRUE)
-  ) %>% 
-  ungroup()
+        recovered, unspecified, hospitalized, discharged, dead,
+        na.rm = TRUE
+      )
+  ) %>%
+  ungroup() %>%
+  mutate_at(
+    vars(
+      recovered, unspecified, hospitalized, discharged, dead, confirmed
+    ),
+    cumsum
+  )
 
 out <-
   four %>%
