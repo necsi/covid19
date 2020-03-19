@@ -4,6 +4,7 @@ import pandas as pd
 from datetime import datetime
 from os import path
 from io import StringIO
+import re
 
 def download_netherlands_rivm_data(target_directory):
         """
@@ -21,23 +22,28 @@ def download_netherlands_rivm_data(target_directory):
         response = requests.get(rivm_url)
         soup =BeautifulSoup(response.text,"html.parser")
         raw_data = soup.find_all("div",id="csvData")[0].string
+
+        raw_data_rows = [r for r in raw_data.split("\n") if r!=""]
         # @TODO: confirm whether second column and fourth column are sane guesses
-        df = pd.DataFrame
-        df=pd.read_csv(StringIO(raw_data),sep=";",names=["Municipality","GGD-region?","Count"],header=0,skiprows=3)
+        #List columns
+        columns =raw_data_rows[0].split(";")
 
-        #Process the reference date given in the comment section in the header
-        comments={"Comments":[x.split(";")[0] for x in raw_data.split("\n")[2:4]]}
 
-        dutch_months =["januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december"]
-        trans_months = {month:number+1 for number, month in enumerate(dutch_months)}
+        #Parse out the comment rows indicated by rows starting with negative integers
+        exp ="-\d+;"
+        comments = {x:y for x,y in enumerate(raw_data_rows[1:]) if re.match(exp,y) }
+        #clean the negative integer out.
+        comments={x:re.sub(exp,"",y) for x,y in comments.items()}
 
-        raw_reference_date=comments["Comments"][0].split(" ")[1:]
-        print(raw_reference_date)
-        day, month, hour = tuple(raw_reference_date)
-        df["Reference date"] = f"{hour} {day}.{trans_months[month]}"
+        #Select the data rows: all rows except header row and comment rows
+        data_idx =1+len(comments)
+        data =raw_data_rows[data_idx:]
+
+        df=pd.read_csv(StringIO("\n".join(data)),sep=";",names=columns,header=0,skiprows=data_idx)
 
         year, day, month = (datetime.now().year,datetime.now().day, datetime.now().month)
         df["Fetch date"] =f"{day}.{month}.{year}"
+        df["Comments"] = "\n".join(list(comments.values()))
 
 
         #Save file
