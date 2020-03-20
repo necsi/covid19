@@ -105,11 +105,6 @@ four <-
   three %>%
   mutate(
     source = url,
-    status =
-      case_when(
-        is.na(status) ~ "unspecified",
-        TRUE ~ status
-      ),
     location = elmers("{lat},{long}")
   ) %>%
   group_by(
@@ -123,6 +118,18 @@ four <-
   ) %>%
   count() %>%
   ungroup() %>%
+  mutate(
+    n = 
+      case_when(
+        is.na(province) ~ 0L,
+        TRUE ~ n
+      ),
+    status =
+      case_when(
+        is.na(status) ~ "unspecified",
+        TRUE ~ status
+      )
+  ) %>% 
   pivot_wider(
     names_from = status,
     values_from = n
