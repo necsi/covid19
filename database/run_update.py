@@ -21,3 +21,6 @@ download_john_hopkins_recovered_cases_deltas_time_series('data/')
 # Download Italy data
 df = download_italy_data('data/')
 create_json_for_mapping_software(df, 'mapping-data/')
+
+#Download Netherlands RIVM data
+download_netherlands_rivm_data('data/')
