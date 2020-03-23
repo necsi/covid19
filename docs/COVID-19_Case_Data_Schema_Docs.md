@@ -1,3 +1,12 @@
+**Purpose:** 
+
+This is an effort to catalog and document the schema (fields and formatting) for various COVID-19 data sources (for cases).
+
+One of the Data Visualization team projects is aggregating many data sources and transforming the data into a format that is ingestible to Elastic Search as a Csv file.  Case summary and time series data - by Country and Region - is then published to a MapBox map.
+
+<br />
+
+
 ## [I. Target Schema](#i-target-schema---elastic-csv)
 
 
