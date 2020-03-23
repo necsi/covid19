@@ -6,6 +6,8 @@
    [A. Detailed Data Google Sheet](#a-collaborative-google-sheet-detailed-data)
  
    [B. CSSE GIS - Daily CVS file](#b-cssegisanddata---covid-19-johns-hopkins)
+   
+   [C. Coronavirus stat auto collector - japan](#c-coronavirus_stat_auto-collector.ipynb-japan)
 
 <br />
 
@@ -69,4 +71,17 @@ https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_c
 |7 |	1/24/20	| Date	|	 15
 |8 |	1/25/20	| Date	|	 39
 
+
+<br />
+
+  ### C. CoronaVirus_Stat_Auto-Collector.ipynb (Japan)
+
+This python notebook aggregates data from another source in Japan.
+
+|**Field_OrdinalPosition**|**Field_Name**|**Field_Type**|**Sample**|**Comments**| 
+| --- | --- | --- | --- | --- |
+|1 | Detected Prefecture	| Text |	 Tokyo
+|2 | Date Announced	| Date	|	2020-01-31
+|3 | Count   | Integer | 10 | Cumulative Count of Reported Cases
+ 		
 
