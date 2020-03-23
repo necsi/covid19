@@ -73,10 +73,10 @@ https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_c
 |2 |	Country/Region | Text	|	China
 |3 |	Lat	|	Decimal |	31.8257 	
 |4 |	Long |Decimal |	117.2264	
-|5 |	1/22/20	| Date	|	 1
-|6 |	1/23/20	| Date	|	  9
-|7 |	1/24/20	| Date	|	 15
-|8 |	1/25/20	| Date	|	 39
+|5 |	1/22/20	| Integer	|	 1  | Count of Cases by Date value in the column header '1/22/20' (requires a pivot transformation to bring column values into rows)
+|6 |	1/23/20	| Integer	|	  9 | See note above
+|7 |	1/24/20	| Integer	|	 15 | 
+|8 |	1/25/20	| Integer	|	 39 |
 
 
 <br />
@@ -98,4 +98,13 @@ Url:  https://colab.research.google.com/drive/1tsUXhhp01UoKXGpgBI4N4MLrq7vQmJWy
 
 https://docs.google.com/spreadsheets/d/1SL96qMw_7sskvAaMSLa5l3VuQyGYZdedGoYSNYd3YFM
 
-Italian_regions data which can be used for creating a lookup to regions in source data files
+   Italian_regions data which can be used for creating a lookup to regions in source data files
+
+http://pendatadpc.maps.arcgis.com/apps/opsdashboard/index.html#/b0c68bce2cce478eaac82fe38d4138b1
+
+   ArgGIS dashboard maintained by the Italian Dept. of Civil Protection (with links to underlying data).
+   
+   
+https://public.tableau.com/profile/publicviz#!/vizhome/monitor_15841091301660/sheet0  
+
+   Tableau visualization of COVID-19 cases in Ukraine.
