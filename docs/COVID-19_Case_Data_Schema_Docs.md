@@ -9,7 +9,12 @@
    
    [C. Coronavirus stat auto collector - japan](#c-coronavirus_stat_auto-collectoripynb-japan)
 
+
+## [III. Reference Data](#iii-reference-data)
+
 <br />
+
+
 
 ## I. Target Schema - Elastic csv
 
@@ -39,6 +44,8 @@
 
 
   ### A. Collaborative Google Sheet [Detailed Data](https://docs.google.com/spreadsheets/d/1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/edit#gid=1872189130)
+  
+  _Contains individual sheets for several countries - South Korea, Spain, Italy, Iran, Sweden, Portugal, Netherlands, France, Israel, Lebanon, Japan, Brazil, Argentina, Chile, Germany, & more_
 
 |**Field_OrdinalPosition**|**Field_Name**|**Field_Type**|**Sample**|**Comments**| 
 | --- | --- | --- | --- | --- |
@@ -85,4 +92,9 @@ Url:  https://colab.research.google.com/drive/1tsUXhhp01UoKXGpgBI4N4MLrq7vQmJWy
 |2 | Date Announced	| Date	|	2020-01-31
 |3 | Count   | Integer | 10 | Cumulative Count of Reported Cases
  		
+<br />
 
+## III. Reference Data
+
+https://docs.google.com/spreadsheets/d/1SL96qMw_7sskvAaMSLa5l3VuQyGYZdedGoYSNYd3YFM
+Italian_regions data which can be used for creating a lookup to regions in source data files
