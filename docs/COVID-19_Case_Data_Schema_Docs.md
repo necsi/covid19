@@ -7,7 +7,7 @@
  
    [B. CSSE GIS - Daily CVS file](#b-cssegisanddata---covid-19-johns-hopkins)
    
-   [C. Coronavirus stat auto collector - japan](#c-coronavirus_stat_auto-collector.ipynb-japan)
+   [C. Coronavirus stat auto collector - japan](#c-coronavirus_stat_auto-collectoripynb-japan)
 
 <br />
 
@@ -76,7 +76,8 @@ https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_c
 
   ### C. CoronaVirus_Stat_Auto-Collector.ipynb (Japan)
 
-This python notebook aggregates data from another source in Japan.
+This python notebook aggregates data from another source in Japan.  
+Url:  https://colab.research.google.com/drive/1tsUXhhp01UoKXGpgBI4N4MLrq7vQmJWy 
 
 |**Field_OrdinalPosition**|**Field_Name**|**Field_Type**|**Sample**|**Comments**| 
 | --- | --- | --- | --- | --- |
