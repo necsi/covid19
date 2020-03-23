@@ -1,0 +1,9 @@
+To run these scripts, you need to first [install R](https://www.r-project.org/), install all the packages listed [here](https://github.com/necsi/covid19/pull/30/files#diff-0143c6e11e3043361cc48cefa2b310ab).
+
+The script can be run interactively from the R console (open a terminal and type `R` or use an IDE like [RStudio](https://rstudio.com/)) or non-interactively from the command line with
+
+```
+ Rscript <path-to-script>
+```
+
+You also need to be authenticated with Google Maps to use the [`ggmap` package](https://github.com/dkahle/ggmap) and with Google Docs to use the [`googlesheets4` package](https://googlesheets4.tidyverse.org/articles/articles/auth.html). Authentication instructions at those links.
