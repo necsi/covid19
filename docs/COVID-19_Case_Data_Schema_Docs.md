@@ -1,4 +1,14 @@
-# **Target Schema - Elastic csv**
+## [I. Target Schema](#target-schema---elastic-csv)
+
+
+## [II. Data Sources](#data-sources) - with schemas
+
+  [Detailed Data Google Sheet](#cssegisanddata---covid-19-johns-hopkins)
+ 
+  [CSSE GIS](#cssegisanddata---covid-19-johns-hopkins)
+
+
+# I. Target Schema - Elastic csv
 
 
 |**Field_OrdinalPosition**|**Field_Name**|**Field_Type**|**Sample**|**Comments** |
@@ -22,10 +32,10 @@
 
 
 
-# **Data Sources**
+# II. Data Sources
 
 
-## Google Sheet (Many different sheets)**
+## A. Collaborative Google Sheet [Detailed Data](https://docs.google.com/spreadsheets/d/1-YNneqVqTGy2Uzp_0pPNBezhxyEp6M_a2A2GI1MTxx0/edit#gid=1872189130)
 
 |**Field_OrdinalPosition**|**Field_Name**|**Field_Type**|**Sample**|**Comments**| 
 | --- | --- | --- | --- | --- |
@@ -39,7 +49,7 @@
 
 <br />
 
-## **CSSEGISandData - COVID-19 (Johns Hopkins)**
+## B. CSSEGISandData - COVID-19 (Johns Hopkins)
 
 from **csse_covid_19_time_series/** folder:
 
