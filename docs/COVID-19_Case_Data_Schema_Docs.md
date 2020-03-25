@@ -30,10 +30,10 @@ One of the Data Visualization team projects is aggregating many data sources and
 
 |**Field_OrdinalPosition**|**Field_Name**|**Field_Type**|**Sample**|**Comments** |
 | --- | --- | --- | --- | --- |
-|**1**|	date|Date|2/25/2020|NOT datetime - probably best to have a standard date string format ("YYYY-MM-DD", e.g.)   |
-|**2**|	city|	Text|	Innsbruck|	  |
-|**3**| province|	Text|	Tyrol|	  |
-|**4**|	country|	Text|	Austria|	 |  
+|**1**|	date|Integer?|20200225|NOT date or datetime. Lookup to Date table |
+|**2**|	city|	Text|	Innsb2567|	   Lookup to Geographic region table - city |
+|**3**| province|	Text|	Tyrol5915 |	  Lookup to Geographic region table - province |
+|**4**|	country|	Text|	Austri52059|	Lookup to Geographic region table - country |  
 |**5**|	lat/long|	Geocode coord|	47.25,11.3333|	  |
 |**6**|	confirmed|	Integer|	2|	Total Confirmed Cases |  
 |**7**|	recovered|	Integer|	1|	Total Recovered Cases |
